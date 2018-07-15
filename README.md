@@ -15,7 +15,8 @@ This is a preconfigured project that uses every feature of [**Sharyn**](https://
 - Add a `SESSION_SECRET_KEY` variable to your Heroku app containing any secret string
 - Delete the content of this `README.md` file
 
-By default, this project uses Docker ([download](https://www.docker.com/community-edition#/download))and Heroku ([download CLI](https://devcenter.heroku.com/articles/heroku-cli)), so make sure you have those installed.
+By default, this project uses Docker ([download](https://www.docker.com/community-edition#/download)) and Heroku ([download CLI](https://devcenter.heroku.com/articles/heroku-cli)), so make sure you have those installed.
 
 If you don't want to use Docker, delete the `docker-compose.yml` file.
+
 If you don't want to use Heroku, delete the `Procfile` file.
