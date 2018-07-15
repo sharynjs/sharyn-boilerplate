@@ -1,1 +1,1 @@
-# sharyn-boilerplate
+# Sharyn Boilerplate

@@ -1,0 +1,66 @@
+{
+  "private": true,
+  "scripts": {
+    "start": "sharyn dev",
+    "dev-ssr-only": "sharyn dev-ssr-only",
+    "dev-no-ssr": "sharyn dev-no-ssr",
+    "prod-local": "sharyn prod-local",
+    "lint": "sharyn lint",
+    "test": "sharyn test",
+    "heroku-postbuild": "sharyn prod-build",
+    "precommit": "sharyn lint-test"
+  },
+  "babel": {
+    "presets": [
+      "@sharyn"
+    ]
+  },
+  "eslintConfig": {
+    "extends": "@sharyn"
+  },
+  "dependencies": {
+    "@sharyn/env": "^1.0.2",
+    "knex": "^0.15.1"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.0.0-beta.52",
+    "@babel/core": "^7.0.0-beta.52",
+    "@babel/node": "^7.0.0-beta.52",
+    "@babel/preset-env": "^7.0.0-beta.52",
+    "@babel/preset-flow": "^7.0.0-beta.52",
+    "@babel/preset-react": "^7.0.0-beta.52",
+    "@sharyn/babel-preset": "1.2.1",
+    "@sharyn/cli": "^2.2.0",
+    "@sharyn/eslint-config": "1.0.3",
+    "@sharyn/prettier-config": "^1.0.2",
+    "@sharyn/webpack-config": "1.2.0",
+    "babel-core": "7.0.0-bridge.0",
+    "babel-eslint": "^8.2.5",
+    "babel-jest": "^23.2.0",
+    "babel-loader": "^8.0.0-beta.4",
+    "babel-plugin-flow-react-proptypes": "^24.0.1",
+    "babel-plugin-module-resolver": "^3.1.1",
+    "cross-env": "^5.2.0",
+    "eslint": "^5.1.0",
+    "eslint-config-airbnb": "^17.0.0",
+    "eslint-config-prettier": "^2.9.0",
+    "eslint-import-resolver-babel-module": "^5.0.0-beta.0",
+    "eslint-plugin-flowtype": "^2.50.0",
+    "eslint-plugin-import": "^2.13.0",
+    "eslint-plugin-jsx-a11y": "^6.1.0",
+    "eslint-plugin-prettier": "^2.6.2",
+    "eslint-plugin-react": "^7.10.0",
+    "flow-bin": "^0.76.0",
+    "husky": "^0.14.3",
+    "jest": "^23.3.0",
+    "madge": "^3.2.0",
+    "nodemon": "^1.18.2",
+    "prettier": "^1.13.7",
+    "prop-types": "^15.6.2",
+    "react-hot-loader": "^4.3.3",
+    "rimraf": "^2.6.2",
+    "webpack": "^4.1.6",
+    "webpack-cli": "^3.0.8",
+    "webpack-dev-server": "^3.1.4"
+  }
+}
