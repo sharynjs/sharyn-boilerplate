@@ -729,9 +729,9 @@
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/@sharyn/prettier-config/-/prettier-config-1.0.2.tgz#315eb45402c8887e4b3285c79e7c59c77ad5c727"
 
-"@sharyn/webpack-config@1.2.0":
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/@sharyn/webpack-config/-/webpack-config-1.2.0.tgz#1d5952d6769acf278bc86715f8c49288424dee3d"
+"@sharyn/webpack-config@1.2.1":
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/@sharyn/webpack-config/-/webpack-config-1.2.1.tgz#33695564e359fd5d12432a575930529aa70b75f8"
   dependencies:
     "@sharyn/env" "^1.0.2"
 
