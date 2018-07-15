@@ -33,7 +33,7 @@
     "@sharyn/cli": "^2.2.0",
     "@sharyn/eslint-config": "1.0.3",
     "@sharyn/prettier-config": "^1.0.2",
-    "@sharyn/webpack-config": "1.2.0",
+    "@sharyn/webpack-config": "1.2.1",
     "babel-core": "7.0.0-bridge.0",
     "babel-eslint": "^8.2.5",
     "babel-jest": "^23.2.0",
