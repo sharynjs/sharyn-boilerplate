@@ -4,10 +4,10 @@
     "start": "sharyn dev",
     "dev-ssr-only": "sharyn dev-ssr-only",
     "dev-no-ssr": "sharyn dev-no-ssr",
-    "prod-local": "sharyn prod-local",
+    "local-prod": "sharyn local-prod",
     "lint": "sharyn lint",
     "test": "sharyn test",
-    "heroku-postbuild": "sharyn prod-build",
+    "heroku-postbuild": "sharyn build-prod",
     "precommit": "sharyn lint-test"
   },
   "babel": {
@@ -19,19 +19,24 @@
     "extends": "@sharyn"
   },
   "dependencies": {
-    "@sharyn/cli": "^2.2.0",
+    "@sharyn/cli": "^2.3.1",
+    "@sharyn/db": "^1.3.1",
     "@sharyn/env": "^1.0.2",
-    "knex": "^0.15.1"
+    "react": "^16.4.1"
   },
   "devDependencies": {
     "@babel/cli": "^7.0.0-beta.52",
     "@babel/core": "^7.0.0-beta.52",
     "@babel/node": "^7.0.0-beta.52",
+    "@babel/plugin-proposal-do-expressions": "^7.0.0-beta.54",
+    "@babel/plugin-proposal-nullish-coalescing-operator": "^7.0.0-beta.54",
+    "@babel/plugin-proposal-optional-chaining": "^7.0.0-beta.54",
+    "@babel/plugin-proposal-pipeline-operator": "^7.0.0-beta.54",
     "@babel/preset-env": "^7.0.0-beta.52",
     "@babel/preset-flow": "^7.0.0-beta.52",
     "@babel/preset-react": "^7.0.0-beta.52",
-    "@sharyn/babel-preset": "1.2.1",
-    "@sharyn/eslint-config": "1.0.3",
+    "@sharyn/babel-preset": "1.3.0",
+    "@sharyn/eslint-config": "1.1.0",
     "@sharyn/prettier-config": "^1.0.2",
     "@sharyn/webpack-config": "1.2.1",
     "babel-core": "7.0.0-bridge.0",
@@ -45,6 +50,7 @@
     "eslint-config-airbnb": "^17.0.0",
     "eslint-config-prettier": "^2.9.0",
     "eslint-import-resolver-babel-module": "^5.0.0-beta.0",
+    "eslint-plugin-babel": "^5.1.0",
     "eslint-plugin-flowtype": "^2.50.0",
     "eslint-plugin-import": "^2.13.0",
     "eslint-plugin-jsx-a11y": "^6.1.0",
