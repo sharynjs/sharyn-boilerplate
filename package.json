@@ -19,11 +19,12 @@
     "extends": "@sharyn"
   },
   "dependencies": {
-    "@sharyn/cli": "^2.3.3",
-    "@sharyn/db": "^1.3.2",
+    "@sharyn/cli": "^2.5.3",
+    "@sharyn/db": "^1.4.0",
     "@sharyn/env": "^1.0.3",
     "@sharyn/redis": "^1.0.1",
-    "react": "^16.4.1"
+    "react": "^16.4.1",
+    "uuid": "^3.3.2"
   },
   "devDependencies": {
     "@babel/cli": "^7.0.0-beta.52",

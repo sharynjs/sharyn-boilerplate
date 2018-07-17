@@ -757,16 +757,16 @@
   version "1.3.1"
   resolved "https://registry.yarnpkg.com/@sharyn/babel-preset/-/babel-preset-1.3.1.tgz#8c47c7a0e87c242ed5c5c15e4d03be1e537a2cfe"
 
-"@sharyn/cli@^2.3.3":
-  version "2.3.3"
-  resolved "https://registry.yarnpkg.com/@sharyn/cli/-/cli-2.3.3.tgz#ea138d125d1e5e44d6eb66a274a5c84a094facb2"
+"@sharyn/cli@^2.5.3":
+  version "2.5.3"
+  resolved "https://registry.yarnpkg.com/@sharyn/cli/-/cli-2.5.3.tgz#bb8b0db486a8260ec7f63740f40d288f7c360601"
   dependencies:
     "@verekia/lib-lang" "^2.4.0"
     colors "^1.3.0"
 
-"@sharyn/db@^1.3.2":
-  version "1.3.2"
-  resolved "https://registry.yarnpkg.com/@sharyn/db/-/db-1.3.2.tgz#5cccc7e39bed42c8f03c9ba2e1afe94568cabcd6"
+"@sharyn/db@^1.4.0":
+  version "1.4.0"
+  resolved "https://registry.yarnpkg.com/@sharyn/db/-/db-1.4.0.tgz#568470f25372d563fcf6736b631ecd21209f0a35"
   dependencies:
     "@sharyn/env" "^1.0.3"
     async-exit-hook "^2.0.1"
