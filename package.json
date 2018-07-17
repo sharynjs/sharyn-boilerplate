@@ -19,6 +19,7 @@
     "extends": "@sharyn"
   },
   "dependencies": {
+    "@sharyn/cli": "^2.2.0",
     "@sharyn/env": "^1.0.2",
     "knex": "^0.15.1"
   },
@@ -30,7 +31,6 @@
     "@babel/preset-flow": "^7.0.0-beta.52",
     "@babel/preset-react": "^7.0.0-beta.52",
     "@sharyn/babel-preset": "1.2.1",
-    "@sharyn/cli": "^2.2.0",
     "@sharyn/eslint-config": "1.0.3",
     "@sharyn/prettier-config": "^1.0.2",
     "@sharyn/webpack-config": "1.2.1",
