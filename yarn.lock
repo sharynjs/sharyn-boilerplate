@@ -753,55 +753,55 @@
     lodash "^4.17.5"
     to-fast-properties "^2.0.0"
 
-"@sharyn/babel-preset@1.3.0":
-  version "1.3.0"
-  resolved "https://registry.yarnpkg.com/@sharyn/babel-preset/-/babel-preset-1.3.0.tgz#d0c7ef77eeb0a473b6d46914232a0c49c248cf0b"
+"@sharyn/babel-preset@1.3.1":
+  version "1.3.1"
+  resolved "https://registry.yarnpkg.com/@sharyn/babel-preset/-/babel-preset-1.3.1.tgz#8c47c7a0e87c242ed5c5c15e4d03be1e537a2cfe"
 
-"@sharyn/cli@^2.3.1":
-  version "2.3.1"
-  resolved "https://registry.yarnpkg.com/@sharyn/cli/-/cli-2.3.1.tgz#ab966c019bbf6e6d70d58d3936d4190d2a5d790f"
+"@sharyn/cli@^2.3.3":
+  version "2.3.3"
+  resolved "https://registry.yarnpkg.com/@sharyn/cli/-/cli-2.3.3.tgz#ea138d125d1e5e44d6eb66a274a5c84a094facb2"
   dependencies:
     "@verekia/lib-lang" "^2.4.0"
     colors "^1.3.0"
 
-"@sharyn/db@^1.3.1":
-  version "1.3.1"
-  resolved "https://registry.yarnpkg.com/@sharyn/db/-/db-1.3.1.tgz#eccab93b09498c79fc736183f66bd251f46f0a11"
+"@sharyn/db@^1.3.2":
+  version "1.3.2"
+  resolved "https://registry.yarnpkg.com/@sharyn/db/-/db-1.3.2.tgz#5cccc7e39bed42c8f03c9ba2e1afe94568cabcd6"
   dependencies:
-    "@sharyn/env" "^1.0.2"
+    "@sharyn/env" "^1.0.3"
     async-exit-hook "^2.0.1"
     knex "^0.15.1"
     pg "^7.4.3"
 
-"@sharyn/env@^1.0.2":
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/@sharyn/env/-/env-1.0.2.tgz#346d83662957f4b67c012b13690dcb7de93983ba"
+"@sharyn/env@^1.0.3":
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/@sharyn/env/-/env-1.0.3.tgz#899733f7d404f1eb7f9dff47c2e6c6870237e366"
   dependencies:
     dotenv "^6.0.0"
     read-env "^1.2.0"
 
-"@sharyn/eslint-config@1.1.0":
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/@sharyn/eslint-config/-/eslint-config-1.1.0.tgz#2c42bd2abcb297827c91c8840fa37d9cb01dafae"
+"@sharyn/eslint-config@1.1.1":
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/@sharyn/eslint-config/-/eslint-config-1.1.1.tgz#091b6ca07e355d28afc5344cc7802ab260f2b37d"
 
-"@sharyn/prettier-config@^1.0.2":
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/@sharyn/prettier-config/-/prettier-config-1.0.2.tgz#315eb45402c8887e4b3285c79e7c59c77ad5c727"
+"@sharyn/prettier-config@^1.0.3":
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/@sharyn/prettier-config/-/prettier-config-1.0.3.tgz#e83210324629267425a29ba690d76387c348a5d1"
 
-"@sharyn/redis@^1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@sharyn/redis/-/redis-1.0.0.tgz#93ed8801662b39b1b00c4922629677c0b3ec9b4f"
+"@sharyn/redis@^1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@sharyn/redis/-/redis-1.0.1.tgz#b3f6ba0c678c3de7f498541b927a00c6e90d1b98"
   dependencies:
-    "@sharyn/env" "^1.0.2"
+    "@sharyn/env" "^1.0.3"
     async-exit-hook "^2.0.1"
     bluebird "^3.5.1"
     redis "^2.8.0"
 
-"@sharyn/webpack-config@1.2.1":
-  version "1.2.1"
-  resolved "https://registry.yarnpkg.com/@sharyn/webpack-config/-/webpack-config-1.2.1.tgz#33695564e359fd5d12432a575930529aa70b75f8"
+"@sharyn/webpack-config@1.2.2":
+  version "1.2.2"
+  resolved "https://registry.yarnpkg.com/@sharyn/webpack-config/-/webpack-config-1.2.2.tgz#e8d3efbf8456eb4c467f7ee552d4b716daf6460b"
   dependencies:
-    "@sharyn/env" "^1.0.2"
+    "@sharyn/env" "^1.0.3"
 
 "@verekia/lib-lang@^2.4.0":
   version "2.4.0"
