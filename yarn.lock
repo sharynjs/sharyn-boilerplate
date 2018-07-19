@@ -609,7 +609,7 @@
     "@babel/helper-regex" "7.0.0-beta.54"
     regexpu-core "^4.1.3"
 
-"@babel/polyfill@7.0.0-beta.54":
+"@babel/polyfill@7.0.0-beta.54", "@babel/polyfill@^7.0.0-beta.54":
   version "7.0.0-beta.54"
   resolved "https://registry.yarnpkg.com/@babel/polyfill/-/polyfill-7.0.0-beta.54.tgz#b703ad310b57fa2291cb5b0ffd7c78a7dc52cc6c"
   dependencies:
@@ -753,40 +753,40 @@
     lodash "^4.17.5"
     to-fast-properties "^2.0.0"
 
-"@sharyn/babel-preset@1.3.1":
-  version "1.3.1"
-  resolved "https://registry.yarnpkg.com/@sharyn/babel-preset/-/babel-preset-1.3.1.tgz#8c47c7a0e87c242ed5c5c15e4d03be1e537a2cfe"
+"@sharyn/babel-preset@1.3.2":
+  version "1.3.2"
+  resolved "https://registry.yarnpkg.com/@sharyn/babel-preset/-/babel-preset-1.3.2.tgz#a195f27ed02084d932b7d7faf5cdc709521ec6e3"
 
 "@sharyn/check-setup@^1.0.1":
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/@sharyn/check-setup/-/check-setup-1.0.1.tgz#52e27ed01943f227f97f1c47cfabce3aaecee604"
 
-"@sharyn/cli@^2.9.1":
-  version "2.9.1"
-  resolved "https://registry.yarnpkg.com/@sharyn/cli/-/cli-2.9.1.tgz#1655831f3b69bbccf97f7062440f16800663e693"
+"@sharyn/cli@^2.11.0":
+  version "2.11.0"
+  resolved "https://registry.yarnpkg.com/@sharyn/cli/-/cli-2.11.0.tgz#8989f294bc930e21275e44c64fa4073ac50097fe"
   dependencies:
     "@verekia/lib-lang" "^2.4.0"
     colors "^1.3.0"
 
-"@sharyn/db@^1.4.1":
-  version "1.4.1"
-  resolved "https://registry.yarnpkg.com/@sharyn/db/-/db-1.4.1.tgz#3bc779febb682611d400bf31947952e65e827edd"
+"@sharyn/db@^1.4.2":
+  version "1.4.2"
+  resolved "https://registry.yarnpkg.com/@sharyn/db/-/db-1.4.2.tgz#4080cfdc0c6144baa6efe0f07b61d068552f3fbe"
   dependencies:
-    "@sharyn/env" "^1.0.3"
+    "@sharyn/env" "^1.1.0"
     async-exit-hook "^2.0.1"
     knex "^0.15.1"
     pg "^7.4.3"
 
-"@sharyn/env@^1.0.3":
-  version "1.0.3"
-  resolved "https://registry.yarnpkg.com/@sharyn/env/-/env-1.0.3.tgz#899733f7d404f1eb7f9dff47c2e6c6870237e366"
+"@sharyn/env@^1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@sharyn/env/-/env-1.1.0.tgz#f8a1c730744840f33a50cd3bedd14be26e1b481a"
   dependencies:
     dotenv "^6.0.0"
     read-env "^1.2.0"
 
-"@sharyn/eslint-config@1.2.0":
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/@sharyn/eslint-config/-/eslint-config-1.2.0.tgz#f967a547367414df0fdb04b120a17aa0cd6a2c94"
+"@sharyn/eslint-config@1.2.1":
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/@sharyn/eslint-config/-/eslint-config-1.2.1.tgz#3fbc6835ed8a97d185052f5659d23f9b10924fb0"
 
 "@sharyn/koa@^1.4.1":
   version "1.4.1"
@@ -800,20 +800,18 @@
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/@sharyn/prettier-config/-/prettier-config-1.0.3.tgz#e83210324629267425a29ba690d76387c348a5d1"
 
-"@sharyn/redis@^1.0.1":
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/@sharyn/redis/-/redis-1.0.1.tgz#b3f6ba0c678c3de7f498541b927a00c6e90d1b98"
+"@sharyn/redis@^1.0.2":
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/@sharyn/redis/-/redis-1.0.2.tgz#d4c6686865f6c290bed89546854740cde64c5085"
   dependencies:
-    "@sharyn/env" "^1.0.3"
+    "@sharyn/env" "^1.1.0"
     async-exit-hook "^2.0.1"
     bluebird "^3.5.1"
     redis "^2.8.0"
 
-"@sharyn/webpack-config@1.2.2":
-  version "1.2.2"
-  resolved "https://registry.yarnpkg.com/@sharyn/webpack-config/-/webpack-config-1.2.2.tgz#e8d3efbf8456eb4c467f7ee552d4b716daf6460b"
-  dependencies:
-    "@sharyn/env" "^1.0.3"
+"@sharyn/webpack-config@1.3.0":
+  version "1.3.0"
+  resolved "https://registry.yarnpkg.com/@sharyn/webpack-config/-/webpack-config-1.3.0.tgz#d95dee60a4e359c3cc01bee7f66d6eb0f2aa4937"
 
 "@verekia/lib-lang@^2.4.0":
   version "2.4.0"

@@ -1,5 +1,6 @@
 // @flow
 
+import '@babel/polyfill'
 import { NODE_ENV, TESTING_PORT } from '@sharyn/env'
 import { startServer, stopServer } from '@sharyn/koa'
 import routing from '_server/routing'
