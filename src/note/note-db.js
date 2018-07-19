@@ -1,25 +1,14 @@
 // @flow
 
-import uuid from 'uuid/v4'
-
 import { createQuery, knex } from '@sharyn/db'
 
 export const NOTE = 'Note'
 const query = createQuery(NOTE)
 
-export const getAllNotes = (userId: string) => query(userId)
-
-export const findNote = (userId: string, id: string) =>
-  query(userId)
-    .where({ id })
-    .first()
-
-export const createNote = async (userId: string, input: Object) => {
-  const id = uuid()
-  return (await query()
+export const createNote = async (userId: string, id: string, input: Object) =>
+  (await query()
     .insert({ userId, id, ...input })
     .returning('*'))[0]
-}
 
 export const updateNote = async (userId: string, id: string, input: Object) =>
   (await query(userId)
@@ -31,3 +20,10 @@ export const deleteNote = async (userId: string, id: string) =>
   !!(await query(userId)
     .where({ id })
     .del())
+
+export const getAllNotes = (userId: string) => query(userId)
+
+export const findNote = (userId: string, id: string) =>
+  query(userId)
+    .where({ id })
+    .first()

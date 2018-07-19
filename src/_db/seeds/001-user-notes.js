@@ -1,6 +1,5 @@
-const LOCAL_USER_ID = 'cda53ee4-3de7-430c-80bd-7539e724b238'
-
 exports.seed = async knex => {
+  const LOCAL_USER_ID = 'cda53ee4-3de7-430c-80bd-7539e724b238'
   await knex('User').del()
   await knex('User').insert({
     id: LOCAL_USER_ID,
@@ -23,5 +22,3 @@ exports.seed = async knex => {
     },
   ])
 }
-
-exports.LOCAL_USER_ID = LOCAL_USER_ID
