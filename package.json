@@ -19,10 +19,10 @@
     "extends": "@sharyn"
   },
   "dependencies": {
-    "@sharyn/cli": "^2.7.2",
+    "@sharyn/cli": "^2.9.1",
     "@sharyn/db": "^1.4.1",
     "@sharyn/env": "^1.0.3",
-    "@sharyn/koa": "^1.4.0",
+    "@sharyn/koa": "^1.4.1",
     "@sharyn/redis": "^1.0.1",
     "koa": "^2.5.2",
     "koa-compress": "^3.0.0",
