@@ -5,13 +5,13 @@ services:
     volumes:
       - ./data/postgres:/var/lib/postgresql/data
     ports:
-      - '5432:5432'
+      - '8432:5432'
     networks:
       - sharyn-net
   db-test:
     image: postgres:latest
     ports:
-      - '5433:5432'
+      - '8433:5432'
     networks:
       - sharyn-net
   redis:
@@ -19,7 +19,7 @@ services:
     volumes:
       - ./data/redis:/data
     ports:
-      - '6379:6379'
+      - '8379:6379'
     networks:
       - sharyn-net
 networks:

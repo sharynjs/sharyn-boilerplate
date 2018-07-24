@@ -1,15 +1,14 @@
-import { TESTING_PORT } from '@sharyn/env'
-import { startTestServer, stopTestServer } from '_server/server'
+import { startServer, stopServer, DEFAULT_TESTING_PORT } from '@sharyn/koa'
 import { knex } from '@sharyn/db'
 
-beforeAll(async () => startTestServer())
+beforeAll(async () => startServer())
 
-afterAll(() => stopTestServer())
+afterAll(() => stopServer())
 
 beforeEach(() => knex.seed.run())
 
 test('E2E - User', async () => {
   const page = await browser.newPage()
-  await page.goto(`http://localhost:${TESTING_PORT}`)
+  await page.goto(`http://localhost:${DEFAULT_TESTING_PORT}`)
   await expect(page).toMatch('I like user local')
 })

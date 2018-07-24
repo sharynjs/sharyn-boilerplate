@@ -2,7 +2,7 @@
 # yarn lockfile v1
 
 
-"@babel/cli@^7.0.0-beta.52":
+"@babel/cli@^7.0.0-beta.54":
   version "7.0.0-beta.54"
   resolved "https://registry.yarnpkg.com/@babel/cli/-/cli-7.0.0-beta.54.tgz#c3b9766ad3218988f120e4058509adff0b72b183"
   dependencies:
@@ -30,7 +30,7 @@
   dependencies:
     "@babel/highlight" "7.0.0-beta.54"
 
-"@babel/core@^7.0.0-beta.52":
+"@babel/core@^7.0.0-beta.54":
   version "7.0.0-beta.54"
   resolved "https://registry.yarnpkg.com/@babel/core/-/core-7.0.0-beta.54.tgz#253c54d0095403a5cfa764e7d9b458194692d02b"
   dependencies:
@@ -258,7 +258,7 @@
     esutils "^2.0.2"
     js-tokens "^3.0.0"
 
-"@babel/node@^7.0.0-beta.52":
+"@babel/node@^7.0.0-beta.54":
   version "7.0.0-beta.54"
   resolved "https://registry.yarnpkg.com/@babel/node/-/node-7.0.0-beta.54.tgz#d2c24da199bbc457403a3400799cb6071ca4bfab"
   dependencies:
@@ -616,7 +616,7 @@
     core-js "^2.5.7"
     regenerator-runtime "^0.11.1"
 
-"@babel/preset-env@^7.0.0-beta.52":
+"@babel/preset-env@^7.0.0-beta.54":
   version "7.0.0-beta.54"
   resolved "https://registry.yarnpkg.com/@babel/preset-env/-/preset-env-7.0.0-beta.54.tgz#4b05c4e3aaed64a509098e4e854dfc0e02edf053"
   dependencies:
@@ -661,14 +661,14 @@
     js-levenshtein "^1.1.3"
     semver "^5.3.0"
 
-"@babel/preset-flow@^7.0.0-beta.52":
+"@babel/preset-flow@^7.0.0-beta.54":
   version "7.0.0-beta.54"
   resolved "https://registry.yarnpkg.com/@babel/preset-flow/-/preset-flow-7.0.0-beta.54.tgz#7a6f5b75297047ec36d5b3fd0b5009d59bb4240f"
   dependencies:
     "@babel/helper-plugin-utils" "7.0.0-beta.54"
     "@babel/plugin-transform-flow-strip-types" "7.0.0-beta.54"
 
-"@babel/preset-react@^7.0.0-beta.52":
+"@babel/preset-react@^7.0.0-beta.54":
   version "7.0.0-beta.54"
   resolved "https://registry.yarnpkg.com/@babel/preset-react/-/preset-react-7.0.0-beta.54.tgz#98021037a74b27b46a46d3b28e84a1f2f406dadb"
   dependencies:
@@ -689,6 +689,13 @@
     mkdirp "^0.5.1"
     pirates "^4.0.0"
     source-map-support "^0.4.2"
+
+"@babel/runtime@^7.0.0-beta.54":
+  version "7.0.0-beta.54"
+  resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.0.0-beta.54.tgz#39ebb42723fe7ca4b3e1b00e967e80138d47cadf"
+  dependencies:
+    core-js "^2.5.7"
+    regenerator-runtime "^0.12.0"
 
 "@babel/template@7.0.0-beta.44":
   version "7.0.0-beta.44"
@@ -753,65 +760,91 @@
     lodash "^4.17.5"
     to-fast-properties "^2.0.0"
 
-"@sharyn/babel-preset@1.3.2":
-  version "1.3.2"
-  resolved "https://registry.yarnpkg.com/@sharyn/babel-preset/-/babel-preset-1.3.2.tgz#a195f27ed02084d932b7d7faf5cdc709521ec6e3"
-
-"@sharyn/check-setup@^1.0.1":
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/@sharyn/check-setup/-/check-setup-1.0.1.tgz#52e27ed01943f227f97f1c47cfabce3aaecee604"
-
-"@sharyn/cli@^2.11.0":
-  version "2.11.0"
-  resolved "https://registry.yarnpkg.com/@sharyn/cli/-/cli-2.11.0.tgz#8989f294bc930e21275e44c64fa4073ac50097fe"
+"@sharyn/babel-preset@2.2.0":
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/@sharyn/babel-preset/-/babel-preset-2.2.0.tgz#832e4b3ea2114280d138b5408d7a6aec9b32e466"
   dependencies:
+    "@babel/runtime" "^7.0.0-beta.54"
+    "@sharyn/check-setup" "^1.3.0"
+
+"@sharyn/check-setup@^1.3.0":
+  version "1.3.0"
+  resolved "https://registry.yarnpkg.com/@sharyn/check-setup/-/check-setup-1.3.0.tgz#c96a06d3592e5cfbf67a9494d2ad20c0e59dd37b"
+  dependencies:
+    "@babel/runtime" "^7.0.0-beta.54"
+    app-root-path "^2.1.0"
+
+"@sharyn/cli@^2.14.0":
+  version "2.14.0"
+  resolved "https://registry.yarnpkg.com/@sharyn/cli/-/cli-2.14.0.tgz#488b55ff676dead370f80946b949b5ed04f08371"
+  dependencies:
+    "@babel/runtime" "^7.0.0-beta.54"
+    "@sharyn/check-setup" "^1.3.0"
     "@verekia/lib-lang" "^2.4.0"
     colors "^1.3.0"
 
-"@sharyn/db@^1.4.2":
-  version "1.4.2"
-  resolved "https://registry.yarnpkg.com/@sharyn/db/-/db-1.4.2.tgz#4080cfdc0c6144baa6efe0f07b61d068552f3fbe"
+"@sharyn/db@^1.7.0":
+  version "1.7.0"
+  resolved "https://registry.yarnpkg.com/@sharyn/db/-/db-1.7.0.tgz#47db390c7c25a2ffa6aeed2b1830570e42153354"
   dependencies:
-    "@sharyn/env" "^1.1.0"
+    "@babel/runtime" "^7.0.0-beta.54"
+    "@sharyn/check-setup" "^1.3.0"
+    "@sharyn/env" "^1.4.0"
     async-exit-hook "^2.0.1"
     knex "^0.15.1"
     pg "^7.4.3"
 
-"@sharyn/env@^1.1.0":
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/@sharyn/env/-/env-1.1.0.tgz#f8a1c730744840f33a50cd3bedd14be26e1b481a"
+"@sharyn/env@^1.4.0":
+  version "1.4.0"
+  resolved "https://registry.yarnpkg.com/@sharyn/env/-/env-1.4.0.tgz#28f3a19b8260e0961d286a1058960f5d46986e44"
   dependencies:
+    "@babel/runtime" "^7.0.0-beta.54"
+    "@sharyn/check-setup" "^1.3.0"
     dotenv "^6.0.0"
     read-env "^1.2.0"
 
-"@sharyn/eslint-config@1.2.1":
-  version "1.2.1"
-  resolved "https://registry.yarnpkg.com/@sharyn/eslint-config/-/eslint-config-1.2.1.tgz#3fbc6835ed8a97d185052f5659d23f9b10924fb0"
-
-"@sharyn/koa@^1.4.1":
-  version "1.4.1"
-  resolved "https://registry.yarnpkg.com/@sharyn/koa/-/koa-1.4.1.tgz#b226fec9de5f85d3360282fb697632a85fcf21aa"
+"@sharyn/eslint-config@2.1.0":
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/@sharyn/eslint-config/-/eslint-config-2.1.0.tgz#781ba567a8cceebd29b667ac072a770cfb54cf91"
   dependencies:
-    "@sharyn/check-setup" "^1.0.1"
+    "@babel/runtime" "^7.0.0-beta.54"
+    "@sharyn/check-setup" "^1.3.0"
+
+"@sharyn/koa@^1.8.1":
+  version "1.8.1"
+  resolved "https://registry.yarnpkg.com/@sharyn/koa/-/koa-1.8.1.tgz#40ff417d4efcd04c30e69a1f51228569db302b26"
+  dependencies:
+    "@babel/runtime" "^7.0.0-beta.54"
+    "@sharyn/check-setup" "^1.3.0"
+    "@sharyn/env" "^1.4.0"
     colors "^1.3.0"
     exit-hook "^2.0.0"
 
-"@sharyn/prettier-config@^1.0.3":
-  version "1.0.3"
-  resolved "https://registry.yarnpkg.com/@sharyn/prettier-config/-/prettier-config-1.0.3.tgz#e83210324629267425a29ba690d76387c348a5d1"
+"@sharyn/prettier-config@^1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@sharyn/prettier-config/-/prettier-config-1.1.0.tgz#204c9edf12cb105b310a53d9dcbeee6a6a3572c9"
 
-"@sharyn/redis@^1.0.2":
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/@sharyn/redis/-/redis-1.0.2.tgz#d4c6686865f6c290bed89546854740cde64c5085"
+"@sharyn/redis@^1.2.0":
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/@sharyn/redis/-/redis-1.2.0.tgz#cb49a7df28ec73bfe949e6209354cb1fab5e1c45"
   dependencies:
-    "@sharyn/env" "^1.1.0"
+    "@babel/runtime" "^7.0.0-beta.54"
+    "@sharyn/check-setup" "^1.3.0"
+    "@sharyn/env" "^1.4.0"
     async-exit-hook "^2.0.1"
     bluebird "^3.5.1"
-    redis "^2.8.0"
 
-"@sharyn/webpack-config@1.3.0":
-  version "1.3.0"
-  resolved "https://registry.yarnpkg.com/@sharyn/webpack-config/-/webpack-config-1.3.0.tgz#d95dee60a4e359c3cc01bee7f66d6eb0f2aa4937"
+"@sharyn/util@^1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@sharyn/util/-/util-1.1.0.tgz#80ae3a97cf621d668876b10e5e73200454657b49"
+  dependencies:
+    "@babel/runtime" "^7.0.0-beta.54"
+
+"@sharyn/webpack-config@1.4.0":
+  version "1.4.0"
+  resolved "https://registry.yarnpkg.com/@sharyn/webpack-config/-/webpack-config-1.4.0.tgz#d88699d4cfdcb9b42d396cb51686d3e7d7273d98"
+  dependencies:
+    "@babel/runtime" "^7.0.0-beta.54"
 
 "@verekia/lib-lang@^2.4.0":
   version "2.4.0"
@@ -1080,6 +1113,10 @@ anymatch@^2.0.0:
 app-module-path@^2.2.0:
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/app-module-path/-/app-module-path-2.2.0.tgz#641aa55dfb7d6a6f0a8141c4b9c0aa50b6c24dd5"
+
+app-root-path@^2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/app-root-path/-/app-root-path-2.1.0.tgz#98bf6599327ecea199309866e8140368fd2e646a"
 
 append-transform@^1.0.0:
   version "1.0.0"
@@ -6563,6 +6600,10 @@ regenerate@^1.4.0:
 regenerator-runtime@^0.11.0, regenerator-runtime@^0.11.1:
   version "0.11.1"
   resolved "https://registry.yarnpkg.com/regenerator-runtime/-/regenerator-runtime-0.11.1.tgz#be05ad7f9bf7d22e056f9726cee5017fbf19e2e9"
+
+regenerator-runtime@^0.12.0:
+  version "0.12.0"
+  resolved "https://registry.yarnpkg.com/regenerator-runtime/-/regenerator-runtime-0.12.0.tgz#8052ac952d85b10f3425192cd0c53f45cf65c6cb"
 
 regenerator-transform@^0.13.3:
   version "0.13.3"
