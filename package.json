@@ -20,10 +20,12 @@
   },
   "dependencies": {
     "@babel/polyfill": "^7.0.0-beta.55",
+    "@material-ui/core": "^1.4.2",
+    "@material-ui/icons": "^2.0.0",
     "@sharyn/cli": "^3.0.0",
     "@sharyn/client": "^1.1.1",
     "@sharyn/components": "^1.2.3",
-    "@sharyn/db": "^1.8.1",
+    "@sharyn/db": "^1.8.2",
     "@sharyn/env": "^1.8.1",
     "@sharyn/hocs": "^1.0.1",
     "@sharyn/koa": "^1.11.1",

@@ -1,4 +1,3 @@
-module.exports = {
-  // Uncomment next line for visual feedback
-  // launch: { headless: false, slowMo: 25 },
-}
+const { VISUAL_PUPPETEER } = require('@sharyn/env')
+
+module.exports = VISUAL_PUPPETEER ? { launch: { headless: false, slowMo: 25 } } : {}
