@@ -1,10 +1,8 @@
 import { startServer, stopServer, DEFAULT_TESTING_PORT } from '@sharyn/koa'
 import { knex } from '@sharyn/db'
 
-beforeAll(async () => startServer())
-
+beforeAll(() => startServer())
 afterAll(() => stopServer())
-
 beforeEach(() => knex.seed.run())
 
 test('E2E - User', async () => {

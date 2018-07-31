@@ -1,6 +1,4 @@
 module.exports = {
-  launch: {
-    headless: true,
-    // slowMo: 10,
-  },
+  // Uncomment next line for visual feedback
+  // launch: { headless: false, slowMo: 25 },
 }
