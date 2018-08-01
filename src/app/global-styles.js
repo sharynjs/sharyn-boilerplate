@@ -1,6 +1,6 @@
 // @flow
 
-export default ({ palette }: Object) => ({
+const globalStyles = ({ palette }: Object) => ({
   '@global': {
     html: {
       height: '100%',
@@ -26,3 +26,5 @@ export default ({ palette }: Object) => ({
     },
   },
 })
+
+export default globalStyles

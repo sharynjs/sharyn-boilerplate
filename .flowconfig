@@ -9,3 +9,4 @@ esproposal.optional_chaining=enable
 [ignore]
 .*/node_modules/config-chain/.*
 .*/node_modules/graphviz/.*
+.*/node_modules/jss/.*
