@@ -16,12 +16,7 @@ const styles = ({ breakpoints }) => ({
 
 const LoginFormJSX = ({ classes: css }: { classes: Object }) => (
   <form data-test="login-form" action={loginRoute.path} method="post">
-    <TextField
-      className={css.firstInput}
-      name="username"
-      label="Username"
-      placeholder="sharyn8020"
-    />
+    <TextField className={css.firstInput} name="username" label="Username" />
     <TextField className={css.input} name="password" type="password" label="Password" />
     <div className={css.action}>
       <Button

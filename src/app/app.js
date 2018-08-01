@@ -10,6 +10,7 @@ import { fillTitle, findMatch } from '@sharyn/shared'
 import { withStyles } from '@material-ui/core/styles'
 
 import Nav from 'app/cmp/Nav'
+import Favicons from 'app/cmp/Favicons'
 import globalStyles from 'app/global-styles'
 import { loginRoute } from 'auth/auth-routes'
 import LoginPage from 'auth/cmp-page/LoginPage'
@@ -54,6 +55,7 @@ const AppJSX = ({ location, isLoggedIn, pageData }: Props) => {
         <title>{title}</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta httpEquiv="X-UA-Compatible" content="ie=edge" />
+        {Favicons}
       </Helmet>
       {isLoggedIn && <Nav title={title} navRoutes={routes.filter(r => r.inNav)} />}
       <Component route={route} match={match} />
