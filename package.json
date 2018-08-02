@@ -7,8 +7,7 @@
     "local-prod": "sharyn local-prod",
     "lint": "sharyn lint",
     "test": "sharyn test",
-    "heroku-postbuild": "sharyn build-prod",
-    "precommit": "sharyn lint-test"
+    "heroku-postbuild": "sharyn build-prod"
   },
   "babel": {
     "presets": [
@@ -17,6 +16,11 @@
   },
   "eslintConfig": {
     "extends": "@sharyn"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "sharyn lint-test"
+    }
   },
   "dependencies": {
     "@babel/polyfill": "^7.0.0-beta.55",
@@ -95,7 +99,7 @@
     "eslint-plugin-prettier": "^2.6.2",
     "eslint-plugin-react": "^7.10.0",
     "flow-bin": "^0.77.0",
-    "husky": "^0.14.3",
+    "husky": "^1.0.0-rc.13",
     "jest": "^23.4.2",
     "jest-puppeteer": "^3.2.1",
     "nodemon": "^1.18.3",
