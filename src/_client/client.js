@@ -2,14 +2,14 @@
 
 import '@babel/polyfill'
 
-import { MuiThemeProvider } from '@material-ui/core/styles'
+import { MuiThemeProvider, createGenerateClassName } from '@material-ui/core/styles'
 // flow-disable-next-line
 import jss from 'jss'
-import preset from 'jss-preset-default'
+import jssPreset from 'jss-preset-default'
 import Raven from 'raven-js'
 import React from 'react'
-import { render } from 'react-dom'
-import { JssProvider } from 'react-jss'
+import { hydrate, render } from 'react-dom'
+import JssProvider from 'react-jss/lib/JssProvider'
 import { Provider } from 'react-redux'
 import { BrowserRouter } from 'react-router-dom'
 import { applyMiddleware, compose, createStore } from 'redux'
@@ -20,7 +20,7 @@ import App from 'app/App'
 import theme from 'app/theme'
 
 const env = window.__ENV__
-const { IS_DEV_ENV, SENTRY_DSN_PUBLIC } = env
+const { IS_DEV_ENV, SENTRY_DSN_PUBLIC, NO_SSR } = env
 
 SENTRY_DSN_PUBLIC && Raven.config(SENTRY_DSN_PUBLIC).install()
 
@@ -29,13 +29,14 @@ const composeEnhancers = (IS_DEV_ENV && window.__REDUX_DEVTOOLS_EXTENSION_COMPOS
 
 const store = createStore(mainReducer, preloadedState, composeEnhancers(applyMiddleware(thunk)))
 
-jss.setup(preset())
+jss.setup(jssPreset())
 
-render(
-  <Provider store={store}>
+const reactDomFn = NO_SSR ? render : hydrate
+reactDomFn(
+  <Provider {...{ store }}>
     <BrowserRouter>
-      <JssProvider jss={jss}>
-        <MuiThemeProvider theme={theme}>
+      <JssProvider {...{ jss }} generateClassName={createGenerateClassName()}>
+        <MuiThemeProvider {...{ theme }}>
           <App />
         </MuiThemeProvider>
       </JssProvider>

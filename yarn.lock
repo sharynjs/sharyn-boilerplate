@@ -938,13 +938,14 @@
     async-exit-hook "^2.0.1"
     bluebird "^3.5.1"
 
-"@sharyn/server@^1.2.1":
-  version "1.2.1"
-  resolved "https://registry.yarnpkg.com/@sharyn/server/-/server-1.2.1.tgz#23d11d9d02b7bf2630fc61ccb71225d34fc009c5"
+"@sharyn/server@^2.6.0":
+  version "2.6.0"
+  resolved "https://registry.yarnpkg.com/@sharyn/server/-/server-2.6.0.tgz#7b373c0c8f53efa5965b02b2759810c0a4b70af7"
   dependencies:
     "@babel/runtime" "^7.0.0-beta.54"
-    "@sharyn/check-setup" "^1.6.1"
-    "@sharyn/webpack-config" "^1.7.1"
+    "@sharyn/check-setup" "^1.7.0"
+    "@sharyn/webpack-config" "^1.7.2"
+    clean-css "^4.2.0"
     serialize-javascript "^1.5.0"
 
 "@sharyn/shared@^1.6.2":
@@ -965,12 +966,19 @@
   dependencies:
     "@babel/runtime" "^7.0.0-beta.54"
 
-"@sharyn/webpack-config@1.7.1", "@sharyn/webpack-config@^1.7.1":
+"@sharyn/webpack-config@1.7.1":
   version "1.7.1"
   resolved "https://registry.yarnpkg.com/@sharyn/webpack-config/-/webpack-config-1.7.1.tgz#07c15e8b0adf81b484f2b887da443317b51bbe76"
   dependencies:
     "@babel/runtime" "^7.0.0-beta.54"
     "@sharyn/env" "^1.8.1"
+
+"@sharyn/webpack-config@^1.7.2":
+  version "1.7.2"
+  resolved "https://registry.yarnpkg.com/@sharyn/webpack-config/-/webpack-config-1.7.2.tgz#a59eca869e39c301581b30b08411472c318ed1cc"
+  dependencies:
+    "@babel/runtime" "^7.0.0-beta.54"
+    "@sharyn/env" "^1.8.2"
 
 "@types/jss@^9.5.3":
   version "9.5.4"
@@ -2066,6 +2074,12 @@ class-utils@^0.3.5:
 classnames@^2.2.5:
   version "2.2.6"
   resolved "https://registry.yarnpkg.com/classnames/-/classnames-2.2.6.tgz#43935bffdd291f326dad0a205309b38d00f650ce"
+
+clean-css@^4.2.0:
+  version "4.2.0"
+  resolved "https://registry.yarnpkg.com/clean-css/-/clean-css-4.2.0.tgz#0a9d62040cddc7904c5edaee9bdeca642d9b9c1c"
+  dependencies:
+    source-map "~0.6.0"
 
 cli-boxes@^1.0.0:
   version "1.0.0"
@@ -7416,7 +7430,7 @@ source-map@^0.5.0, source-map@^0.5.3, source-map@^0.5.6, source-map@^0.5.7, sour
   version "0.5.7"
   resolved "https://registry.yarnpkg.com/source-map/-/source-map-0.5.7.tgz#8a039d2d1021d22d1ea14c80d8ea468ba2ef3fcc"
 
-source-map@^0.6.0, source-map@^0.6.1, source-map@~0.6.1:
+source-map@^0.6.0, source-map@^0.6.1, source-map@~0.6.0, source-map@~0.6.1:
   version "0.6.1"
   resolved "https://registry.yarnpkg.com/source-map/-/source-map-0.6.1.tgz#74722af32e9614e9c287a8d0bbde48b5e2f1a263"
 

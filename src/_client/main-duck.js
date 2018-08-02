@@ -1,7 +1,5 @@
 // @flow
 
-const initialState = {}
-
-const mainReducer = (state: Object = initialState) => state
+const mainReducer = (state: Object) => state
 
 export default mainReducer
