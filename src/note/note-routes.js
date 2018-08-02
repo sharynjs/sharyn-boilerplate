@@ -9,18 +9,19 @@ export const notesRoute: Object = {
   loggedInOnly: true,
   title: 'Notes',
   Icon: NotesIcon,
-  inNav: true,
 }
 
 export const noteRoute: Object = {
   path: (id: ?string) => `/note/${id || ':id'}`,
   exact: true,
-  title: ({ page }) => page?.note?.title ?? 'Note not found',
+  loggedInOnly: true,
+  title: ({ data }) => data?.note?.title ?? 'Note not found',
 }
 
 export const newNoteRoute: Object = {
   path: '/new-note',
   exact: true,
+  loggedInOnly: true,
   title: 'New Note',
   Icon: NewIcon,
 }

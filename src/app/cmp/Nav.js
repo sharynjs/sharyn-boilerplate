@@ -2,7 +2,6 @@
 
 import React, { Fragment } from 'react'
 import { withState, compose } from 'recompose'
-import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 
 import { withStyles } from '@material-ui/core/styles'
@@ -11,21 +10,23 @@ import SwipeableDrawer from '@material-ui/core/SwipeableDrawer'
 import Toolbar from '@material-ui/core/Toolbar'
 import IconButton from '@material-ui/core/IconButton'
 import Typography from '@material-ui/core/Typography'
-import List from '@material-ui/core/List'
-import DrawerItem from '@sharyn/components/DrawerItem'
 import MenuIcon from '@material-ui/icons/Menu'
 import hideOnScroll from '@sharyn/hocs/hide-on-scroll'
+import NavList from '@sharyn/components/NavList'
+import { notesRoute, newNoteRoute } from 'note/note-routes'
+import { logoutRoute } from 'auth/auth-routes'
 
 const AppWithAutoScroll = hideOnScroll(AppBar)
 
-const mstp = ({ general }) => ({ username: general?.user?.username })
+const navItems = [notesRoute, newNoteRoute, [logoutRoute, { hardLink: true }]]
+
+const mstp = ({ user }) => ({ username: user?.username })
 
 const styles = ({ mixins }) => ({ appBarPusher: mixins.toolbar })
 
 const NavJSX = ({
   classes,
   title,
-  navRoutes,
   isOpen,
   updateIsOpen,
   username,
@@ -33,18 +34,17 @@ const NavJSX = ({
   classes: Object,
   isOpen: boolean,
   title: string,
-  navRoutes: Object[],
   updateIsOpen: Function,
-  username?: string,
+  username: string,
 }) => (
   <Fragment>
-    <AppWithAutoScroll style={{ cursor: 'pointer' }} className="hide-on-scroll">
-      <Toolbar onClick={() => updateIsOpen(!isOpen)}>
-        <IconButton color="inherit" aria-label="Menu">
+    <AppWithAutoScroll className="hide-on-scroll">
+      <Toolbar>
+        <IconButton color="inherit" aria-label="Menu" onClick={() => updateIsOpen(!isOpen)}>
           <MenuIcon />
         </IconButton>
         <Typography variant="title" color="inherit">
-          {title} - <span data-test="username-display">{username}</span>
+          {title}
         </Typography>
       </Toolbar>
     </AppWithAutoScroll>
@@ -57,13 +57,8 @@ const NavJSX = ({
       onClose={() => updateIsOpen(false)}
       onClick={() => updateIsOpen(false)}
     >
-      <List>
-        {navRoutes.map(({ path, title: label, Icon }) => (
-          <Link to={path} key={path}>
-            <DrawerItem label={label} icon={Icon} />
-          </Link>
-        ))}
-      </List>
+      <NavList navItems={navItems} />
+      <div data-test="username-display">{username}</div>
     </SwipeableDrawer>
   </Fragment>
 )

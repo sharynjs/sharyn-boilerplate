@@ -14,8 +14,6 @@ export const loginRoute: Object = {
 
 export const logoutRoute: Object = {
   path: '/logout',
-  hardLink: true,
   title: 'Log Out',
   Icon: LogoutIcon,
-  inNav: true,
 }

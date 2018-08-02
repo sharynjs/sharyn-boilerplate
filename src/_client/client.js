@@ -24,9 +24,10 @@ const { IS_DEV_ENV, SENTRY_DSN_PUBLIC } = env
 
 SENTRY_DSN_PUBLIC && Raven.config(SENTRY_DSN_PUBLIC).install()
 
+const preloadedState = window.__PRELOADED_STATE__
 const composeEnhancers = (IS_DEV_ENV && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) || compose
 
-const store = createStore(mainReducer, composeEnhancers(applyMiddleware(thunk)))
+const store = createStore(mainReducer, preloadedState, composeEnhancers(applyMiddleware(thunk)))
 
 jss.setup(preset())
 

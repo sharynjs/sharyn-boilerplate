@@ -860,9 +860,9 @@
   dependencies:
     "@babel/runtime" "^7.0.0-beta.54"
 
-"@sharyn/components@^1.2.3":
-  version "1.2.3"
-  resolved "https://registry.yarnpkg.com/@sharyn/components/-/components-1.2.3.tgz#33d478f1d4de7828eb34da3735ddbd8eeffc709b"
+"@sharyn/components@^1.3.0":
+  version "1.3.0"
+  resolved "https://registry.yarnpkg.com/@sharyn/components/-/components-1.3.0.tgz#6ee6f58ea2b33be65217860a02a5a77e3e131c6a"
   dependencies:
     "@babel/runtime" "^7.0.0-beta.54"
 
