@@ -5,7 +5,7 @@
 import React from 'react'
 import QuestionIcon from '@material-ui/icons/HelpOutline'
 import Typography from '@material-ui/core/Typography'
-import Page from '@sharyn/components/Page'
+import Page from 'sharyn/components/Page'
 import Button from '@material-ui/core/Button'
 
 const NotFoundPage = () => (

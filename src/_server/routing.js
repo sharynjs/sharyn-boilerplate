@@ -1,7 +1,7 @@
 // @flow
 
-import { IS_DEV_ENV, NO_SSR, SENTRY_DSN_PUBLIC } from '@sharyn/env'
-import { renderPage } from '@sharyn/server'
+import { IS_DEV_ENV, NO_SSR, SENTRY_DSN_PUBLIC } from 'sharyn/env'
+import { renderPage } from 'sharyn/server'
 // flow-disable-next-line
 import jss from 'jss'
 import jssPreset from 'jss-preset-default'

@@ -1,6 +1,6 @@
 // @flow
 
-import { createQuery, knex } from '@sharyn/db'
+import { createQuery, knex } from 'sharyn/db'
 
 export const USER = 'User'
 const query = createQuery(USER)

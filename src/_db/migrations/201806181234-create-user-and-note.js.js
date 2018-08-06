@@ -1,4 +1,4 @@
-const { standardCols, userIdCol } = require('@sharyn/db')
+const { standardCols, userIdCol } = require('sharyn/db')
 
 module.exports = {
   up: async knex => {

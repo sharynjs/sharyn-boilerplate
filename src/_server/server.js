@@ -1,6 +1,6 @@
 // @flow
 
 import '@babel/polyfill'
-import { startServer } from '@sharyn/koa'
+import { startServer } from 'sharyn/koa'
 
 startServer()

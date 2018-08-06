@@ -1,5 +1,5 @@
-import { startServer, stopServer, DEFAULT_TESTING_PORT } from '@sharyn/koa'
-import { knex } from '@sharyn/db'
+import { startServer, stopServer, DEFAULT_TESTING_PORT } from 'sharyn/koa'
+import { knex } from 'sharyn/db'
 
 beforeAll(() => startServer())
 afterAll(() => stopServer())

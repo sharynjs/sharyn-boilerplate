@@ -6,7 +6,7 @@ import { hot } from 'react-hot-loader'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import { compose } from 'recompose'
-import { fillTitle, findMatch } from '@sharyn/shared'
+import { fillTitle, findMatch } from 'sharyn/shared'
 import { withStyles } from '@material-ui/core/styles'
 
 import allRoutesAndCmps from 'app/all-routes'

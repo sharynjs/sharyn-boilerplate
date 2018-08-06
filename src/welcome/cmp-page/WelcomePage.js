@@ -4,7 +4,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { withStyles } from '@material-ui/core/styles'
 import Typography from '@material-ui/core/Typography'
-import Page from '@sharyn/components/Page'
+import Page from 'sharyn/components/Page'
 import SignupForm from 'auth/cmp/SignupForm'
 import LogoTitle from 'app/cmp/LogoTitle'
 

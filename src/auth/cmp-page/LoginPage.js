@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { Link } from 'react-router-dom'
-import Page from '@sharyn/components/Page'
+import Page from 'sharyn/components/Page'
 import { withStyles } from '@material-ui/core/styles'
 
 import LogoTitle from 'app/cmp/LogoTitle'

@@ -4,7 +4,7 @@ import React from 'react'
 import { lifecycle } from 'recompose'
 
 import Typography from '@material-ui/core/Typography'
-import Page from '@sharyn/components/Page'
+import Page from 'sharyn/components/Page'
 
 const FakeClientErrorPageJSX = () => (
   <Page middle>
