@@ -15,7 +15,7 @@ const routing = (router: Object) => {
   })
 
   router.get('*', ctx => {
-    const user = { username: 'sharyn8020' }
+    const user = undefined // { username: 'sharyn8020' }
     const data = { someData: true }
     const env = { IS_DEV_ENV, SENTRY_DSN_PUBLIC, NO_SSR }
     jss.setup(jssPreset())
