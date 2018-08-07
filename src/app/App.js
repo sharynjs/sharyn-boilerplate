@@ -5,14 +5,23 @@ import Helmet from 'react-helmet'
 import { hot } from 'react-hot-loader'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
-import { compose } from 'recompose'
+import { compose, lifecycle as withLifecycle } from 'recompose'
 import { fillTitle, findMatch } from 'sharyn/shared'
 import { withStyles } from '@material-ui/core/styles'
 
+import { clearData } from '_client/main-duck'
 import allRoutesAndCmps from 'app/all-routes'
 import Nav from 'app/cmp/Nav'
 import Favicons from 'app/cmp/Favicons'
 import globalStyles from 'app/global-styles'
+
+const lifecycle = {
+  componentDidUpdate(prevProps) {
+    if (prevProps.location.pathname !== this.props.location.pathname) {
+      this.props.dispatch(clearData())
+    }
+  },
+}
 
 const mstp = ({ data, user }) => ({ data, isLoggedIn: !!user })
 
@@ -40,6 +49,7 @@ const App = compose(
   hot(module),
   withRouter,
   connect(mstp),
+  withLifecycle(lifecycle),
   withStyles(globalStyles),
 )(AppJSX)
 
