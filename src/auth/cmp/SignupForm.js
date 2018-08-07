@@ -19,7 +19,7 @@ const SignupFormJSX = ({ classes: css }: { classes: Object }) => (
     <TextField
       className={css.firstInput}
       name="username"
-      label="Create a username"
+      label="Username"
       placeholder="sharyn8020"
     />
     <TextField className={css.input} name="password" type="password" label="Password" />
