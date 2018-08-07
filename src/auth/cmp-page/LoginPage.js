@@ -23,7 +23,7 @@ const LoginPageJSX = ({ classes: css }: { classes: Object }) => (
     <LoginForm />
     <div className={css.switchAuth}>
       {"Don't have an account yet? "}
-      <Link className={css.authLink} to={welcomeRoute.path}>
+      <Link className={css.authLink} to={welcomeRoute.path} data-test="switch-to-signup">
         Sign Up
       </Link>
     </div>

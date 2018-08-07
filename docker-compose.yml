@@ -22,6 +22,12 @@ services:
       - '8379:6379'
     networks:
       - sharyn-net
+  redis-test:
+    image: redis:latest
+    ports:
+      - '8380:6379'
+    networks:
+      - sharyn-net
 networks:
   sharyn-net:
     name: sharyn-net
