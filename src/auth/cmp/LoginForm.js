@@ -14,7 +14,7 @@ const styles = ({ breakpoints, palette }) => ({
   firstInput: { extend: 'input', marginBottom: 10 },
   action: { textAlign: 'center', marginTop: 20 },
   loginButton: { [breakpoints.down('xs')]: { width: '100%' } },
-  error: { marginBottom: 20, color: palette.error.main },
+  error: { margin: '20px 0', color: palette.error.main },
 })
 
 const mstp = ({ data }) => ({ ...data })
