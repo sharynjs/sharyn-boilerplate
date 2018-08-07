@@ -1,10 +1,10 @@
-import { startServer, stopServer, DEFAULT_TESTING_PORT } from 'sharyn/koa'
+import { startServerWithRouting, stopServerWithRouting } from '_server/server'
+import { DEFAULT_TESTING_PORT } from 'sharyn/koa'
 import { knex } from 'sharyn/db'
 import { sel } from 'sharyn/testing'
-import routing from '_server/routing'
 
-beforeAll(() => startServer(routing))
-afterAll(() => stopServer())
+beforeAll(() => startServerWithRouting())
+afterAll(() => stopServerWithRouting())
 beforeEach(() => knex.seed.run())
 
 test(
@@ -32,5 +32,5 @@ test(
     await expect(page).toClick(sel('signup-form-submit'))
     await page.waitForNavigation()
   },
-  12000,
+  10000,
 )
