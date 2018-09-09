@@ -1,6 +1,7 @@
 // @flow
 
 import '@babel/polyfill'
+// flow-disable-next-line
 import { startServer, stopServer } from 'sharyn/koa'
 import { IS_TEST_ENV } from 'sharyn/env'
 import routing from '_server/routing'

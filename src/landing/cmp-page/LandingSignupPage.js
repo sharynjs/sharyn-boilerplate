@@ -44,7 +44,7 @@ const styles = ({ breakpoints }) => ({
   signupText: { marginBottom: 20 },
 })
 
-const WelcomePageJSX = ({ classes: css }: { classes: Object }) => (
+const LandingSignupPageJSX = ({ classes: css }: { classes: Object }) => (
   <Page middle>
     <div className={css.layout}>
       <div className={css.firstPane}>
@@ -80,6 +80,6 @@ const WelcomePageJSX = ({ classes: css }: { classes: Object }) => (
   </Page>
 )
 
-const WelcomePage = withStyles(styles)(WelcomePageJSX)
+const LandingSignupPage = withStyles(styles)(LandingSignupPageJSX)
 
-export default WelcomePage
+export default LandingSignupPage

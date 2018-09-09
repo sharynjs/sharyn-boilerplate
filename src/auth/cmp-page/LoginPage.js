@@ -8,7 +8,7 @@ import Typography from '@material-ui/core/Typography'
 
 import LogoTitle from 'app/cmp/LogoTitle'
 import LoginForm from 'auth/cmp/LoginForm'
-import { welcomeRoute } from 'welcome/welcome-routes'
+import { landingRoute } from 'landing/landing-routes'
 
 const styles = {
   brandingContainer: { textAlign: 'center', marginBottom: 30 },
@@ -27,7 +27,7 @@ const LoginPageJSX = ({ classes: css }: { classes: Object }) => (
     <LoginForm />
     <div className={css.switchAuth}>
       {"Don't have an account yet? "}
-      <Link className={css.authLink} to={welcomeRoute.path} data-test="switch-to-signup">
+      <Link className={css.authLink} to={landingRoute.path} data-test="switch-to-signup">
         Sign Up
       </Link>
     </div>
