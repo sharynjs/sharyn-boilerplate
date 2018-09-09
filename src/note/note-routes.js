@@ -9,13 +9,21 @@ export const notesRoute: Object = {
   loggedInOnly: true,
   title: 'Notes',
   Icon: NotesIcon,
+  mainQuery: {
+    query: '{ getNotes { id, title, description } }',
+    mapResp: ({ getNotes: notes }) => ({ notes }),
+  },
 }
 
 export const noteRoute: Object = {
   path: (id: ?string) => `/note/${id || ':id'}`,
   exact: true,
   loggedInOnly: true,
-  title: ({ data }) => data?.note?.title ?? 'Note not found',
+  title: ({ note }) => note?.title ?? 'Note not found',
+  mainQuery: {
+    query: 'query ($id: ID!) { getNote(id: $id) { id, title, description } }',
+    mapResp: ({ getNote: note }) => ({ note }),
+  },
 }
 
 export const newNoteRoute: Object = {

@@ -5,8 +5,11 @@ import '@babel/polyfill'
 import { startServer, stopServer } from 'sharyn/koa'
 import { IS_TEST_ENV } from 'sharyn/env'
 import routing from '_server/routing'
+import apolloConfig from '_server/apollo-config'
 
-export const startServerWithRouting = () => startServer(routing)
-export const stopServerWithRouting = () => stopServer(routing)
+const options = { apolloConfig }
+
+export const startServerWithRouting = () => startServer(routing, options)
+export const stopServerWithRouting = () => stopServer(routing, options)
 
 IS_TEST_ENV || startServerWithRouting()

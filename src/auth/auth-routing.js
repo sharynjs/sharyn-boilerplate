@@ -15,6 +15,11 @@ const logIn = (ctx, id, username) => {
 }
 
 const authRouting = (router: Object, renderPageOptions: Object) => {
+  router.get(
+    landingSignupRoute.path,
+    (ctx, next) => (ctx.session?.user ? next() : renderPage({ ctx, ...renderPageOptions })),
+  )
+
   router.post(landingSignupRoute.path, async ctx => {
     const { username, password } = ctx.request.body
     if (!username || username === '' || !password || password === '') {
@@ -35,6 +40,11 @@ const authRouting = (router: Object, renderPageOptions: Object) => {
       await createUser(id, { username, passwordHash })
       logIn(ctx, id, username)
     }
+  })
+
+  router.get(loginRoute.path, ctx => {
+    ctx.session = null
+    renderPage({ ctx, ...renderPageOptions })
   })
 
   router.post(loginRoute.path, async ctx => {
