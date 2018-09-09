@@ -12,7 +12,8 @@ import theme from 'app/theme'
 
 jss.setup(jssPreset())
 const env = { IS_DEV_ENV, SENTRY_DSN_PUBLIC, NO_SSR }
-const renderPageOptions = { App, theme, jss, env }
+const preloadedStateBase = { env, ui: {}, async: {} }
+const renderPageOptions = { App, theme, jss, preloadedState: preloadedStateBase }
 
 const routing = (router: Object) => {
   authRouting(router, renderPageOptions)
@@ -24,7 +25,11 @@ const routing = (router: Object) => {
   router.get('*', ctx => {
     const { user } = ctx.session
     const data = { someData: true }
-    renderPage({ ...renderPageOptions, ctx, data, user })
+    renderPage({
+      ...renderPageOptions,
+      ctx,
+      preloadedState: { ...preloadedStateBase, user, data },
+    })
   })
 }
 

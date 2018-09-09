@@ -24,6 +24,13 @@ test(
       text: 'Incorrect username or password.',
     })
     await expect(page).toClick(sel('switch-to-signup'))
+    await expect(page).toFillForm(sel('signup-form'), { username: 'nopassword' }, { timeout: 1000 })
+    await expect(page).toClick(sel('signup-form-submit'))
+    await page.waitForNavigation()
+    await expect(page).toMatchElement(sel('signup-error'), {
+      timeout: 1000,
+      text: 'Please enter a username and a password.',
+    })
     await expect(page).toFillForm(
       sel('signup-form'),
       { username: 'newuser', password: 'newuser' },

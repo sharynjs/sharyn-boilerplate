@@ -2,10 +2,6 @@
 
 import LogoutIcon from '@material-ui/icons/PowerSettingsNew'
 
-export const signupRoute: Object = {
-  path: '/signup',
-}
-
 export const loginRoute: Object = {
   path: '/login',
   exact: true,

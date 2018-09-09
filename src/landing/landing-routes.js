@@ -1,6 +1,6 @@
 // @flow
 
-export const landingRoute: Object = {
+export const landingSignupRoute: Object = {
   path: '/',
   exact: true,
   loggedOutOnly: true,
