@@ -19,8 +19,8 @@ export const typeDef = gql`
     getNote(id: ID!): Note
   }
   type Mutation {
-    createNote(input: NoteInput): ID
-    updateNote(id: ID!, input: NoteInput): Boolean
+    createNote(input: NoteInput): Note
+    updateNote(id: ID!, input: NoteInput): Note
     deleteNote(id: ID!): Boolean
   }
 `

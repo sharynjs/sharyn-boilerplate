@@ -32,4 +32,10 @@ export const newNoteRoute: Object = {
   loggedInOnly: true,
   title: 'New Note',
   Icon: NewIcon,
+  mainMutation: {
+    query: 'mutation ($input: NoteInput) { createNote(input: $input) { id } }',
+    mapFields: fields => ({ input: fields }),
+    mapResp: ({ createNote: note }) => note.id,
+    successRedirect: id => noteRoute.path(id),
+  },
 }

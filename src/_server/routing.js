@@ -42,7 +42,7 @@ const routing = (router: Object) => {
     throw Error('Fake Server Error')
   })
 
-  router.get('*', async ctx => {
+  router.all('*', async ctx => {
     const { user } = ctx.session
     const { cookie } = ctx.req.headers
     const baseUrl = `http${IS_LOCAL_ENV_TYPE ? '' : 's'}://${ctx.request.host}`
@@ -51,7 +51,7 @@ const routing = (router: Object) => {
 
     let data = {}
 
-    if (route.mainQuery?.query) {
+    if (ctx.request.method === 'GET' && route.mainQuery?.query) {
       let callData
       try {
         callData = (await apiCall({
@@ -71,6 +71,38 @@ const routing = (router: Object) => {
         throw callData.errors[0].message
       } else {
         data = route.mainQuery.mapResp ? route.mainQuery.mapResp(callData?.data) : callData?.data
+      }
+    }
+
+    if (
+      ctx.request.method === 'POST' &&
+      route.mainMutation?.query &&
+      route.mainMutation.mapFields
+    ) {
+      const variables = route.mainMutation.mapFields(ctx.request.body, match?.params)
+      let callData
+      try {
+        callData = (await apiCall({
+          apiUrl: baseUrl,
+          cookie,
+          query: route.mainMutation.query,
+          variables,
+        })).data
+      } catch (err) {
+        if (err.response?.data?.errors) {
+          throw err.response.data.errors[0]
+        }
+      }
+      if (callData && callData.errors) {
+        throw callData.errors[0].message
+      } else {
+        data = route.mainMutation.mapResp
+          ? route.mainMutation.mapResp(callData?.data)
+          : callData?.data
+        if (route.mainMutation.successRedirect) {
+          ctx.redirect(route.mainMutation.successRedirect(data, ctx.request.body))
+          return
+        }
       }
     }
 
