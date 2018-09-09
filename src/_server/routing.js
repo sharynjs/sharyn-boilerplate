@@ -100,7 +100,11 @@ const routing = (router: Object) => {
           ? route.mainMutation.mapResp(callData?.data)
           : callData?.data
         if (route.mainMutation.successRedirect) {
-          ctx.redirect(route.mainMutation.successRedirect(data, ctx.request.body))
+          ctx.redirect(
+            route.mainMutation.successRedirect instanceof Function
+              ? route.mainMutation.successRedirect(data, ctx.request.body)
+              : route.mainMutation.successRedirect,
+          )
           return
         }
       }

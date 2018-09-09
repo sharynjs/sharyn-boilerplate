@@ -39,3 +39,14 @@ export const newNoteRoute: Object = {
     successRedirect: id => noteRoute.path(id),
   },
 }
+
+export const deleteNoteRoute: Object = {
+  path: (id: ?string) => `/note/delete/${id || ':id'}`,
+  exact: true,
+  loggedInOnly: true,
+  mainMutation: {
+    query: 'mutation ($id: ID!) { deleteNote(id: $id) }',
+    mapFields: (fields, { id }) => ({ id }),
+    successRedirect: notesRoute.path,
+  },
+}

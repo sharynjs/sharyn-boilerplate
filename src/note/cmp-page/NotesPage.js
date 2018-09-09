@@ -3,7 +3,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { compose } from 'recompose'
-import { noteRoute } from 'note/note-routes'
+import { noteRoute, deleteNoteRoute } from 'note/note-routes'
 import { Link } from 'react-router-dom'
 
 import withDefault from 'sharyn/hocs/with-default'
@@ -15,6 +15,9 @@ const NotesPageJSX = ({ notes }: { notes: Object[] }) => (
     {notes.map(n => (
       <li key={n.id}>
         <Link to={noteRoute.path(n.id)}>{n.title}</Link>
+        <form method="post" action={deleteNoteRoute.path(n.id)}>
+          <input type="submit" value="X" />
+        </form>
       </li>
     ))}
   </ul>
