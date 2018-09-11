@@ -3,6 +3,7 @@
 import axios from 'axios'
 import { IS_DEV_ENV, NO_SSR, SENTRY_DSN_PUBLIC, IS_LOCAL_ENV_TYPE } from 'sharyn/env'
 import { renderPage } from 'sharyn/server'
+import { spread } from 'sharyn/util'
 // flow-disable-next-line
 import jss from 'jss'
 import jssPreset from 'jss-preset-default'
@@ -23,12 +24,7 @@ const apiCall = ({
   query: string,
   variables?: Object,
   cookie?: string,
-}) =>
-  axios.post(
-    `${apiUrl}/graphql`,
-    { query, variables },
-    { headers: { ...(cookie ? { cookie } : {}) } },
-  )
+}) => axios.post(`${apiUrl}/graphql`, { query, variables }, { headers: { ...spread({ cookie }) } })
 
 jss.setup(jssPreset())
 const env = { IS_DEV_ENV, SENTRY_DSN_PUBLIC, NO_SSR }

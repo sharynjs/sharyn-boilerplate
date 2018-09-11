@@ -15,6 +15,7 @@ import LinkIcon from '@material-ui/icons/Link'
 import DeleteIcon from '@material-ui/icons/Clear'
 import EditIcon from '@material-ui/icons/Edit'
 import { clearfix } from 'app/common-styles'
+import spreadIf from 'sharyn/util/spread-if'
 
 const styles = ({ spacing, palette }) => ({
   fab: { position: 'absolute', bottom: spacing.unit * 3, right: spacing.unit * 3 },
@@ -67,7 +68,7 @@ const NotesPageJSX = ({ classes: css, notes }: { classes: Object, notes: Object[
         component={Link}
         to={newNoteRoute.path}
       >
-        <AddIcon {...(hasNotes ? {} : { className: css.extendedFabIcon })} />
+        <AddIcon {...spreadIf(!hasNotes, { className: css.extendedFabIcon })} />
         {hasNotes ? null : 'Add note'}
       </Button>
     </>
