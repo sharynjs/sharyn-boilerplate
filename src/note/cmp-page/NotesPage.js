@@ -14,7 +14,7 @@ import Page from 'sharyn/components/Page'
 import LinkIcon from '@material-ui/icons/Link'
 import DeleteIcon from '@material-ui/icons/Clear'
 import EditIcon from '@material-ui/icons/Edit'
-import { clearfix } from 'app/common-styles'
+import { clearfix } from 'sharyn/css/util'
 import spreadIf from 'sharyn/util/spread-if'
 
 const styles = ({ spacing, palette }) => ({

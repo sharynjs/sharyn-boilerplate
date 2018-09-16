@@ -10,10 +10,10 @@ import { fillTitle, findMatch } from 'sharyn/shared'
 import { withStyles } from '@material-ui/core/styles'
 import { navigation, dismissFirstNotification } from 'sharyn/client/actions'
 import Notifications from 'sharyn/components/Notifications'
+import globalStyles from 'sharyn/css/global'
 import allRoutesAndCmps from 'app/all-routes'
 import Nav from 'app/cmp/Nav'
 import Favicons from 'app/cmp/Favicons'
-import globalStyles from 'app/global-styles'
 
 const lifecycle = {
   componentDidUpdate(prevProps) {
