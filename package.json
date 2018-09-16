@@ -12,6 +12,9 @@
     "story": "start-storybook -p 8025",
     "build-story": "build-storybook -o public/storybook"
   },
+  "engines": {
+    "node": ">=10.10.0"
+  },
   "babel": {
     "presets": [
       "sharyn"
