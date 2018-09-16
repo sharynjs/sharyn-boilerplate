@@ -31,24 +31,16 @@ const graphqlCall = async ({
   mapResp?: Function,
   cookie?: string,
 }) => {
-  let data: Object = {}
   let callResp
   try {
     callResp = await call({ urlBase, cookie, body: { query, variables } })
   } catch (err) {
-    if (err.response?.data) {
-      data = err.response.data
-    } else {
-      data.errors = [err]
-    }
+    throw err.response?.data?.errors ? err.response.data.errors[0] : err
   }
-  if (callResp) {
-    data = {
-      ...spread({ errors: callResp.data?.errors }),
-      ...(mapResp ? mapResp(callResp?.data?.data) : callResp?.data?.data),
-    }
+  return {
+    ...spread({ errors: callResp?.data?.errors }),
+    ...(mapResp ? mapResp(callResp?.data?.data) : callResp?.data?.data),
   }
-  return data
 }
 
 const routing = (router: Object) => {
@@ -73,11 +65,12 @@ const routing = (router: Object) => {
           data = await graphqlCall({ urlBase, query, variables, mapResp, cookie })
         }
         if (ctx.request.method === 'POST' && route.mainMutation?.query) {
-          const { query, mapResp, mapFields, successRedirect } = route.mainMutation
+          const { query, name, mapFields, successRedirect } = route.mainMutation
           const variables = mapFields(ctx.request.body, match.params)
-          data = await graphqlCall({ urlBase, query, variables, mapResp, cookie })
+          data = (await graphqlCall({ urlBase, query, variables, cookie }))[name]
           data.previousFields = ctx.request.body
-          if (successRedirect) {
+          console.log(data)
+          if (!data.errors && !data.invalidFields && successRedirect) {
             ctx.redirect(
               successRedirect instanceof Function
                 ? successRedirect(data, ctx.request.body)

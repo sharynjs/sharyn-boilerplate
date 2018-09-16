@@ -14,36 +14,47 @@ const styles = ({ palette }) => ({
   error: { margin: '20px 0', color: palette.error.main },
 })
 
-const mstp = ({ data }) => ({ errorMessage: data.errorMessage, prefill: data.prefill })
+const mstp = ({ data }) => ({
+  invalidFields: data.invalidFields,
+  previousFields: data.previousFields,
+})
 
 type Props = {
   classes: Object,
   fields: Object,
   setField: Function,
   isEdit?: boolean,
-  prefill?: Object,
-  errorMessage?: string,
+  invalidFields?: Object[],
+  previousFields?: Object,
 }
 
-const NoteFormJSX = ({ classes: css, fields, setField, prefill, errorMessage, isEdit }: Props) => (
+const NoteFormJSX = ({
+  classes: css,
+  fields,
+  setField,
+  previousFields = {},
+  invalidFields = [],
+  isEdit,
+}: Props) => (
   <div>
-    {errorMessage && (
-      <div data-test="new-note-error" className={css.error}>
-        {errorMessage}
+    {invalidFields.map(inv => (
+      <div key={inv.message} data-test="new-note-error" className={css.error}>
+        {inv.message}
       </div>
-    )}
+    ))}
     <div className={css.fieldsContainer}>
       <TextField
+        error={!!invalidFields.find(i => i.name === 'title')}
         label="Title"
         name="title"
-        value={fields.title ?? prefill?.title ?? ''}
+        value={fields.title ?? previousFields?.title ?? ''}
         onChange={setField}
         required
       />
       <TextField
         label="Description"
         name="description"
-        value={fields.description ?? prefill?.description ?? ''}
+        value={fields.description ?? previousFields?.description ?? ''}
         fullWidth
         multiline
         onChange={setField}

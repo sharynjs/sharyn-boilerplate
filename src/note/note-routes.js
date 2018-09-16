@@ -34,9 +34,10 @@ export const newNoteRoute: Object = {
   title: 'New Note',
   Icon: NewIcon,
   mainMutation: {
-    query: 'mutation ($input: NoteInput!) { createNote(input: $input) { id } }',
+    name: 'createNote',
+    query:
+      'mutation ($input: NoteInput!) { createNote(input: $input) { note { id }, invalidFields { name, message } } }',
     mapFields: fields => ({ input: parseObject(fields) }),
-    mapResp: ({ createNote: id }) => id,
     successRedirect: notesRoute.path,
   },
 }
