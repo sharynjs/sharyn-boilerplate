@@ -2,6 +2,7 @@
 
 import NotesIcon from '@material-ui/icons/Description'
 import NewIcon from '@material-ui/icons/Create'
+import parseObject from 'sharyn/util/parse-object'
 
 export const notesRoute: Object = {
   path: '/',
@@ -33,10 +34,10 @@ export const newNoteRoute: Object = {
   title: 'New Note',
   Icon: NewIcon,
   mainMutation: {
-    query: 'mutation ($input: NoteInput) { createNote(input: $input) { id } }',
-    mapFields: fields => ({ input: fields }),
-    mapResp: ({ createNote: note }) => note.id,
-    successRedirect: id => noteRoute.path(id),
+    query: 'mutation ($input: NoteInput!) { createNote(input: $input) { id } }',
+    mapFields: fields => ({ input: parseObject(fields) }),
+    mapResp: ({ createNote: id }) => id,
+    successRedirect: notesRoute.path,
   },
 }
 

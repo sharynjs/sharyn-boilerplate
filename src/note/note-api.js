@@ -6,7 +6,7 @@ import { createNote, findNote, getAllNotes, updateNote, deleteNote } from 'note/
 
 export const typeDef = gql`
   input NoteInput {
-    title: String
+    title: String!
     description: String
   }
   type Note {
@@ -19,8 +19,8 @@ export const typeDef = gql`
     getNote(id: ID!): Note
   }
   type Mutation {
-    createNote(input: NoteInput): Note
-    updateNote(id: ID!, input: NoteInput): Note
+    createNote(input: NoteInput!): Note
+    updateNote(id: ID!, input: NoteInput!): Note
     deleteNote(id: ID!): Boolean
   }
 `

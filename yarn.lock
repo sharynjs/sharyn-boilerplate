@@ -3911,9 +3911,9 @@ eslint-config-prettier@^3.0.1:
   dependencies:
     get-stdin "^6.0.0"
 
-eslint-config-sharyn@^3.0.3:
-  version "3.0.3"
-  resolved "https://registry.yarnpkg.com/eslint-config-sharyn/-/eslint-config-sharyn-3.0.3.tgz#3e03b92e5ed1bcf9e2e056a2e92575f1db64f340"
+eslint-config-sharyn@^3.0.4:
+  version "3.0.4"
+  resolved "https://registry.yarnpkg.com/eslint-config-sharyn/-/eslint-config-sharyn-3.0.4.tgz#2c9447aa0e442149e38e62debd7e7cd5dd927bfb"
   dependencies:
     "@babel/runtime-corejs2" "^7.0.0"
     "@sharyn/check-setup" "^2.0.3"
@@ -9188,9 +9188,9 @@ shallowequal@^1.0.1, shallowequal@^1.0.2, shallowequal@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/shallowequal/-/shallowequal-1.1.0.tgz#188d521de95b9087404fd4dcb68b13df0ae4e7f8"
 
-sharyn@^4.3.0:
-  version "4.3.0"
-  resolved "https://registry.yarnpkg.com/sharyn/-/sharyn-4.3.0.tgz#aedd99fb15ba6947e4d5a7d9bb36ab99d35a6ae7"
+sharyn@^4.3.1:
+  version "4.3.1"
+  resolved "https://registry.yarnpkg.com/sharyn/-/sharyn-4.3.1.tgz#6f7932b9cf1199d5663f4e20b56063689167b7b3"
   dependencies:
     "@babel/runtime-corejs2" "^7.0.0"
     "@sharyn/check-setup" "^2.0.3"
@@ -9203,7 +9203,7 @@ sharyn@^4.3.0:
     clean-css "^4.2.1"
     colors "^1.3.2"
     dotenv "^6.0.0"
-    eslint-config-sharyn "^3.0.3"
+    eslint-config-sharyn "^3.0.4"
     exit-hook "^2.0.0"
     knex "^0.15.2"
     lodash.curryright "^4.1.1"

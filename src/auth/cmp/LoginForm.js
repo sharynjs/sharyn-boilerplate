@@ -20,19 +20,15 @@ const styles = ({ breakpoints, palette }) => ({
 
 const mstp = ({ data }) => ({ ...data })
 
-const LoginFormJSX = ({
-  classes: css,
-  fields,
-  setField,
-  prefill,
-  errorMessage,
-}: {
+type Props = {
   classes: Object,
   fields: Object,
   setField: Function,
   prefill?: Object,
   errorMessage?: string,
-}) => (
+}
+
+const LoginFormJSX = ({ classes: css, fields, setField, prefill, errorMessage }: Props) => (
   <form data-test="login-form" action={loginRoute.path} method="post">
     {errorMessage && (
       <div data-test="login-error" className={css.error}>

@@ -1,15 +1,13 @@
 // @flow
 
 import React from 'react'
-import { connect } from 'react-redux'
-import compose from 'recompose/compose'
-import withFields from 'sharyn/hocs/with-fields'
+import Page from 'sharyn/components/Page'
+
+import NoteForm from 'note/cmp/NoteForm'
 
 // import parseFields from '_shared/parse-fields'
 // import { fetchGraphQL } from '_shared/api-calls'
 // import { loadPageSuccess } from '_client/duck'
-
-const mstp = ({ data }) => ({ errorMessage: data.errorMessage, prefill: data.prefill })
 
 // const handleSubmit = async (e, props) => {
 //   e.preventDefault()
@@ -37,24 +35,14 @@ const mstp = ({ data }) => ({ errorMessage: data.errorMessage, prefill: data.pre
 //   }
 // }
 
-type Props = { fields: Object, setField: Function, errorMessage?: string, prefill?: Object }
-
-const NewNotePageJSX = ({ fields, setField, errorMessage, prefill }: Props) => (
-  <form method="post">
-    {errorMessage && <div>{errorMessage}</div>}
-    <input name="title" required value={fields.title ?? prefill?.title ?? ''} onChange={setField} />
-    <textarea
-      name="description"
-      value={fields.description ?? prefill?.description ?? ''}
-      onChange={setField}
-    />
-    <button type="submit">Create note</button>
-  </form>
+const NewNotePageJSX = () => (
+  <Page maxWidth={600}>
+    <form method="post">
+      <NoteForm />
+    </form>
+  </Page>
 )
 
-const NewNotePage = compose(
-  withFields,
-  connect(mstp),
-)(NewNotePageJSX)
+const NewNotePage = NewNotePageJSX
 
 export default NewNotePage

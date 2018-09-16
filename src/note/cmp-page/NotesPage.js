@@ -30,12 +30,12 @@ const styles = ({ spacing, palette }) => ({
 
 const mstp = ({ data }) => ({ notes: data.notes })
 
-const NotesPageJSX = ({ classes: css, notes }: { classes: Object, notes: Object[] }) => {
+const NotesPageJSX = ({ classes: css, notes = [] }: { classes: Object, notes: Object[] }) => {
   const hasNotes = notes.length > 0
   return (
     <>
       {hasNotes ? (
-        <Page noPaper noPadding>
+        <Page noPaper noPadding maxWidth={600}>
           {notes.map(n => (
             <Paper key={n.id} className={css.note}>
               <h3 className={css.title}>{n.title}</h3>
