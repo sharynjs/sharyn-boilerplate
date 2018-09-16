@@ -2,7 +2,8 @@
 
 import React from 'react'
 import { connect } from 'react-redux'
-import { compose } from 'recompose'
+import compose from 'recompose/compose'
+import withFields from 'sharyn/hocs/with-fields'
 import { withStyles } from '@material-ui/core/styles'
 import TextField from '@material-ui/core/TextField'
 import Button from '@material-ui/core/Button'
@@ -21,10 +22,14 @@ const mstp = ({ data }) => ({ ...data })
 
 const SignupFormJSX = ({
   classes: css,
+  fields,
+  setField,
   prefill,
   errorMessage,
 }: {
   classes: Object,
+  fields: Object,
+  setField: Function,
   prefill?: Object,
   errorMessage?: string,
 }) => (
@@ -39,7 +44,8 @@ const SignupFormJSX = ({
       name="username"
       label="Username"
       placeholder="sharyn8020"
-      defaultValue={prefill?.username}
+      value={fields.username ?? prefill?.username ?? ''}
+      onChange={setField}
     />
     <TextField className={css.input} name="password" type="password" label="Password" />
     <div className={css.action}>
@@ -57,6 +63,7 @@ const SignupFormJSX = ({
 )
 
 const SignupForm = compose(
+  withFields,
   connect(mstp),
   withStyles(styles),
 )(SignupFormJSX)

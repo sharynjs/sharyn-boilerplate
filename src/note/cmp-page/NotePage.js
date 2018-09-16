@@ -2,7 +2,8 @@
 
 import React from 'react'
 import { connect } from 'react-redux'
-import { compose, flattenProp } from 'recompose'
+import compose from 'recompose/compose'
+import flattenProp from 'recompose/flattenProp'
 import withDefault from 'sharyn/hocs/with-default'
 
 const mstp = ({ data }) => ({ note: data.note })

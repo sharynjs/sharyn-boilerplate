@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { connect } from 'react-redux'
-import { compose } from 'recompose'
+import compose from 'recompose/compose'
 import { noteRoute, deleteNoteRoute, newNoteRoute } from 'note/note-routes'
 import { Link } from 'react-router-dom'
 import Button from '@material-ui/core/Button'

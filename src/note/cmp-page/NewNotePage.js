@@ -2,6 +2,8 @@
 
 import React from 'react'
 import { connect } from 'react-redux'
+import compose from 'recompose/compose'
+import withFields from 'sharyn/hocs/with-fields'
 
 // import parseFields from '_shared/parse-fields'
 // import { fetchGraphQL } from '_shared/api-calls'
@@ -35,15 +37,24 @@ const mstp = ({ data }) => ({ errorMessage: data.errorMessage, prefill: data.pre
 //   }
 // }
 
-const NewNotePageJSX = ({ errorMessage, prefill }: { errorMessage?: string, prefill?: Object }) => (
+type Props = { fields: Object, setField: Function, errorMessage?: string, prefill?: Object }
+
+const NewNotePageJSX = ({ fields, setField, errorMessage, prefill }: Props) => (
   <form method="post">
     {errorMessage && <div>{errorMessage}</div>}
-    <input name="title" required defaultValue={prefill?.title} />
-    <textarea name="description" defaultValue={prefill?.description} />
+    <input name="title" required value={fields.title ?? prefill?.title ?? ''} onChange={setField} />
+    <textarea
+      name="description"
+      value={fields.description ?? prefill?.description ?? ''}
+      onChange={setField}
+    />
     <button type="submit">Create note</button>
   </form>
 )
 
-const NewNotePage = connect(mstp)(NewNotePageJSX)
+const NewNotePage = compose(
+  withFields,
+  connect(mstp),
+)(NewNotePageJSX)
 
 export default NewNotePage

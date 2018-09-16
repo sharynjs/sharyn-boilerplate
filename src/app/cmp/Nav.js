@@ -1,7 +1,8 @@
 // @flow
 
 import React, { Fragment } from 'react'
-import { withState, compose } from 'recompose'
+import compose from 'recompose/compose'
+import withState from 'recompose/withState'
 import { connect } from 'react-redux'
 
 import { withStyles } from '@material-ui/core/styles'
