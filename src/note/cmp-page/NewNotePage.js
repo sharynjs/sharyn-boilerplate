@@ -37,9 +37,7 @@ import NoteForm from 'note/cmp/NoteForm'
 
 const NewNotePageJSX = () => (
   <Page maxWidth={600}>
-    <form method="post">
-      <NoteForm />
-    </form>
+    <NoteForm />
   </Page>
 )
 

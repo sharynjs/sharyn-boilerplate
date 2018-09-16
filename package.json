@@ -36,6 +36,7 @@
     "bcrypt": "^3.0.0",
     "graphql": "^14.0.2",
     "joi": "^13.6.0",
+    "joi-browser": "^13.4.0",
     "jss": "^9.8.7",
     "jss-preset-default": "^4.5.0",
     "koa": "^2.5.3",
@@ -63,7 +64,7 @@
     "redux": "^4.0.0",
     "redux-actions": "^2.6.1",
     "redux-thunk": "^2.3.0",
-    "sharyn": "^4.3.1",
+    "sharyn": "^4.6.0",
     "uuid": "^3.3.2"
   },
   "devDependencies": {
