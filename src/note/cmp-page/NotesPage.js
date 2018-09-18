@@ -29,7 +29,7 @@ const NotesPageJSX = ({ classes: css, notes = [] }: Props) => {
       {hasNotes ? (
         <Page noPaper noPadding maxWidth={600}>
           {notes.map(n => (
-            <Note key={n.id} {...n} showLinkButton />
+            <Note key={n.id} {...n} useTitleLink />
           ))}
         </Page>
       ) : (

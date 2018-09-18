@@ -8,7 +8,6 @@ import { withStyles } from '@material-ui/core/styles'
 import { Link } from 'react-router-dom'
 import IconButton from '@material-ui/core/IconButton'
 import Paper from '@material-ui/core/Paper'
-import LinkIcon from '@material-ui/icons/Link'
 import DeleteIcon from '@material-ui/icons/Clear'
 import EditIcon from '@material-ui/icons/Edit'
 
@@ -25,19 +24,16 @@ type Props = {
   id: string,
   title: string,
   description?: string,
-  showLinkButton?: boolean,
+  useTitleLink?: boolean,
 }
 
-const NoteJSX = ({ classes: css, id, title, description, showLinkButton }: Props) => (
+const NoteJSX = ({ classes: css, id, title, description, useTitleLink }: Props) => (
   <Paper className={css.note}>
-    <h3 className={css.title}>{title}</h3>
+    <h3 className={css.title}>
+      {useTitleLink ? <Link to={noteRoute.path(id)}>{title}</Link> : title}
+    </h3>
     {description && <p>{description}</p>}
     <div className={css.buttonGroup}>
-      {showLinkButton && (
-        <IconButton color="primary" component={Link} to={noteRoute.path(id)}>
-          <LinkIcon />
-        </IconButton>
-      )}
       <IconButton component={Link} to={editNoteRoute.path(id)}>
         <EditIcon />
       </IconButton>

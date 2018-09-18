@@ -20,7 +20,8 @@ export const noteRoute: Object = {
   path: (id: ?string) => `/note/${id || ':id'}`,
   exact: true,
   loggedInOnly: true,
-  title: ({ note }) => note?.title ?? 'Note not found',
+  title: ({ data }) => data?.note?.title ?? 'Note not found',
+  backNav: notesRoute.path,
   mainQuery: {
     query: 'query ($id: ID!) { getNote(id: $id) { id, title, description } }',
     mapResp: ({ getNote: note }) => ({ note }),
@@ -32,6 +33,7 @@ export const newNoteRoute: Object = {
   exact: true,
   loggedInOnly: true,
   title: 'New Note',
+  backNav: notesRoute.path,
   Icon: NewIcon,
   mainMutation: {
     name: 'createNote',
@@ -46,7 +48,8 @@ export const editNoteRoute: Object = {
   path: (id: ?string) => `/note/edit/${id || ':id'}`,
   exact: true,
   loggedInOnly: true,
-  title: ({ note }) => (note?.title ? `Edit ${note.title}` : 'Note not found'),
+  title: ({ data }) => (data?.note?.title ? `Edit ${data?.note.title}` : 'Note not found'),
+  backNav: ({ data }) => noteRoute.path(data?.note.id),
   Icon: NewIcon,
   mainQuery: {
     query: 'query ($id: ID!) { getNote(id: $id) { id, title, description } }',

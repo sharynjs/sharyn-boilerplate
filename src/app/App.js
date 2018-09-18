@@ -7,7 +7,7 @@ import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import compose from 'recompose/compose'
 import withLifecycle from 'recompose/lifecycle'
-import { fillTitle, findMatch } from 'sharyn/shared'
+import { getPageInfo, findMatch } from 'sharyn/shared'
 import { withStyles } from '@material-ui/core/styles'
 import { navigation, dismissFirstNotification } from 'sharyn/client/actions'
 import Notifications from 'sharyn/components/Notifications'
@@ -24,8 +24,8 @@ const lifecycle = {
   },
 }
 
-const mstp = ({ data, user, ui }) => ({
-  data,
+const mstp = ({ data, user, env, ui }) => ({
+  mainState: { data, user, env },
   isLoggedIn: !!user,
   isPageLoading: ui.isPageLoading,
   notifications: ui.notifications,
@@ -40,24 +40,24 @@ type Props = {
   isLoggedIn: boolean,
   location: Object,
   history: Object,
+  mainState: Object,
   isPageLoading?: boolean,
   notifications?: Object[],
   handleDismissNotification: Function,
   errors?: string,
-  data?: Object,
 }
 
 const AppJSX = ({
   isLoggedIn,
   isPageLoading,
   location,
-  data,
+  mainState,
   history: routerHistory,
   notifications = [],
   handleDismissNotification,
 }: Props) => {
   const { match, route, Component } = findMatch(allRoutesAndCmps, location.pathname, isLoggedIn)
-  const title = fillTitle(route.title, data)
+  const { title, backNav } = getPageInfo(route, mainState)
   return (
     <Fragment>
       <Helmet titleTemplate="%s | Notesapp" defaultTitle="Notesapp – Great Notes for Great People">
@@ -67,7 +67,7 @@ const AppJSX = ({
         <meta httpEquiv="X-UA-Compatible" content="ie=edge" />
         {Favicons}
       </Helmet>
-      {isLoggedIn && <Nav {...{ title }} />}
+      {isLoggedIn && <Nav {...{ title, backNav }} />}
       <Component {...{ route, match, routerHistory }} />
       <Notifications {...{ notifications, handleDismissNotification }} />
     </Fragment>
