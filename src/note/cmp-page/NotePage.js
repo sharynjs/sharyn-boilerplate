@@ -5,14 +5,15 @@ import { connect } from 'react-redux'
 import compose from 'recompose/compose'
 import flattenProp from 'recompose/flattenProp'
 import withDefault from 'sharyn/hocs/with-default'
+import Page from 'sharyn/components/Page'
+import Note from 'note/cmp/Note'
 
 const mstp = ({ data }) => ({ note: data.note })
 
-const NotePageJSX = ({ title, description }: { title: string, description?: string }) => (
-  <div>
-    <h1>{title}</h1>
-    <p>{description}</p>
-  </div>
+const NotePageJSX = ({ note }: { note: Object }) => (
+  <Page noPaper noPadding maxWidth={600}>
+    <Note {...note} />
+  </Page>
 )
 
 const noNoteMsg = "Oops, couldn't find this note"

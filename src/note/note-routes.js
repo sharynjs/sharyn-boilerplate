@@ -42,6 +42,18 @@ export const newNoteRoute: Object = {
   },
 }
 
+export const editNoteRoute: Object = {
+  path: (id: ?string) => `/note/edit/${id || ':id'}`,
+  exact: true,
+  loggedInOnly: true,
+  title: ({ note }) => (note?.title ? `Edit ${note.title}` : 'Note not found'),
+  Icon: NewIcon,
+  mainQuery: {
+    query: 'query ($id: ID!) { getNote(id: $id) { id, title, description } }',
+    mapResp: ({ getNote: note }) => ({ note }),
+  },
+}
+
 export const deleteNoteRoute: Object = {
   path: (id: ?string) => `/note/delete/${id || ':id'}`,
   exact: true,

@@ -58,7 +58,7 @@ const LoginFormJSX = ({ classes: css, fields, setField, prefill, errorMessage }:
 )
 
 const LoginForm = compose(
-  withFields,
+  withFields(),
   connect(mstp),
   withStyles(styles),
 )(LoginFormJSX)

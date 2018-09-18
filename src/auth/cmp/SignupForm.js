@@ -63,7 +63,7 @@ const SignupFormJSX = ({
 )
 
 const SignupForm = compose(
-  withFields,
+  withFields(),
   connect(mstp),
   withStyles(styles),
 )(SignupFormJSX)

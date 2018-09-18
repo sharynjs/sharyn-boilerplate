@@ -52,7 +52,7 @@ const routing = (router: Object) => {
 
   router.all('*', async ctx => {
     const { user } = ctx.session
-    let data = {}
+    let data
 
     if (!NO_SSR) {
       const { match, route } = findMatch(allRoutesAndCmps, ctx.req.url, !!user)
@@ -67,7 +67,7 @@ const routing = (router: Object) => {
         if (ctx.request.method === 'POST' && route.mainMutation?.query) {
           const { query, name, mapFields, successRedirect } = route.mainMutation
           const variables = mapFields(ctx.request.body, match.params)
-          data = (await graphqlCall({ urlBase, query, variables, cookie }))[name]
+          data = (await graphqlCall({ urlBase, query, variables, cookie }))[name] ?? {}
           data.previousFields = ctx.request.body
           console.log(data)
           if (!data.errors && !data.invalidFields && successRedirect) {

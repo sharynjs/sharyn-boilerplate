@@ -28,7 +28,7 @@ type Props = {
   fields: Object,
   setField: Function,
   onSubmit: Function,
-  isEdit?: boolean,
+  editFields?: Object,
   invalidFields?: Object[],
   previousFields?: Object,
 }
@@ -38,42 +38,45 @@ const NoteFormJSX = ({
   fields,
   setField,
   onSubmit,
+  editFields,
   previousFields = {},
   invalidFields = [],
-  isEdit,
-}: Props) => (
-  <form method="post" {...{ onSubmit }}>
-    {invalidFields.map(inv => (
-      <div key={inv.message} data-test="new-note-error" className={css.error}>
-        {inv.message}
+}: Props) => {
+  const isEdit = !!editFields
+  return (
+    <form method="post" {...{ onSubmit }}>
+      {invalidFields.map(inv => (
+        <div key={inv.message} data-test="new-note-error" className={css.error}>
+          {inv.message}
+        </div>
+      ))}
+      <div className={css.fieldsContainer}>
+        <TextField
+          label="Title"
+          name="title"
+          value={fields.title ?? previousFields.title ?? editFields?.title ?? ''}
+          onChange={setField}
+          error={!!invalidFields.find(inv => inv.name === 'title')}
+          required
+        />
+        <TextField
+          label="Description"
+          name="description"
+          value={fields.description ?? previousFields.description ?? editFields?.description ?? ''}
+          onChange={setField}
+          fullWidth
+          multiline
+        />
       </div>
-    ))}
-    <div className={css.fieldsContainer}>
-      <TextField
-        error={!!invalidFields.find(i => i.name === 'title')}
-        label="Title"
-        name="title"
-        value={fields.title ?? previousFields?.title ?? ''}
-        onChange={setField}
-        required
-      />
-      <TextField
-        label="Description"
-        name="description"
-        value={fields.description ?? previousFields?.description ?? ''}
-        fullWidth
-        multiline
-        onChange={setField}
-      />
-    </div>
-    <Button variant="raised" color="primary" type="submit">
-      {isEdit ? 'Save' : 'Create note'}
-    </Button>
-  </form>
-)
+      <Button variant="raised" color="primary" type="submit">
+        {isEdit ? 'Save' : 'Create note'}
+      </Button>
+    </form>
+  )
+}
 
 const NoteForm = compose(
-  withFields,
+  withFields(),
   connect(mstp),
   withHandlers({
     onSubmit: ({ dispatch }) => e => {
