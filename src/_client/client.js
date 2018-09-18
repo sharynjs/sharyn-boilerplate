@@ -2,16 +2,17 @@
 
 import '@babel/polyfill'
 
-import { MuiThemeProvider, createGenerateClassName } from '@material-ui/core/styles'
 // flow-disable-next-line
 import jss from 'jss'
 import jssPreset from 'jss-preset-default'
+import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider'
+import createGenerateClassName from '@material-ui/core/styles/createGenerateClassName'
 import Raven from 'raven-js'
 import React from 'react'
 import { hydrate, render } from 'react-dom'
 import JssProvider from 'react-jss/lib/JssProvider'
 import { Provider } from 'react-redux'
-import { BrowserRouter } from 'react-router-dom'
+import BrowserRouter from 'react-router-dom/BrowserRouter'
 import { applyMiddleware, combineReducers, compose, createStore } from 'redux'
 import thunk from 'redux-thunk'
 
