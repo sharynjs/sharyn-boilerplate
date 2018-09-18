@@ -8,9 +8,9 @@ import NoteForm from 'note/cmp/NoteForm'
 
 const mstp = ({ data }) => ({ editFields: data.note })
 
-const EditNotePageJSX = ({ editFields }: { editFields: Object }) => (
+const EditNotePageJSX = ({ editFields }: { editFields: ?Object }) => (
   <Page maxWidth={600}>
-    <NoteForm {...{ editFields }} />
+    <NoteForm {...{ editFields }} isEdit />
   </Page>
 )
 

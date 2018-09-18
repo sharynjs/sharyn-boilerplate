@@ -14,8 +14,8 @@ import { validateNoteInput } from 'note/note-validations'
 import { invalidateFields, clearInvalidFields } from 'sharyn/client/actions'
 
 const styles = ({ palette }) => ({
-  fieldsContainer: { marginBottom: 20 },
-  error: { margin: '20px 0', color: palette.error.main },
+  field: { marginBottom: 15 },
+  error: { marginBottom: 20, color: palette.error.main },
 })
 
 const mstp = ({ data }) => ({
@@ -28,6 +28,7 @@ type Props = {
   fields: Object,
   setField: Function,
   onSubmit: Function,
+  isEdit?: boolean,
   editFields?: Object,
   invalidFields?: Object[],
   previousFields?: Object,
@@ -38,42 +39,41 @@ const NoteFormJSX = ({
   fields,
   setField,
   onSubmit,
+  isEdit,
   editFields,
   previousFields = {},
   invalidFields = [],
-}: Props) => {
-  const isEdit = !!editFields
-  return (
-    <form method="post" {...{ onSubmit }}>
-      {invalidFields.map(inv => (
-        <div key={inv.message} data-test="new-note-error" className={css.error}>
-          {inv.message}
-        </div>
-      ))}
-      <div className={css.fieldsContainer}>
-        <TextField
-          label="Title"
-          name="title"
-          value={fields.title ?? previousFields.title ?? editFields?.title ?? ''}
-          onChange={setField}
-          error={!!invalidFields.find(inv => inv.name === 'title')}
-          required
-        />
-        <TextField
-          label="Description"
-          name="description"
-          value={fields.description ?? previousFields.description ?? editFields?.description ?? ''}
-          onChange={setField}
-          fullWidth
-          multiline
-        />
+}: Props) => (
+  <form method="post" {...{ onSubmit }}>
+    {invalidFields.map(inv => (
+      <div key={inv.message} data-test="new-note-error" className={css.error}>
+        {inv.message}
       </div>
-      <Button variant="raised" color="primary" type="submit">
-        {isEdit ? 'Save' : 'Create note'}
-      </Button>
-    </form>
-  )
-}
+    ))}
+    <div className={css.field}>
+      <TextField
+        label="Title"
+        name="title"
+        value={fields.title ?? previousFields.title ?? editFields?.title ?? ''}
+        onChange={setField}
+        error={!!invalidFields.find(inv => inv.name === 'title')}
+        required
+      />
+    </div>
+    <div className={css.field}>
+      <TextField
+        label="Description"
+        name="description"
+        value={fields.description ?? previousFields.description ?? editFields?.description ?? ''}
+        onChange={setField}
+        fullWidth
+      />
+    </div>
+    <Button variant="raised" color="primary" type="submit">
+      {isEdit ? 'Save' : 'Create note'}
+    </Button>
+  </form>
+)
 
 const NoteForm = compose(
   withFields(),

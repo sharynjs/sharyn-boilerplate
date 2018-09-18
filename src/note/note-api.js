@@ -29,7 +29,7 @@ export const typeDef = gql`
   }
   type Mutation {
     createNote(input: NoteInput!): NoteInputResult
-    updateNote(id: ID!, input: NoteInput!): Note
+    updateNote(id: ID!, input: NoteInput!): NoteInputResult
     deleteNote(id: ID!): Boolean
   }
 `

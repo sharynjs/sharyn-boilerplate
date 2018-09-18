@@ -52,6 +52,13 @@ export const editNoteRoute: Object = {
     query: 'query ($id: ID!) { getNote(id: $id) { id, title, description } }',
     mapResp: ({ getNote: note }) => ({ note }),
   },
+  mainMutation: {
+    name: 'updateNote',
+    query:
+      'mutation ($id: ID!, $input: NoteInput!) { updateNote(id: $id, input: $input) { note { id }, invalidFields { name, message } } }',
+    mapFields: (fields, { id }) => ({ id, input: parseObject(fields) }),
+    successRedirect: notesRoute.path,
+  },
 }
 
 export const deleteNoteRoute: Object = {
