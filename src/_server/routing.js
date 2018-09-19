@@ -59,15 +59,15 @@ const routing = (router: Object) => {
       if (match) {
         const { cookie } = ctx.req.headers
         const urlBase = `http${IS_LOCAL_ENV_TYPE ? '' : 's'}://${ctx.request.host}`
-        if (ctx.request.method === 'GET' && route.mainQuery?.query) {
-          const { query, mapResp, mapParams } = route.mainQuery
-          const variables = mapParams ? mapParams(match.params) : match.params
+        if (ctx.request.method === 'GET' && route.mainQuery) {
+          const { query, mapResp, mapUrlParams } = route.mainQuery
+          const variables = mapUrlParams ? mapUrlParams(match.params) : match.params
           data = await graphqlCall({ urlBase, query, variables, mapResp, cookie })
         }
-        if (ctx.request.method === 'POST' && route.mainMutation?.query) {
-          const { query, name, mapFields, successRedirect } = route.mainMutation
-          const variables = mapFields(ctx.request.body, match.params)
-          data = (await graphqlCall({ urlBase, query, variables, cookie }))[name] ?? {}
+        if (ctx.request.method === 'POST' && route.mainMutation) {
+          const { query, mapArgs, mapResp, successRedirect } = route.mainMutation
+          const variables = mapArgs(ctx.request.body, match.params)
+          data = (await graphqlCall({ urlBase, query, variables, mapResp, cookie })) ?? {}
           data.previousFields = ctx.request.body
           if (!data.errors && !data.invalidFields && successRedirect) {
             ctx.redirect(

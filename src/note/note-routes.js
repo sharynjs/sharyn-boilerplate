@@ -2,75 +2,57 @@
 
 import NotesIcon from '@material-ui/icons/Description'
 import NewIcon from '@material-ui/icons/Create'
-import parseObject from 'sharyn/util/parse-object'
+import {
+  getNotesCall,
+  getNoteCall,
+  createNoteCall,
+  updateNoteCall,
+  deleteNoteCall,
+} from 'note/note-calls'
+import { NOTES_PATH, NEW_NOTE_PATH, notePath, editNotePath, deleteNotePath } from 'note/note-paths'
 
 export const notesRoute: Object = {
-  path: '/',
+  path: NOTES_PATH,
   exact: true,
   loggedInOnly: true,
   title: 'Notes',
   Icon: NotesIcon,
-  mainQuery: {
-    query: '{ getNotes { id, title, description } }',
-    mapResp: ({ getNotes: notes }) => ({ notes }),
-  },
+  mainQuery: getNotesCall,
 }
 
 export const noteRoute: Object = {
-  path: (id: ?string) => `/note/${id || ':id'}`,
+  path: notePath,
   exact: true,
   loggedInOnly: true,
   title: ({ data }) => data?.note?.title ?? 'Note not found',
   backNav: notesRoute.path,
-  mainQuery: {
-    query: 'query ($id: ID!) { getNote(id: $id) { id, title, description } }',
-    mapResp: ({ getNote: note }) => ({ note }),
-  },
+  mainQuery: getNoteCall,
 }
 
 export const newNoteRoute: Object = {
-  path: '/new-note',
+  path: NEW_NOTE_PATH,
   exact: true,
   loggedInOnly: true,
   title: 'New Note',
   backNav: notesRoute.path,
   Icon: NewIcon,
-  mainMutation: {
-    name: 'createNote',
-    query:
-      'mutation ($input: NoteInput!) { createNote(input: $input) { note { id }, invalidFields { name, message } } }',
-    mapFields: fields => ({ input: parseObject(fields) }),
-    successRedirect: notesRoute.path,
-  },
+  mainMutation: createNoteCall,
 }
 
 export const editNoteRoute: Object = {
-  path: (id: ?string) => `/note/edit/${id || ':id'}`,
+  path: editNotePath,
   exact: true,
   loggedInOnly: true,
   title: ({ data }) => (data?.note?.title ? `Edit ${data?.note.title}` : 'Note not found'),
   backNav: ({ data }) => noteRoute.path(data?.note.id),
   Icon: NewIcon,
-  mainQuery: {
-    query: 'query ($id: ID!) { getNote(id: $id) { id, title, description } }',
-    mapResp: ({ getNote: note }) => ({ note }),
-  },
-  mainMutation: {
-    name: 'updateNote',
-    query:
-      'mutation ($id: ID!, $input: NoteInput!) { updateNote(id: $id, input: $input) { note { id }, invalidFields { name, message } } }',
-    mapFields: (fields, { id }) => ({ id, input: parseObject(fields) }),
-    successRedirect: notesRoute.path,
-  },
+  mainQuery: getNoteCall,
+  mainMutation: updateNoteCall,
 }
 
 export const deleteNoteRoute: Object = {
-  path: (id: ?string) => `/note/delete/${id || ':id'}`,
+  path: deleteNotePath,
   exact: true,
   loggedInOnly: true,
-  mainMutation: {
-    query: 'mutation ($id: ID!) { deleteNote(id: $id) }',
-    mapFields: (fields, { id }) => ({ id }),
-    successRedirect: notesRoute.path,
-  },
+  mainMutation: deleteNoteCall,
 }
