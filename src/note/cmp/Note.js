@@ -11,8 +11,8 @@ import IconButton from '@material-ui/core/IconButton'
 import Paper from '@material-ui/core/Paper'
 import DeleteIcon from '@material-ui/icons/Clear'
 import EditIcon from '@material-ui/icons/Edit'
-import { deleteNoteCall } from 'note/note-calls'
-import { graphqlThunk } from 'sharyn/client/thunks'
+import { deleteNoteCall, getNotesCall } from 'note/note-calls'
+import { graphqlThunk, fetchPageThunk } from 'sharyn/client/thunks'
 
 const styles = ({ spacing, palette }) => ({
   note: { ...clearfix, padding: spacing.unit * 3, marginBottom: spacing.unit * 3 },
@@ -57,7 +57,7 @@ const NoteJSX = ({ classes: css, id, title, description, useTitleLink, onSubmit 
 
 const Note = compose(
   withHandlers({
-    onSubmit: ({ id, dispatch, routerHistory }) => async e => {
+    onSubmit: ({ id, dispatch, match, routerHistory }) => async e => {
       e.preventDefault()
       // eslint-disable-next-line no-alert
       if (window.confirm('Do you really want to delete this note?')) {
@@ -65,11 +65,14 @@ const Note = compose(
         const fields = { id }
         const data = await dispatch(graphqlThunk({ ...call, asyncKey: `deleteNote:${id}`, fields }))
         if (!data.errors && !data.invalidFields && call.successRedirect) {
-          routerHistory.push(
+          const redirectUrl =
             call.successRedirect instanceof Function
               ? call.successRedirect(data, fields)
-              : call.successRedirect,
-          )
+              : call.successRedirect
+          routerHistory.push(redirectUrl)
+          if (redirectUrl === match.url) {
+            dispatch(fetchPageThunk({ ...getNotesCall }))
+          }
         }
       }
     },

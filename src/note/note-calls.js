@@ -18,16 +18,20 @@ export const createNoteCall = {
   query:
     'mutation ($input: NoteInput!) { createNote(input: $input) { note { id }, invalidFields { name, message } } }',
   mapFields: (fields: Object) => ({ input: parseObject(fields) }),
-  mapResp: ({ createNote: result }: { createNote: Object }) => ({ note: result?.note }),
-  successRedirect: ({ note }: { note: Object }) => notePath(note?.id),
+  mapResp: ({ createNote: result }: { createNote: Object }) => ({
+    createdNoteId: result?.note?.id,
+  }),
+  successRedirect: ({ createdNoteId }: { createdNoteId: string }) => notePath(createdNoteId),
 }
 
 export const updateNoteCall = {
   query:
     'mutation ($id: ID!, $input: NoteInput!) { updateNote(id: $id, input: $input) { note { id }, invalidFields { name, message } } }',
   mapFields: (fields: Object) => ({ input: parseObject(fields) }),
-  mapResp: ({ updateNote: result }: { updateNote: Object }) => ({ note: result?.note }),
-  successRedirect: ({ note }: { note: Object }) => notePath(note?.id),
+  mapResp: ({ updateNote: result }: { updateNote: Object }) => ({
+    updatedNoteId: result?.note?.id,
+  }),
+  successRedirect: ({ updatedNoteId }: { updatedNoteId: string }) => notePath(updatedNoteId),
 }
 
 export const deleteNoteCall = {
