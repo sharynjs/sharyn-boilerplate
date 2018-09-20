@@ -26,7 +26,7 @@ const mstp = ({ data }) => ({
 type Props = {
   classes: Object,
   fields: Object,
-  setField: Function,
+  handleFieldChange: Function,
   onSubmit: Function,
   isEdit?: boolean,
   editFields?: Object,
@@ -37,7 +37,7 @@ type Props = {
 const NoteFormJSX = ({
   classes: css,
   fields,
-  setField,
+  handleFieldChange,
   onSubmit,
   isEdit,
   editFields,
@@ -55,7 +55,7 @@ const NoteFormJSX = ({
         label="Title"
         name="title"
         value={fields.title ?? previousFields.title ?? editFields?.title ?? ''}
-        onChange={setField}
+        onChange={handleFieldChange}
         error={!!invalidFields.find(inv => inv.name === 'title')}
         required
       />
@@ -65,7 +65,7 @@ const NoteFormJSX = ({
         label="Description"
         name="description"
         value={fields.description ?? previousFields.description ?? editFields?.description ?? ''}
-        onChange={setField}
+        onChange={handleFieldChange}
         fullWidth
       />
     </div>

@@ -23,13 +23,13 @@ const mstp = ({ data }) => ({ ...data })
 const SignupFormJSX = ({
   classes: css,
   fields,
-  setField,
+  handleFieldChange,
   prefill,
   errorMessage,
 }: {
   classes: Object,
   fields: Object,
-  setField: Function,
+  handleFieldChange: Function,
   prefill?: Object,
   errorMessage?: string,
 }) => (
@@ -45,9 +45,16 @@ const SignupFormJSX = ({
       label="Username"
       placeholder="sharyn8020"
       value={fields.username ?? prefill?.username ?? ''}
-      onChange={setField}
+      onChange={handleFieldChange}
     />
-    <TextField className={css.input} name="password" type="password" label="Password" />
+    <TextField
+      className={css.input}
+      name="password"
+      type="password"
+      label="Password"
+      value={fields.password ?? ''}
+      onChange={handleFieldChange}
+    />
     <div className={css.action}>
       <Button
         className={css.signupButton}

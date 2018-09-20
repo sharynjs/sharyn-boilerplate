@@ -23,12 +23,18 @@ const mstp = ({ data }) => ({ ...data })
 type Props = {
   classes: Object,
   fields: Object,
-  setField: Function,
+  handleFieldChange: Function,
   prefill?: Object,
   errorMessage?: string,
 }
 
-const LoginFormJSX = ({ classes: css, fields, setField, prefill, errorMessage }: Props) => (
+const LoginFormJSX = ({
+  classes: css,
+  fields,
+  handleFieldChange,
+  prefill,
+  errorMessage,
+}: Props) => (
   <form data-test="login-form" action={loginRoute.path} method="post">
     {errorMessage && (
       <div data-test="login-error" className={css.error}>
@@ -40,9 +46,16 @@ const LoginFormJSX = ({ classes: css, fields, setField, prefill, errorMessage }:
       name="username"
       label="Username"
       value={fields.username ?? prefill?.username ?? ''}
-      onChange={setField}
+      onChange={handleFieldChange}
     />
-    <TextField className={css.input} name="password" type="password" label="Password" />
+    <TextField
+      className={css.input}
+      name="password"
+      type="password"
+      label="Password"
+      value={fields.password ?? ''}
+      onChange={handleFieldChange}
+    />
     <div className={css.action}>
       <Button
         className={css.loginButton}
