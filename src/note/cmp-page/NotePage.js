@@ -12,9 +12,9 @@ import NotFoundPage from 'error/cmp-page/NotFoundPage'
 
 const mstp = ({ data, async }) => ({ note: data.note, isPageLoading: async.page })
 
-const NotePageJSX = ({ note }: { note: Object }) => (
+const NotePageJSX = ({ note, ...rest }: { note: Object }) => (
   <Page noPaper noPadding maxWidth={600}>
-    <Note {...note} />
+    <Note {...note} {...rest} />
   </Page>
 )
 
