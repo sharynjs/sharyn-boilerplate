@@ -18,10 +18,13 @@ import thunk from 'redux-thunk'
 
 import dataReducer from '_client/reducers/data-reducer'
 import asyncReducer from '_client/reducers/async-reducer'
+import envReducer from '_client/reducers/env-reducer'
+
 import App from 'app/App'
 import theme from 'app/theme'
 
 import {
+  startClientNavigation,
   fetchPageRequest,
   fetchPageSuccess,
   fetchPageFailure,
@@ -38,6 +41,7 @@ import { configureWithClientMainQuery } from 'sharyn/hocs/with-client-main-query
 
 const preloadedState = window.__PRELOADED_STATE__
 const { IS_DEV_ENV, SENTRY_DSN_PUBLIC, NO_SSR } = preloadedState.env
+preloadedState.env.isFirstRender = !NO_SSR
 
 SENTRY_DSN_PUBLIC && Raven.config(SENTRY_DSN_PUBLIC).install()
 
@@ -49,7 +53,7 @@ const store = createStore(
     user: (s = null) => s,
     ui: (s = {}) => s,
     async: asyncReducer,
-    env: (s = {}) => s,
+    env: envReducer,
   }),
   preloadedState,
   composeEnhancers(applyMiddleware(thunk)),
@@ -86,3 +90,5 @@ reactDomFn(
   // flow-disable-next-line
   document.getElementById('app'),
 )
+
+store.dispatch(startClientNavigation())

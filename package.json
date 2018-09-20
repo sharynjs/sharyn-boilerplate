@@ -64,7 +64,7 @@
     "redux": "^4.0.0",
     "redux-actions": "^2.6.1",
     "redux-thunk": "^2.3.0",
-    "sharyn": "^4.16.1",
+    "sharyn": "^4.17.0",
     "uuid": "^3.3.2"
   },
   "devDependencies": {

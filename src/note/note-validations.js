@@ -7,7 +7,7 @@ export const noteInputSchema = Joi.object().keys({
   title: Joi.string()
     .max(20)
     .required(),
-  description: Joi.string(),
+  description: Joi.string().allow(null),
 })
 
 export const validateNoteInput = (input: Object) => {
