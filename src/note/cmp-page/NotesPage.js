@@ -15,7 +15,7 @@ import renderIf from 'sharyn/hocs/render-if'
 import LoadingPage from 'sharyn/components/LoadingPage'
 
 const styles = ({ spacing }) => ({
-  fab: { position: 'absolute', bottom: spacing.unit * 3, right: spacing.unit * 3 },
+  fab: { position: 'fixed', bottom: spacing.unit * 3, right: spacing.unit * 3 },
   extendedFab: { extend: 'fab', paddingRight: spacing.unit * 3 },
   extendedFabIcon: { marginRight: spacing.unit },
 })
