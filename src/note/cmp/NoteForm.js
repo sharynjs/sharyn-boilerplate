@@ -8,19 +8,22 @@ import withHandlers from 'recompose/withHandlers'
 import { withStyles } from '@material-ui/core/styles'
 import withFields from 'sharyn/hocs/with-fields'
 import TextField from '@material-ui/core/TextField'
-import Button from '@material-ui/core/Button'
-import formData from 'sharyn/client/form-data'
+import ProgressButton from 'sharyn/components/ProgressButton'
 import { validateNoteInput } from 'note/note-validations'
 import { invalidateFields, clearInvalidFields } from 'sharyn/client/actions'
+import spread from 'sharyn/util/spread'
+import { updateNoteCall, createNoteCall } from 'note/note-calls'
+import { graphqlThunk } from 'sharyn/client/thunks'
 
 const styles = ({ palette }) => ({
   field: { marginBottom: 15 },
   error: { marginBottom: 20, color: palette.error.main },
 })
 
-const mstp = ({ data }) => ({
+const mstp = ({ data, async }) => ({
   invalidFields: data.invalidFields,
   previousFields: data.previousFields,
+  isLoading: async.noteForm,
 })
 
 type Props = {
@@ -28,10 +31,9 @@ type Props = {
   fields: Object,
   handleFieldChange: Function,
   onSubmit: Function,
-  isEdit?: boolean,
-  editFields?: Object,
+  isLoading?: boolean,
+  noteToEdit?: Object,
   invalidFields?: Object[],
-  previousFields?: Object,
 }
 
 const NoteFormJSX = ({
@@ -39,9 +41,8 @@ const NoteFormJSX = ({
   fields,
   handleFieldChange,
   onSubmit,
-  isEdit,
-  editFields,
-  previousFields = {},
+  noteToEdit,
+  isLoading,
   invalidFields = [],
 }: Props) => (
   <form method="post" {...{ onSubmit }}>
@@ -54,7 +55,7 @@ const NoteFormJSX = ({
       <TextField
         label="Title"
         name="title"
-        value={fields.title ?? previousFields.title ?? editFields?.title ?? ''}
+        value={fields.title ?? ''}
         onChange={handleFieldChange}
         error={!!invalidFields.find(inv => inv.name === 'title')}
         required
@@ -64,25 +65,47 @@ const NoteFormJSX = ({
       <TextField
         label="Description"
         name="description"
-        value={fields.description ?? previousFields.description ?? editFields?.description ?? ''}
+        value={fields.description ?? ''}
         onChange={handleFieldChange}
         fullWidth
       />
     </div>
-    <Button variant="raised" color="primary" type="submit">
-      {isEdit ? 'Save' : 'Create note'}
-    </Button>
+    <ProgressButton {...{ isLoading }}>{noteToEdit ? 'Save' : 'Create note'}</ProgressButton>
   </form>
 )
 
 const NoteForm = compose(
-  withFields(),
   connect(mstp),
+  withFields(({ noteToEdit, previousFields = {} }) =>
+    spread({
+      title: noteToEdit?.title,
+      description: noteToEdit?.description,
+      ...previousFields,
+    }),
+  ),
   withHandlers({
-    onSubmit: ({ dispatch }) => e => {
+    onSubmit: ({ noteToEdit, match, fields, dispatch, routerHistory }) => async e => {
       e.preventDefault()
-      const invalidFields = validateNoteInput(formData(e))
+      const invalidFields = validateNoteInput(fields)
       dispatch(invalidFields ? invalidateFields(invalidFields) : clearInvalidFields())
+      if (!invalidFields) {
+        const call = noteToEdit ? updateNoteCall : createNoteCall
+        const data = await dispatch(
+          graphqlThunk({
+            ...call,
+            urlParams: match.params,
+            asyncKey: 'noteForm',
+            fields,
+          }),
+        )
+        if (!data.errors && !data.invalidFields && call.successRedirect) {
+          routerHistory.push(
+            call.successRedirect instanceof Function
+              ? call.successRedirect(data, fields)
+              : call.successRedirect,
+          )
+        }
+      }
     },
   }),
   withStyles(styles),

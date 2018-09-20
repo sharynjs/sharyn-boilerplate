@@ -11,11 +11,11 @@ import NotFoundPage from 'error/cmp-page/NotFoundPage'
 
 import NoteForm from 'note/cmp/NoteForm'
 
-const mstp = ({ data, async }) => ({ editFields: data.note, isPageLoading: async.page })
+const mstp = ({ data, async }) => ({ noteToEdit: data.note, isPageLoading: async.page })
 
-const EditNotePageJSX = ({ editFields }: { editFields: ?Object }) => (
+const EditNotePageJSX = (props: Object) => (
   <Page maxWidth={600}>
-    <NoteForm {...{ editFields }} isEdit />
+    <NoteForm {...props} />
   </Page>
 )
 
@@ -23,7 +23,7 @@ const EditNotePage = compose(
   connect(mstp),
   withClientMainQuery,
   renderIf(({ isPageLoading }) => isPageLoading, LoadingPage),
-  renderIf(({ editFields }) => !editFields, NotFoundPage),
+  renderIf(({ noteToEdit }) => !noteToEdit, NotFoundPage),
 )(EditNotePageJSX)
 
 export default EditNotePage

@@ -3,7 +3,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import compose from 'recompose/compose'
-import flattenProp from 'recompose/flattenProp'
 import renderIf from 'sharyn/hocs/render-if'
 import LoadingPage from 'sharyn/components/LoadingPage'
 import withClientMainQuery from 'sharyn/hocs/with-client-main-query'
@@ -24,7 +23,6 @@ const NotePage = compose(
   withClientMainQuery,
   renderIf(({ isPageLoading }) => isPageLoading, LoadingPage),
   renderIf(({ note }) => !note, NotFoundPage),
-  flattenProp('note'),
 )(NotePageJSX)
 
 export default NotePage
