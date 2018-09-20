@@ -4,11 +4,14 @@ import React from 'react'
 import { connect } from 'react-redux'
 import compose from 'recompose/compose'
 import flattenProp from 'recompose/flattenProp'
-import withDefault from 'sharyn/hocs/with-default'
+import renderIf from 'sharyn/hocs/render-if'
+import LoadingPage from 'sharyn/components/LoadingPage'
+import withClientMainQuery from 'sharyn/hocs/with-client-main-query'
 import Page from 'sharyn/components/Page'
 import Note from 'note/cmp/Note'
+import NotFoundPage from 'error/cmp-page/NotFoundPage'
 
-const mstp = ({ data }) => ({ note: data.note })
+const mstp = ({ data, async }) => ({ note: data.note, isPageLoading: async.page })
 
 const NotePageJSX = ({ note }: { note: Object }) => (
   <Page noPaper noPadding maxWidth={600}>
@@ -16,12 +19,11 @@ const NotePageJSX = ({ note }: { note: Object }) => (
   </Page>
 )
 
-const noNoteMsg = "Oops, couldn't find this note"
-const NoNoteJSX = () => <h2>{noNoteMsg}</h2>
-
 const NotePage = compose(
   connect(mstp),
-  withDefault(({ note }) => note, NoNoteJSX),
+  withClientMainQuery,
+  renderIf(({ isPageLoading }) => isPageLoading, LoadingPage),
+  renderIf(({ note }) => !note, NotFoundPage),
   flattenProp('note'),
 )(NotePageJSX)
 

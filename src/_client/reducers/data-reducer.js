@@ -2,6 +2,8 @@
 
 import swit from 'sharyn/util/swit'
 import {
+  SHARYN_ASYNC_SUCCESS,
+  SHARYN_FETCH_PAGE_SUCCESS,
   SHARYN_INVALIDATE_FIELDS,
   SHARYN_CLEAR_INVALID_FIELDS,
   SHARYN_NAVIGATION,
@@ -12,6 +14,7 @@ const dataReducer = (dataState: Object = {}, { payload, type }: Object) =>
   swit(
     type,
     [
+      [[SHARYN_FETCH_PAGE_SUCCESS, SHARYN_ASYNC_SUCCESS], () => addData(dataState, payload.data)],
       [SHARYN_INVALIDATE_FIELDS, () => addData(dataState, { invalidFields: payload })],
       [SHARYN_CLEAR_INVALID_FIELDS, () => delData('invalidFields')(dataState)],
       [SHARYN_NAVIGATION, () => clearData()],

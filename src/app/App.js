@@ -24,10 +24,10 @@ const lifecycle = {
   },
 }
 
-const mstp = ({ data, user, env, ui }) => ({
+const mstp = ({ data, user, env, async, ui }) => ({
   mainState: { data, user, env },
   isLoggedIn: !!user,
-  isPageLoading: ui.isPageLoading,
+  isPageLoading: async.page,
   notifications: ui.notifications,
 })
 
@@ -58,16 +58,19 @@ const AppJSX = ({
 }: Props) => {
   const { match, route, Component } = findMatch(allRoutesAndCmps, location.pathname, isLoggedIn)
   const { title, backNav } = getPageInfo(route, mainState)
+  const titleRequiresData = route.title instanceof Function
   return (
     <Fragment>
       <Helmet titleTemplate="%s | Notesapp" defaultTitle="Notesapp – Great Notes for Great People">
         <html lang="en" />
-        <title>{isPageLoading && !title ? 'Loading...' : title}</title>
+        <title>{isPageLoading && titleRequiresData ? 'Loading...' : title}</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta httpEquiv="X-UA-Compatible" content="ie=edge" />
         {Favicons}
       </Helmet>
-      {isLoggedIn && <Nav {...{ title, backNav }} />}
+      {isLoggedIn && (
+        <Nav {...{ backNav }} title={isPageLoading && titleRequiresData ? '' : title} />
+      )}
       <Component {...{ route, match, routerHistory }} />
       <Notifications {...{ notifications, handleDismissNotification }} />
     </Fragment>

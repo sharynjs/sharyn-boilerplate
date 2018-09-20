@@ -997,6 +997,10 @@
     "@babel/runtime-corejs2" "^7.0.0"
     app-root-path "^2.1.0"
 
+"@sharyn/css@^1.1.2":
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/@sharyn/css/-/css-1.1.2.tgz#4a2f0caaeab2e404089bd9e9f0ca376cbf96200a"
+
 "@sharyn/env@^2.0.3":
   version "2.0.3"
   resolved "https://registry.yarnpkg.com/@sharyn/env/-/env-2.0.3.tgz#978cf7719e0bd8a970fe338d73273290e9c3477f"
@@ -1005,6 +1009,14 @@
     "@sharyn/check-setup" "^2.0.3"
     dotenv "^6.0.0"
     read-env "^1.3.0"
+
+"@sharyn/shared@^2.5.0":
+  version "2.5.0"
+  resolved "https://registry.yarnpkg.com/@sharyn/shared/-/shared-2.5.0.tgz#1edaabc89f9a80ff97a692cb5873056bac185ecd"
+  dependencies:
+    "@babel/runtime-corejs2" "^7.0.0"
+    "@sharyn/util" "^2.0.4"
+    axios "^0.18.0"
 
 "@sharyn/util@^2.0.4":
   version "2.0.4"
@@ -9210,13 +9222,15 @@ shallowequal@^1.0.1, shallowequal@^1.0.2, shallowequal@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/shallowequal/-/shallowequal-1.1.0.tgz#188d521de95b9087404fd4dcb68b13df0ae4e7f8"
 
-sharyn@^4.10.2:
-  version "4.10.2"
-  resolved "https://registry.yarnpkg.com/sharyn/-/sharyn-4.10.2.tgz#035abbf2edca73885caf8b02ea8546d64a627f40"
+sharyn@^4.16.1:
+  version "4.16.1"
+  resolved "https://registry.yarnpkg.com/sharyn/-/sharyn-4.16.1.tgz#1e1b0c867f48b74ad11fccb4a7dc266c2e1ef6ff"
   dependencies:
     "@babel/runtime-corejs2" "^7.0.0"
     "@sharyn/check-setup" "^2.0.3"
+    "@sharyn/css" "^1.1.2"
     "@sharyn/env" "^2.0.3"
+    "@sharyn/shared" "^2.5.0"
     "@sharyn/util" "^2.0.4"
     "@sharyn/webpack-config" "^2.1.0"
     async-exit-hook "^2.0.1"
