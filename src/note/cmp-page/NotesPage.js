@@ -22,19 +22,13 @@ const styles = ({ spacing }) => ({
 
 const mstp = ({ data, async }) => ({ notes: data.notes, isPageLoading: async.page })
 
-type Props = {
-  classes: Object,
-  notes?: Object[],
-  dispatch: Function,
-  routerHistory: Object,
-  match: Object,
-}
+type Props = { classes: Object, notes?: Object[] }
 
-const NotesPageJSX = ({ classes: css, notes = [], dispatch, routerHistory, match }: Props) => (
+const NotesPageJSX = ({ classes: css, notes = [] }: Props) => (
   <>
     <Page noPaper noPadding maxWidth={600}>
       {notes.map(n => (
-        <Note key={n.id} {...n} useTitleLink {...{ dispatch, routerHistory, match }} />
+        <Note key={n.id} {...n} useTitleLink />
       ))}
     </Page>
     <Button

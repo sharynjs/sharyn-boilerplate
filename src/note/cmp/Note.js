@@ -9,17 +9,17 @@ import withHandlers from 'recompose/withHandlers'
 import { Link } from 'react-router-dom'
 import IconButton from '@material-ui/core/IconButton'
 import Paper from '@material-ui/core/Paper'
-import DeleteIcon from '@material-ui/icons/Clear'
+import DeleteIcon from '@material-ui/icons/Delete'
 import EditIcon from '@material-ui/icons/Edit'
 import { deleteNoteCall, getNotesCall } from 'note/note-calls'
 import { graphqlThunk, fetchPageThunk } from 'sharyn/client/thunks'
 
-const styles = ({ spacing, palette }) => ({
+const styles = ({ spacing }) => ({
   note: { ...clearfix, padding: spacing.unit * 3, marginBottom: spacing.unit * 3 },
-  title: { marginTop: 0 },
+  title: { margin: 0 },
+  description: { marginTop: spacing.unit * 2 },
   buttonGroup: { float: 'right' },
   deleteForm: { display: 'inline-block' },
-  delete: { background: 'none', border: 'none', cursor: 'pointer', color: palette.error.main },
 })
 
 type Props = {
@@ -28,30 +28,41 @@ type Props = {
   title: string,
   description?: string,
   useTitleLink?: boolean,
+  showActions?: boolean,
   onSubmit: Function,
 }
 
-const NoteJSX = ({ classes: css, id, title, description, useTitleLink, onSubmit }: Props) => (
+const NoteJSX = ({
+  classes: css,
+  id,
+  title,
+  description,
+  useTitleLink,
+  showActions,
+  onSubmit,
+}: Props) => (
   <Paper className={css.note}>
     <h3 className={css.title}>
       {useTitleLink ? <Link to={noteRoute.path(id)}>{title}</Link> : title}
     </h3>
-    {description && <p>{description}</p>}
-    <div className={css.buttonGroup}>
-      <IconButton component={Link} to={editNoteRoute.path(id)}>
-        <EditIcon />
-      </IconButton>
-      <form
-        method="post"
-        action={deleteNoteRoute.path(id)}
-        className={css.deleteForm}
-        {...{ onSubmit }}
-      >
-        <IconButton type="submit" className={css.delete}>
-          <DeleteIcon />
+    {description && <div className={css.description}>{description}</div>}
+    {showActions && (
+      <div className={css.buttonGroup}>
+        <IconButton component={Link} to={editNoteRoute.path(id)}>
+          <EditIcon />
         </IconButton>
-      </form>
-    </div>
+        <form
+          method="post"
+          action={deleteNoteRoute.path(id)}
+          className={css.deleteForm}
+          {...{ onSubmit }}
+        >
+          <IconButton type="submit">
+            <DeleteIcon />
+          </IconButton>
+        </form>
+      </div>
+    )}
   </Paper>
 )
 

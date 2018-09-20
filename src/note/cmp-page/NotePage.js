@@ -14,7 +14,7 @@ const mstp = ({ data, async }) => ({ note: data.note, isPageLoading: async.page 
 
 const NotePageJSX = ({ note, ...rest }: { note: Object }) => (
   <Page noPaper noPadding maxWidth={600}>
-    <Note {...note} {...rest} />
+    <Note {...note} {...rest} showActions />
   </Page>
 )
 
