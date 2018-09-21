@@ -21,7 +21,7 @@ const EditNotePageJSX = (props: Object) => (
 
 const EditNotePage = compose(
   connect(mstp),
-  withClientMainQuery,
+  withClientMainQuery(),
   renderIf(({ isPageLoading }) => isPageLoading, LoadingPage),
   renderIf(({ noteToEdit }) => !noteToEdit, NotFoundPage),
 )(EditNotePageJSX)

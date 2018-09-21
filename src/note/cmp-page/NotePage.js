@@ -20,7 +20,7 @@ const NotePageJSX = ({ note, ...rest }: { note: Object }) => (
 
 const NotePage = compose(
   connect(mstp),
-  withClientMainQuery,
+  withClientMainQuery(),
   renderIf(({ isPageLoading }) => isPageLoading, LoadingPage),
   renderIf(({ note }) => !note, NotFoundPage),
 )(NotePageJSX)

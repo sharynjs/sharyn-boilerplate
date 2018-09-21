@@ -58,6 +58,7 @@ const NoteFormJSX = ({
         value={fields.title ?? ''}
         onChange={handleFieldChange}
         error={!!invalidFields.find(inv => inv.name === 'title')}
+        autoFocus
         required
       />
     </div>
@@ -84,27 +85,20 @@ const NoteForm = compose(
     }),
   ),
   withHandlers({
-    onSubmit: ({ noteToEdit, match, fields, dispatch, routerHistory }) => async e => {
+    onSubmit: ({ noteToEdit, match, fields, dispatch, routerHistory }) => e => {
       e.preventDefault()
       const invalidFields = validateNoteInput(fields)
       dispatch(invalidFields ? invalidateFields(invalidFields) : clearInvalidFields())
       if (!invalidFields) {
-        const call = noteToEdit ? updateNoteCall : createNoteCall
-        const data = await dispatch(
+        dispatch(
           graphqlThunk({
-            ...call,
+            ...(noteToEdit ? updateNoteCall : createNoteCall),
+            routerHistory,
             urlParams: match.params,
             asyncKey: 'noteForm',
             fields,
           }),
         )
-        if (!data.errors && !data.invalidFields && call.successRedirect) {
-          routerHistory.push(
-            call.successRedirect instanceof Function
-              ? call.successRedirect(data, fields)
-              : call.successRedirect,
-          )
-        }
       }
     },
   }),

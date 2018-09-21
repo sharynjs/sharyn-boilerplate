@@ -46,6 +46,7 @@ const SignupFormJSX = ({
       placeholder="sharyn8020"
       value={fields.username ?? prefill?.username ?? ''}
       onChange={handleFieldChange}
+      required
     />
     <TextField
       className={css.input}
@@ -54,6 +55,7 @@ const SignupFormJSX = ({
       label="Password"
       value={fields.password ?? ''}
       onChange={handleFieldChange}
+      required
     />
     <div className={css.action}>
       <Button

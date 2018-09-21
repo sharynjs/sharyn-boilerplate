@@ -63,7 +63,7 @@ const NoNotesJSX = ({ classes: css }: { classes: Object }) => (
 
 const NotesPage = compose(
   connect(mstp),
-  withClientMainQuery,
+  withClientMainQuery(),
   renderIf(({ isPageLoading }) => isPageLoading, LoadingPage),
   withStyles(styles),
   renderIf(({ notes }) => notes?.length === 0, NoNotesJSX),

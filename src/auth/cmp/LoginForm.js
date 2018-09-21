@@ -47,6 +47,8 @@ const LoginFormJSX = ({
       label="Username"
       value={fields.username ?? prefill?.username ?? ''}
       onChange={handleFieldChange}
+      autoFocus
+      required
     />
     <TextField
       className={css.input}
@@ -55,6 +57,7 @@ const LoginFormJSX = ({
       label="Password"
       value={fields.password ?? ''}
       onChange={handleFieldChange}
+      required
     />
     <div className={css.action}>
       <Button

@@ -16,9 +16,9 @@ const dataReducer = (dataState: Object = {}, { payload, type }: Object) =>
     type,
     [
       [[SHARYN_FETCH_PAGE_SUCCESS, SHARYN_ASYNC_SUCCESS], () => addData(dataState, payload.data)],
+      [[SHARYN_NAVIGATION, SHARYN_FETCH_PAGE_REQUEST], () => clearData()],
       [SHARYN_INVALIDATE_FIELDS, () => addData(dataState, { invalidFields: payload })],
       [SHARYN_CLEAR_INVALID_FIELDS, () => delData('invalidFields')(dataState)],
-      [[SHARYN_NAVIGATION, SHARYN_FETCH_PAGE_REQUEST], () => clearData()],
     ],
     dataState,
   )
