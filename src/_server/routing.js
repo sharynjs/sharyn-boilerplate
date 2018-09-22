@@ -75,6 +75,7 @@ const routing = (router: Object) => {
       ...renderPageOptions,
       ctx,
       preloadedState: { ...preloadedStateBase, user, data },
+      swPath: '/sw.js',
     })
   })
 }
