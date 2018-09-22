@@ -33,7 +33,7 @@ const navItems = [
   fakeNotFoundErrorRoute,
   [fakeServerErrorRoute, { hardLink: true }],
   fakeClientErrorRoute,
-  { title: 'Storybook', path: '/static/storybook/', icon: StyleIcon, hardLink: true },
+  { title: 'Storybook', path: '/static/storybook/', icon: StyleIcon, newTab: true },
   [logoutRoute, { hardLink: true }],
 ]
 

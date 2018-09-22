@@ -6,7 +6,7 @@ import Page from 'sharyn/components/Page'
 
 const FakeClientErrorPageJSX = () => (
   <Page middle>
-    A fake error has been executed in your console to test client-side error-reporting.
+    A fake error has been executed in your console to test client-side error reporting.
   </Page>
 )
 
