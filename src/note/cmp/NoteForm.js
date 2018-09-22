@@ -21,6 +21,7 @@ type Props = {
   onSubmit?: Function,
   previousFields?: Object,
   invalidFields?: Object[],
+  isOnline?: boolean,
 }
 
 const NoteFormJSX = ({
@@ -30,6 +31,7 @@ const NoteFormJSX = ({
   onSubmit,
   previousFields = {},
   invalidFields = [],
+  isOnline = true,
 }: Props) => (
   <form method="post" {...{ onSubmit }}>
     {invalidFields.map(inv => (
@@ -55,7 +57,9 @@ const NoteFormJSX = ({
         fullWidth
       />
     </div>
-    <ProgressButton {...{ isLoading }}>{noteToEdit ? 'Save' : 'Create note'}</ProgressButton>
+    <ProgressButton {...{ isLoading, isOnline }}>
+      {noteToEdit ? 'Save' : 'Create note'}
+    </ProgressButton>
   </form>
 )
 
@@ -65,10 +69,11 @@ export const NoteFormCmp = withStyles(({ palette }) => ({
 }))(NoteFormJSX)
 
 const NoteForm = compose(
-  withRedux(({ data, async }) => ({
+  withRedux(({ data, async, env }) => ({
     invalidFields: data.invalidFields,
     previousFields: data.previousFields,
     isLoading: async.noteForm,
+    isOnline: env.isOnline,
   })),
   withHandlers({
     onSubmit: ({ noteToEdit, match, dispatch, routerHistory }) => e => {

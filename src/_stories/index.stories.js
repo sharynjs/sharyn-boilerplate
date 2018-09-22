@@ -100,6 +100,7 @@ storiesOf('All Components', module)
       title={text('title', 'Hello World')}
       {...spread({ backNav: boolean('backNav', true) ? '#' : undefined })}
       username={text('username', 'sharyn8020')}
+      isOffline={boolean('isOffline', false)}
     />
   ))
   .add('NotesPageCmp', () => (
@@ -121,6 +122,7 @@ storiesOf('All Components', module)
             ]
       }
       isPageLoading={boolean('isPageLoading', false)}
+      isOnline={boolean('isOnline', true)}
     />
   ))
   .add('NotePageCmp', () => (
@@ -145,6 +147,7 @@ storiesOf('All Components', module)
         useTitleLink={boolean('useTitleLink', true)}
         showActions={boolean('showActions', false)}
         isDeleting={boolean('isDeleting', false)}
+        isOnline={boolean('isOnline', true)}
       />
     </Host>
   ))
@@ -173,6 +176,7 @@ storiesOf('All Components', module)
           description: 'previous-description',
         }}
         isLoading={boolean('isLoading')}
+        isOnline={boolean('isOnline', true)}
       />
     </Host>
   ))
@@ -183,6 +187,7 @@ storiesOf('All Components', module)
           description: 'previous-description',
         }}
         isLoading={boolean('isLoading')}
+        isOnline={boolean('isOnline', true)}
       />
     </Host>
   ))

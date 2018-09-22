@@ -24,6 +24,7 @@ import {
   fakeNotFoundErrorRoute,
 } from 'error/error-routes'
 import BackIcon from '@material-ui/icons/ArrowBack'
+import OfflineIcon from '@material-ui/icons/CloudOff'
 
 const AppWithAutoScroll = hideOnScroll(AppBar)
 
@@ -44,6 +45,7 @@ const NavJSX = ({
   updateIsOpen,
   username,
   backNav,
+  isOffline = false,
 }: {
   classes: Object,
   isOpen: boolean,
@@ -51,6 +53,7 @@ const NavJSX = ({
   updateIsOpen: Function,
   username?: string,
   backNav?: string,
+  isOffline?: boolean,
 }) => (
   <Fragment>
     <AppWithAutoScroll className="hide-on-scroll">
@@ -70,10 +73,11 @@ const NavJSX = ({
           </IconButton>
         )}
         {title && (
-          <Typography variant="title" color="inherit">
+          <Typography variant="title" color="inherit" className={css.grow}>
             {title}
           </Typography>
         )}
+        {isOffline && <OfflineIcon color="inherit" />}
       </Toolbar>
     </AppWithAutoScroll>
     <div className={css.appBarPusher} />
@@ -96,9 +100,12 @@ export const NavCmp = compose(
   withStyles(({ mixins }) => ({
     appBarPusher: mixins.toolbar,
     backButton: { margin: '0 6px 0 -6px' },
+    grow: { flexGrow: 1 },
   })),
 )(NavJSX)
 
-const Nav = withRedux(({ user }) => ({ username: user?.username }))(NavCmp)
+const Nav = withRedux(({ user, env }) => ({ username: user?.username, isOffline: !env.isOnline }))(
+  NavCmp,
+)
 
 export default Nav

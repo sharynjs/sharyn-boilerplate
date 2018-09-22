@@ -31,6 +31,8 @@ import {
   asyncRequest,
   asyncSuccess,
   asyncFailure,
+  online,
+  offline,
 } from 'sharyn/client/actions'
 import {
   fetchPageThunk,
@@ -92,3 +94,6 @@ reactDomFn(
 )
 
 store.dispatch(startClientNavigation())
+
+window.addEventListener('online', () => store.dispatch(online()))
+window.addEventListener('offline', () => store.dispatch(offline()))

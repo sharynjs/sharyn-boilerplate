@@ -14,7 +14,7 @@ import allRoutes from 'app/all-routes'
 import { graphqlCall, findMatch } from 'sharyn/shared'
 
 jss.setup(jssPreset())
-const env = { IS_DEV_ENV, SENTRY_DSN_PUBLIC, NO_SSR }
+const env = { IS_DEV_ENV, SENTRY_DSN_PUBLIC, NO_SSR, isOnline: true }
 let data = {}
 const preloadedStateBase = { data, env, ui: {}, async: {} }
 const renderPageOptions = { App, theme, jss, preloadedState: preloadedStateBase }

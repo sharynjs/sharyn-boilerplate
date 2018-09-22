@@ -33,6 +33,7 @@ type Props = {
   handleDeleteConfirm?: Function,
   isConfirmDeleteOpen: boolean,
   setIsConfirmDeleteOpen: Function,
+  isOnline?: boolean,
 }
 
 const NoteJSX = ({
@@ -46,51 +47,54 @@ const NoteJSX = ({
   handleDeleteConfirm,
   isConfirmDeleteOpen,
   setIsConfirmDeleteOpen,
+  isOnline = true,
 }: Props) => (
   <Paper className={css.note}>
     <h3 className={css.title}>
       {useTitleLink ? <Link to={noteRoute.path(id)}>{title}</Link> : title}
     </h3>
     {description && <div className={css.description}>{description}</div>}
-    {showActions && (
-      <div className={css.buttonGroup}>
-        <IconButton component={Link} to={editNoteRoute.path(id)}>
-          <EditIcon />
-        </IconButton>
-        {isDeleting ? (
-          <Progress className={css.deleteProgress} size={24} />
-        ) : (
-          <form
-            method="post"
-            action={deleteNoteRoute.path(id)}
-            className={css.deleteForm}
-            onSubmit={e => e.preventDefault() || setIsConfirmDeleteOpen(true)}
-          >
-            <IconButton type="submit">
-              <DeleteIcon />
-            </IconButton>
+    {showActions &&
+      isOnline && (
+        <div className={css.buttonGroup}>
+          <IconButton component={Link} to={editNoteRoute.path(id)}>
+            <EditIcon />
+          </IconButton>
+          {isDeleting ? (
+            <Progress className={css.deleteProgress} size={24} />
+          ) : (
+            <form
+              method="post"
+              action={deleteNoteRoute.path(id)}
+              className={css.deleteForm}
+              onSubmit={e => e.preventDefault() || setIsConfirmDeleteOpen(true)}
+            >
+              <IconButton type="submit">
+                <DeleteIcon />
+              </IconButton>
 
-            <Dialog open={isConfirmDeleteOpen} onClose={() => setIsConfirmDeleteOpen(false)}>
-              <DialogContent>
-                <DialogContentText>Delete this note?</DialogContentText>
-              </DialogContent>
-              <DialogActions>
-                <Button onClick={() => setIsConfirmDeleteOpen(false)}>Cancel</Button>
-                <Button
-                  onClick={() =>
-                    setIsConfirmDeleteOpen(false) || (handleDeleteConfirm && handleDeleteConfirm())
-                  }
-                  className={css.confirmDelete}
-                  autoFocus
-                >
-                  Delete
-                </Button>
-              </DialogActions>
-            </Dialog>
-          </form>
-        )}
-      </div>
-    )}
+              <Dialog open={isConfirmDeleteOpen} onClose={() => setIsConfirmDeleteOpen(false)}>
+                <DialogContent>
+                  <DialogContentText>Delete this note?</DialogContentText>
+                </DialogContent>
+                <DialogActions>
+                  <Button onClick={() => setIsConfirmDeleteOpen(false)}>Cancel</Button>
+                  <Button
+                    onClick={() =>
+                      setIsConfirmDeleteOpen(false) ||
+                      (handleDeleteConfirm && handleDeleteConfirm())
+                    }
+                    className={css.confirmDelete}
+                    autoFocus
+                  >
+                    Delete
+                  </Button>
+                </DialogActions>
+              </Dialog>
+            </form>
+          )}
+        </div>
+      )}
   </Paper>
 )
 
@@ -108,7 +112,7 @@ export const NoteCmp = compose(
 )(NoteJSX)
 
 const Note = compose(
-  withRedux(({ async }) => ({ isDeleting: async.deleteNote })),
+  withRedux(({ async, env }) => ({ isDeleting: async.deleteNote, isOnline: env.isOnline })),
   withHandlers({
     handleDeleteConfirm: ({ id, dispatch, routerHistory }) => () => {
       const fields = { id }
