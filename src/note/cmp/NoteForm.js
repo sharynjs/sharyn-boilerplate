@@ -2,47 +2,33 @@
 
 import React from 'react'
 
-import { connect } from 'react-redux'
+import { connect as withRedux } from 'react-redux'
 import compose from 'recompose/compose'
 import withHandlers from 'recompose/withHandlers'
 import { withStyles } from '@material-ui/core/styles'
-import withFields from 'sharyn/hocs/with-fields'
 import TextField from '@material-ui/core/TextField'
 import ProgressButton from 'sharyn/components/ProgressButton'
 import { validateNoteInput } from 'note/note-validations'
 import { invalidateFields, clearInvalidFields } from 'sharyn/client/actions'
-import spread from 'sharyn/util/spread'
 import { updateNoteCall, createNoteCall } from 'note/note-calls'
 import { graphqlThunk } from 'sharyn/client/thunks'
-
-const styles = ({ palette }) => ({
-  field: { marginBottom: 15 },
-  error: { marginBottom: 20, color: palette.error.main },
-})
-
-const mstp = ({ data, async }) => ({
-  invalidFields: data.invalidFields,
-  previousFields: data.previousFields,
-  isLoading: async.noteForm,
-})
+import formData from 'sharyn/client/form-data'
 
 type Props = {
   classes: Object,
-  fields: Object,
-  handleFieldChange: Function,
-  onSubmit: Function,
-  isLoading?: boolean,
   noteToEdit?: Object,
+  isLoading?: boolean,
+  onSubmit?: Function,
+  previousFields?: Object,
   invalidFields?: Object[],
 }
 
 const NoteFormJSX = ({
   classes: css,
-  fields,
-  handleFieldChange,
-  onSubmit,
   noteToEdit,
   isLoading,
+  onSubmit,
+  previousFields = {},
   invalidFields = [],
 }: Props) => (
   <form method="post" {...{ onSubmit }}>
@@ -55,8 +41,7 @@ const NoteFormJSX = ({
       <TextField
         label="Title"
         name="title"
-        value={fields.title ?? ''}
-        onChange={handleFieldChange}
+        defaultValue={previousFields.title ?? noteToEdit?.title}
         error={!!invalidFields.find(inv => inv.name === 'title')}
         autoFocus
         required
@@ -66,8 +51,7 @@ const NoteFormJSX = ({
       <TextField
         label="Description"
         name="description"
-        value={fields.description ?? ''}
-        onChange={handleFieldChange}
+        defaultValue={previousFields.description ?? noteToEdit?.description}
         fullWidth
       />
     </div>
@@ -75,18 +59,21 @@ const NoteFormJSX = ({
   </form>
 )
 
+export const NoteFormCmp = withStyles(({ palette }) => ({
+  field: { marginBottom: 15 },
+  error: { marginBottom: 20, color: palette.error.main },
+}))(NoteFormJSX)
+
 const NoteForm = compose(
-  connect(mstp),
-  withFields(({ noteToEdit, previousFields = {} }) =>
-    spread({
-      title: noteToEdit?.title,
-      description: noteToEdit?.description,
-      ...previousFields,
-    }),
-  ),
+  withRedux(({ data, async }) => ({
+    invalidFields: data.invalidFields,
+    previousFields: data.previousFields,
+    isLoading: async.noteForm,
+  })),
   withHandlers({
-    onSubmit: ({ noteToEdit, match, fields, dispatch, routerHistory }) => e => {
+    onSubmit: ({ noteToEdit, match, dispatch, routerHistory }) => e => {
       e.preventDefault()
+      const fields = formData(e)
       const invalidFields = validateNoteInput(fields)
       dispatch(invalidFields ? invalidateFields(invalidFields) : clearInvalidFields())
       if (!invalidFields) {
@@ -102,7 +89,6 @@ const NoteForm = compose(
       }
     },
   }),
-  withStyles(styles),
-)(NoteFormJSX)
+)(NoteFormCmp)
 
 export default NoteForm

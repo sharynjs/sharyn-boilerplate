@@ -3,7 +3,7 @@
 import React, { Fragment } from 'react'
 import compose from 'recompose/compose'
 import withState from 'recompose/withState'
-import { connect } from 'react-redux'
+import { connect as withRedux } from 'react-redux'
 
 import { Link } from 'react-router-dom'
 import { withStyles } from '@material-ui/core/styles'
@@ -23,13 +23,6 @@ const AppWithAutoScroll = hideOnScroll(AppBar)
 
 const navItems = [notesRoute, newNoteRoute, [logoutRoute, { hardLink: true }]]
 
-const mstp = ({ user }) => ({ username: user?.username })
-
-const styles = ({ mixins }) => ({
-  appBarPusher: mixins.toolbar,
-  backButton: { margin: '0 6px 0 -6px' },
-})
-
 const NavJSX = ({
   classes: css,
   title,
@@ -40,9 +33,9 @@ const NavJSX = ({
 }: {
   classes: Object,
   isOpen: boolean,
-  title: string,
+  title?: string,
   updateIsOpen: Function,
-  username: string,
+  username?: string,
   backNav?: string,
 }) => (
   <Fragment>
@@ -62,9 +55,11 @@ const NavJSX = ({
             <BackIcon />
           </IconButton>
         )}
-        <Typography variant="title" color="inherit">
-          {title}
-        </Typography>
+        {title && (
+          <Typography variant="title" color="inherit">
+            {title}
+          </Typography>
+        )}
       </Toolbar>
     </AppWithAutoScroll>
     <div className={css.appBarPusher} />
@@ -77,15 +72,19 @@ const NavJSX = ({
       onClick={() => updateIsOpen(false)}
     >
       <NavList navItems={navItems} />
-      <div data-test="username-display">{username}</div>
+      {username && <div data-test="username-display">{username}</div>}
     </SwipeableDrawer>
   </Fragment>
 )
 
-const Nav = compose(
+export const NavCmp = compose(
   withState('isOpen', 'updateIsOpen', false),
-  connect(mstp),
-  withStyles(styles),
+  withStyles(({ mixins }) => ({
+    appBarPusher: mixins.toolbar,
+    backButton: { margin: '0 6px 0 -6px' },
+  })),
 )(NavJSX)
+
+const Nav = withRedux(({ user }) => ({ username: user?.username }))(NavCmp)
 
 export default Nav

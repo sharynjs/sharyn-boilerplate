@@ -10,40 +10,6 @@ import LogoTitle from 'app/cmp/LogoTitle'
 
 import { loginRoute } from 'auth/auth-routes'
 
-const styles = ({ breakpoints }) => ({
-  layout: {
-    maxWidth: 650,
-    display: 'flex',
-    [breakpoints.down('xs')]: { width: '100%', flexDirection: 'column' },
-  },
-  _pane: { [breakpoints.down('xs')]: { width: 'auto' } },
-  firstPane: {
-    extend: '_pane',
-    width: '58%',
-    paddingRight: 30,
-    borderRight: '1px solid #d7d7d7',
-    [breakpoints.down('xs')]: { margin: '0 0 10px', padding: 0, border: 'none' },
-  },
-  secondPane: {
-    extend: '_pane',
-    width: '42%',
-    marginLeft: 30,
-    [breakpoints.down('xs')]: { margin: 0 },
-  },
-  brandingContainer: { textAlign: 'center' },
-  slogan: { margin: '23px 0', [breakpoints.down('xs')]: { margin: '15px 0' } },
-  description: { [breakpoints.down('xs')]: { display: 'none' } },
-  featured: {
-    color: '#999',
-    textAlign: 'center',
-    marginTop: 20,
-    [breakpoints.down('xs')]: { display: 'none' },
-  },
-  switchAuth: { marginTop: 20, textAlign: 'center' },
-  authLink: { whiteSpace: 'nowrap' },
-  signupText: { marginBottom: 20 },
-})
-
 const LandingSignupPageJSX = ({ classes: css }: { classes: Object }) => (
   <Page middle>
     <div className={css.layout}>
@@ -80,6 +46,40 @@ const LandingSignupPageJSX = ({ classes: css }: { classes: Object }) => (
   </Page>
 )
 
-const LandingSignupPage = withStyles(styles)(LandingSignupPageJSX)
+export const LandingSignupPageCmp = withStyles(({ breakpoints }) => ({
+  layout: {
+    maxWidth: 650,
+    display: 'flex',
+    [breakpoints.down('xs')]: { width: '100%', flexDirection: 'column' },
+  },
+  _pane: { [breakpoints.down('xs')]: { width: 'auto' } },
+  firstPane: {
+    extend: '_pane',
+    width: '58%',
+    paddingRight: 30,
+    borderRight: '1px solid #d7d7d7',
+    [breakpoints.down('xs')]: { margin: '0 0 10px', padding: 0, border: 'none' },
+  },
+  secondPane: {
+    extend: '_pane',
+    width: '42%',
+    marginLeft: 30,
+    [breakpoints.down('xs')]: { margin: 0 },
+  },
+  brandingContainer: { textAlign: 'center' },
+  slogan: { margin: '23px 0', [breakpoints.down('xs')]: { margin: '15px 0' } },
+  description: { [breakpoints.down('xs')]: { display: 'none' } },
+  featured: {
+    color: '#999',
+    textAlign: 'center',
+    marginTop: 20,
+    [breakpoints.down('xs')]: { display: 'none' },
+  },
+  switchAuth: { marginTop: 20, textAlign: 'center' },
+  authLink: { whiteSpace: 'nowrap' },
+  signupText: { marginBottom: 20 },
+}))(LandingSignupPageJSX)
+
+const LandingSignupPage = LandingSignupPageCmp
 
 export default LandingSignupPage

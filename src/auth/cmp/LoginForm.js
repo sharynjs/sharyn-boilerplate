@@ -1,40 +1,20 @@
 // @flow
 
 import React from 'react'
-import { connect } from 'react-redux'
-import compose from 'recompose/compose'
-import withFields from 'sharyn/hocs/with-fields'
+import { connect as withRedux } from 'react-redux'
 import { withStyles } from '@material-ui/core/styles'
 import TextField from '@material-ui/core/TextField'
 import Button from '@material-ui/core/Button'
 
 import { loginRoute } from 'auth/auth-routes'
 
-const styles = ({ breakpoints, palette }) => ({
-  input: { width: '100%' },
-  firstInput: { extend: 'input', marginBottom: 10 },
-  action: { textAlign: 'center', marginTop: 20 },
-  loginButton: { [breakpoints.down('xs')]: { width: '100%' } },
-  error: { margin: '20px 0', color: palette.error.main },
-})
-
-const mstp = ({ data }) => ({ ...data })
-
 type Props = {
   classes: Object,
-  fields: Object,
-  handleFieldChange: Function,
-  prefill?: Object,
+  previousFields?: Object,
   errorMessage?: string,
 }
 
-const LoginFormJSX = ({
-  classes: css,
-  fields,
-  handleFieldChange,
-  prefill,
-  errorMessage,
-}: Props) => (
+const LoginFormJSX = ({ classes: css, previousFields = {}, errorMessage }: Props) => (
   <form data-test="login-form" action={loginRoute.path} method="post">
     {errorMessage && (
       <div data-test="login-error" className={css.error}>
@@ -45,20 +25,11 @@ const LoginFormJSX = ({
       className={css.firstInput}
       name="username"
       label="Username"
-      value={fields.username ?? prefill?.username ?? ''}
-      onChange={handleFieldChange}
+      defaultValue={previousFields.username}
       autoFocus
       required
     />
-    <TextField
-      className={css.input}
-      name="password"
-      type="password"
-      label="Password"
-      value={fields.password ?? ''}
-      onChange={handleFieldChange}
-      required
-    />
+    <TextField className={css.input} name="password" type="password" label="Password" required />
     <div className={css.action}>
       <Button
         className={css.loginButton}
@@ -73,10 +44,17 @@ const LoginFormJSX = ({
   </form>
 )
 
-const LoginForm = compose(
-  withFields(),
-  connect(mstp),
-  withStyles(styles),
-)(LoginFormJSX)
+export const LoginFormCmp = withStyles(({ breakpoints, palette }) => ({
+  input: { width: '100%' },
+  firstInput: { extend: 'input', marginBottom: 10 },
+  action: { textAlign: 'center', marginTop: 20 },
+  loginButton: { [breakpoints.down('xs')]: { width: '100%' } },
+  error: { margin: '20px 0', color: palette.error.main },
+}))(LoginFormJSX)
+
+const LoginForm = withRedux(({ data }) => ({
+  previousFields: data.previousFields,
+  errorMessage: data.errorMessage,
+}))(LoginFormCmp)
 
 export default LoginForm

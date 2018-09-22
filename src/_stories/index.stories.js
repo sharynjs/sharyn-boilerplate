@@ -8,7 +8,6 @@ import { muiTheme } from 'storybook-addon-material-ui'
 import { withBackgrounds } from '@storybook/addon-backgrounds'
 import { storiesOf } from '@storybook/react'
 import { withKnobs, text, boolean } from '@storybook/addon-knobs/react'
-import { host } from 'storybook-host'
 // flow-disable-next-line
 import jss from 'jss'
 import jssPreset from 'jss-preset-default'
@@ -20,10 +19,24 @@ import globalStyles from 'sharyn/css/global'
 import { applyMiddleware, combineReducers, createStore } from 'redux'
 import { Provider } from 'react-redux'
 import thunk from 'redux-thunk'
+import Host from 'sharyn/components/StoryHost'
+import spread from 'sharyn/util/spread'
 
 import dataReducer from '_client/reducers/data-reducer'
-import Note from 'note/cmp/Note'
-import NoteForm from 'note/cmp/NoteForm'
+import { NoteCmp } from 'note/cmp/Note'
+import { NoteFormCmp } from 'note/cmp/NoteForm'
+import { NavCmp } from 'app/cmp/Nav'
+import { SignupFormCmp } from 'auth/cmp/SignupForm'
+import { LoginFormCmp } from 'auth/cmp/LoginForm'
+import { LoginPageCmp } from 'auth/cmp-page/LoginPage'
+import { LogoTitleCmp } from 'app/cmp/LogoTitle'
+import { FakeClientErrorPageCmp } from 'error/cmp-page/FakeClientErrorPage'
+import { NotFoundPageCmp } from 'error/cmp-page/NotFoundPage'
+import { LandingSignupPageCmp } from 'landing/cmp-page/LandingSignupPage'
+import { EditNotePageCmp } from 'note/cmp-page/EditNotePage'
+import { NewNotePageCmp } from 'note/cmp-page/NewNotePage'
+import { NotePageCmp } from 'note/cmp-page/NotePage'
+import { NotesPageCmp } from 'note/cmp-page/NotesPage'
 import theme from 'app/theme'
 
 jss.setup(jssPreset())
@@ -40,7 +53,7 @@ const store = createStore(
   applyMiddleware(thunk),
 )
 
-storiesOf('Components', module)
+storiesOf('All Components', module)
   .addDecorator(withKnobs)
   .addDecorator(
     withBackgrounds([
@@ -58,19 +71,117 @@ storiesOf('Components', module)
     </Provider>
   ))
   .addDecorator(muiTheme(theme))
-  .addDecorator(host({ align: 'center middle', backdrop: 'transparent' }))
-  .add('Note', () => (
-    <div style={{ width: 600 }}>
-      <Note
+  .add('LandingSignupPageCmp', () => <LandingSignupPageCmp />)
+  .add('LoginPageCmp', () => <LoginPageCmp />)
+  .add('LogoTitleCmp', () => (
+    <Host border>
+      <LogoTitleCmp />
+    </Host>
+  ))
+  .add('SignupFormCmp', () => (
+    <Host border>
+      <SignupFormCmp
+        previousFields={{ username: 'previous-username' }}
+        errorMessage={text('errorMessage')}
+      />
+    </Host>
+  ))
+  .add('LoginFormCmp', () => (
+    <Host border>
+      <LoginFormCmp
+        previousFields={{ username: 'previous-username' }}
+        errorMessage={text('errorMessage')}
+      />
+    </Host>
+  ))
+  .add('NavCmp', () => (
+    <NavCmp
+      title={text('title', 'Hello World')}
+      {...spread({ backNav: boolean('backNav', true) ? '#' : undefined })}
+      username={text('username', 'sharyn8020')}
+    />
+  ))
+  .add('NotesPageCmp', () => (
+    <NotesPageCmp
+      notes={
+        boolean('No notes', false)
+          ? undefined
+          : [
+              {
+                id: '1',
+                title: text('title1', 'A title'),
+                description: text('description1', 'A description'),
+              },
+              {
+                id: '2',
+                title: text('title2', 'A title'),
+                description: text('description2', 'A description'),
+              },
+            ]
+      }
+      isPageLoading={boolean('isPageLoading', false)}
+    />
+  ))
+  .add('NotePageCmp', () => (
+    <NotePageCmp
+      note={
+        boolean('Not found', false)
+          ? undefined
+          : {
+              title: text('title', 'A title'),
+              description: text('description', 'A description'),
+            }
+      }
+      isPageLoading={boolean('isPageLoading', false)}
+    />
+  ))
+  .add('NoteCmp', () => (
+    <Host border>
+      <NoteCmp
         id="1234"
         title={text('title', 'A Title')}
         description={text('description', 'A description')}
         useTitleLink={boolean('useTitleLink', true)}
       />
-    </div>
+    </Host>
   ))
-  .add('NoteForm', () => (
-    <div style={{ width: 600 }}>
-      <NoteForm isEdit={boolean('isEdit', false)} />
-    </div>
+  .add('EditNotePageCmp', () => (
+    <EditNotePageCmp
+      noteToEdit={
+        boolean('Not found', false)
+          ? undefined
+          : {
+              title: 'edit-title',
+              description: 'edit-description',
+            }
+      }
+      isPageLoading={boolean('isPageLoading', false)}
+    />
   ))
+  .add('NewNotePageCmp', () => <NewNotePageCmp />)
+  .add('NoteFormCmp Edit', () => (
+    <Host border width={600}>
+      <NoteFormCmp
+        noteToEdit={{
+          title: 'edit-title',
+          description: 'edit-description',
+        }}
+        previousFields={{
+          description: 'previous-description',
+        }}
+        isLoading={boolean('isLoading')}
+      />
+    </Host>
+  ))
+  .add('NoteFormCmp Create', () => (
+    <Host border width={600}>
+      <NoteFormCmp
+        previousFields={{
+          description: 'previous-description',
+        }}
+        isLoading={boolean('isLoading')}
+      />
+    </Host>
+  ))
+  .add('NotFoundPageCmp', () => <NotFoundPageCmp />)
+  .add('FakeClientErrorPageCmp', () => <FakeClientErrorPageCmp />)

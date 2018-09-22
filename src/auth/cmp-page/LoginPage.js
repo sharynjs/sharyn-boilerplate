@@ -10,12 +10,6 @@ import LogoTitle from 'app/cmp/LogoTitle'
 import LoginForm from 'auth/cmp/LoginForm'
 import { landingSignupRoute } from 'landing/landing-routes'
 
-const styles = {
-  brandingContainer: { textAlign: 'center', marginBottom: 30 },
-  switchAuth: { marginTop: 20, textAlign: 'center' },
-  authLink: { whiteSpace: 'nowrap' },
-}
-
 const LoginPageJSX = ({ classes: css }: { classes: Object }) => (
   <Page middle>
     <div className={css.brandingContainer}>
@@ -34,6 +28,12 @@ const LoginPageJSX = ({ classes: css }: { classes: Object }) => (
   </Page>
 )
 
-const LoginPage = withStyles(styles)(LoginPageJSX)
+export const LoginPageCmp = withStyles({
+  brandingContainer: { textAlign: 'center', marginBottom: 30 },
+  switchAuth: { marginTop: 20, textAlign: 'center' },
+  authLink: { whiteSpace: 'nowrap' },
+})(LoginPageJSX)
+
+const LoginPage = LoginPageCmp
 
 export default LoginPage

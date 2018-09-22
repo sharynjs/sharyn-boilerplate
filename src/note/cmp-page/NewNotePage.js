@@ -11,6 +11,8 @@ const NewNotePageJSX = (props: Object) => (
   </Page>
 )
 
-const NewNotePage = NewNotePageJSX
+export const NewNotePageCmp = NewNotePageJSX
+
+const NewNotePage = NewNotePageCmp
 
 export default NewNotePage

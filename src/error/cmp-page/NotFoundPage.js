@@ -8,7 +8,7 @@ import Typography from '@material-ui/core/Typography'
 import Page from 'sharyn/components/Page'
 import Button from '@material-ui/core/Button'
 
-const NotFoundPage = () => (
+const NotFoundPageJSX = () => (
   <Page middle noPaper>
     <div style={{ textAlign: 'center' }}>
       <QuestionIcon style={{ fontSize: 120, color: '#ccc', marginBottom: 20 }} />
@@ -26,5 +26,9 @@ const NotFoundPage = () => (
     </div>
   </Page>
 )
+
+export const NotFoundPageCmp = NotFoundPageJSX
+
+const NotFoundPage = NotFoundPageCmp
 
 export default NotFoundPage

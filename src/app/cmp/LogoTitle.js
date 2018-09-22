@@ -5,16 +5,16 @@ import LogoIcon from '@material-ui/icons/ImportContacts'
 import { withStyles } from '@material-ui/core/styles'
 import React from 'react'
 
-const styles = ({ palette }) => ({
-  logo: { fontSize: 45, verticalAlign: 'top', color: palette.primary.main },
-})
-
 const LogoTitleJSX = ({ classes: css }: { classes: Object }) => (
   <Typography variant="display2">
     <LogoIcon className={css.logo} /> Notesapp
   </Typography>
 )
 
-const LogoTitle = withStyles(styles)(LogoTitleJSX)
+export const LogoTitleCmp = withStyles(({ palette }) => ({
+  logo: { fontSize: 45, verticalAlign: 'top', color: palette.primary.main },
+}))(LogoTitleJSX)
+
+const LogoTitle = LogoTitleCmp
 
 export default LogoTitle

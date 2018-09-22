@@ -21,6 +21,7 @@ export const typeDef = gql`
   }
   type NoteInputResult {
     note: Note
+    updatedNote: Note
     invalidFields: [InvalidField]
   }
   type Query {
@@ -56,12 +57,12 @@ export const resolvers = {
             note: createNote(getUserIdOrThrow(ctx), uuid(), args.input),
           }
     },
-    updateNote: (root: Object, args: Object, ctx: Object) => {
+    updateNote: async (root: Object, args: Object, ctx: Object) => {
       const invalidFields = validateNoteInput(args.input)
       return invalidFields
-        ? { invalidFields }
+        ? { invalidFields, note: await findNote(getUserIdOrThrow(ctx), args.id) }
         : {
-            note: updateNote(getUserIdOrThrow(ctx), args.id, args.input),
+            updatedNote: await updateNote(getUserIdOrThrow(ctx), args.id, args.input),
           }
     },
     deleteNote: (root: Object, args: Object, ctx: Object) =>

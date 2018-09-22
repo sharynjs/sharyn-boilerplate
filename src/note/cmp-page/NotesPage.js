@@ -1,7 +1,7 @@
 // @flow
 
 import React from 'react'
-import { connect } from 'react-redux'
+import { connect as withRedux } from 'react-redux'
 import compose from 'recompose/compose'
 import { newNoteRoute } from 'note/note-routes'
 import { Link } from 'react-router-dom'
@@ -14,21 +14,15 @@ import Note from 'note/cmp/Note'
 import renderIf from 'sharyn/hocs/render-if'
 import LoadingPage from 'sharyn/components/LoadingPage'
 
-const styles = ({ spacing }) => ({
-  fab: { position: 'fixed', bottom: spacing.unit * 3, right: spacing.unit * 3 },
-  extendedFab: { extend: 'fab', paddingRight: spacing.unit * 3 },
-  extendedFabIcon: { marginRight: spacing.unit },
-})
+type Props = { classes: Object, notes: Object[] }
 
-const mstp = ({ data, async }) => ({ notes: data.notes, isPageLoading: async.page })
-
-type Props = { classes: Object, notes?: Object[] }
-
-const NotesPageJSX = ({ classes: css, notes = [] }: Props) => (
+const NotesPageJSX = ({ classes: css, notes }: Props) => (
   <>
     <Page noPaper noPadding maxWidth={600}>
       {notes.map(n => (
-        <Note key={n.id} {...n} useTitleLink />
+        <div key={n.id} className={css.note}>
+          <Note {...n} useTitleLink />
+        </div>
       ))}
     </Page>
     <Button
@@ -43,7 +37,7 @@ const NotesPageJSX = ({ classes: css, notes = [] }: Props) => (
   </>
 )
 
-const NoNotesJSX = ({ classes: css }: { classes: Object }) => (
+const NoNotesPageJSX = ({ classes: css }: { classes: Object }) => (
   <>
     <Page noPaper noPadding middle>
       {"You don't have any note yet!"}
@@ -61,12 +55,20 @@ const NoNotesJSX = ({ classes: css }: { classes: Object }) => (
   </>
 )
 
-const NotesPage = compose(
-  connect(mstp),
-  withClientMainQuery(),
+export const NotesPageCmp = compose(
   renderIf(({ isPageLoading }) => isPageLoading, LoadingPage),
-  withStyles(styles),
-  renderIf(({ notes }) => notes?.length === 0, NoNotesJSX),
+  withStyles(({ spacing }) => ({
+    note: { marginBottom: 30 },
+    fab: { position: 'fixed', bottom: spacing.unit * 3, right: spacing.unit * 3 },
+    extendedFab: { extend: 'fab', paddingRight: spacing.unit * 3 },
+    extendedFabIcon: { marginRight: spacing.unit },
+  })),
+  renderIf(({ notes }) => !notes || notes?.length === 0, NoNotesPageJSX),
 )(NotesPageJSX)
+
+const NotesPage = compose(
+  withRedux(({ data, async }) => ({ notes: data.notes, isPageLoading: async.page })),
+  withClientMainQuery(),
+)(NotesPageCmp)
 
 export default NotesPage

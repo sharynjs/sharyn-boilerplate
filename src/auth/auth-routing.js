@@ -6,8 +6,8 @@ import { renderPage } from 'sharyn/server'
 
 import { notesRoute } from 'note/note-routes'
 import { createUser, findUserByUsername } from 'user/user-db'
-import { landingSignupRoute } from 'landing/landing-routes'
-import { loginRoute, logoutRoute } from 'auth/auth-routes'
+import { LANDING_SIGNUP_PATH } from 'landing/landing-paths'
+import { LOGIN_PATH, LOGOUT_PATH } from 'auth/auth-paths'
 
 const logIn = (ctx, id, username) => {
   ctx.session = { user: { id, username } }
@@ -16,11 +16,11 @@ const logIn = (ctx, id, username) => {
 
 const authRouting = (router: Object, renderPageOptions: Object) => {
   router.get(
-    landingSignupRoute.path,
+    LANDING_SIGNUP_PATH,
     (ctx, next) => (ctx.session?.user ? next() : renderPage({ ctx, ...renderPageOptions })),
   )
 
-  router.post(landingSignupRoute.path, async ctx => {
+  router.post(LANDING_SIGNUP_PATH, async ctx => {
     const { username, password } = ctx.request.body
     if (!username || username === '' || !password || password === '') {
       renderPage({
@@ -29,7 +29,7 @@ const authRouting = (router: Object, renderPageOptions: Object) => {
         preloadedState: {
           ...renderPageOptions.preloadedState,
           data: {
-            prefill: ctx.request.body,
+            previousFields: ctx.request.body,
             errorMessage: 'Please enter a username and a password.',
           },
         },
@@ -42,12 +42,12 @@ const authRouting = (router: Object, renderPageOptions: Object) => {
     }
   })
 
-  router.get(loginRoute.path, ctx => {
+  router.get(LOGIN_PATH, ctx => {
     ctx.session = null
     renderPage({ ctx, ...renderPageOptions })
   })
 
-  router.post(loginRoute.path, async ctx => {
+  router.post(LOGIN_PATH, async ctx => {
     const { username, password } = ctx.request.body
     const user = await findUserByUsername(username)
     if (user && (await bcrypt.compare(password, user.passwordHash))) {
@@ -59,7 +59,7 @@ const authRouting = (router: Object, renderPageOptions: Object) => {
         preloadedState: {
           ...renderPageOptions.preloadedState,
           data: {
-            prefill: ctx.request.body,
+            previousFields: ctx.request.body,
             errorMessage: 'Incorrect username or password.',
           },
         },
@@ -67,7 +67,7 @@ const authRouting = (router: Object, renderPageOptions: Object) => {
     }
   })
 
-  router.get(logoutRoute.path, ctx => {
+  router.get(LOGOUT_PATH, ctx => {
     ctx.session = null
     ctx.redirect('/')
   })

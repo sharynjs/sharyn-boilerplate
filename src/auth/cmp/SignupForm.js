@@ -1,38 +1,20 @@
 // @flow
 
 import React from 'react'
-import { connect } from 'react-redux'
-import compose from 'recompose/compose'
-import withFields from 'sharyn/hocs/with-fields'
+import { connect as withRedux } from 'react-redux'
 import { withStyles } from '@material-ui/core/styles'
 import TextField from '@material-ui/core/TextField'
 import Button from '@material-ui/core/Button'
 
 import { landingSignupRoute } from 'landing/landing-routes'
 
-const styles = ({ breakpoints, palette }) => ({
-  input: { width: '100%' },
-  firstInput: { extend: 'input', marginBottom: 10 },
-  action: { textAlign: 'center', marginTop: 20 },
-  signupButton: { [breakpoints.down('xs')]: { width: '100%' } },
-  error: { margin: '20px 0', color: palette.error.main },
-})
-
-const mstp = ({ data }) => ({ ...data })
-
-const SignupFormJSX = ({
-  classes: css,
-  fields,
-  handleFieldChange,
-  prefill,
-  errorMessage,
-}: {
+type Props = {
   classes: Object,
-  fields: Object,
-  handleFieldChange: Function,
-  prefill?: Object,
+  previousFields?: Object,
   errorMessage?: string,
-}) => (
+}
+
+const SignupFormJSX = ({ classes: css, previousFields = {}, errorMessage }: Props) => (
   <form data-test="signup-form" action={landingSignupRoute.path} method="post">
     {errorMessage && (
       <div data-test="signup-error" className={css.error}>
@@ -44,19 +26,10 @@ const SignupFormJSX = ({
       name="username"
       label="Username"
       placeholder="sharyn8020"
-      value={fields.username ?? prefill?.username ?? ''}
-      onChange={handleFieldChange}
+      defaultValue={previousFields.username}
       required
     />
-    <TextField
-      className={css.input}
-      name="password"
-      type="password"
-      label="Password"
-      value={fields.password ?? ''}
-      onChange={handleFieldChange}
-      required
-    />
+    <TextField className={css.input} name="password" type="password" label="Password" required />
     <div className={css.action}>
       <Button
         className={css.signupButton}
@@ -71,10 +44,17 @@ const SignupFormJSX = ({
   </form>
 )
 
-const SignupForm = compose(
-  withFields(),
-  connect(mstp),
-  withStyles(styles),
-)(SignupFormJSX)
+export const SignupFormCmp = withStyles(({ breakpoints, palette }) => ({
+  input: { width: '100%' },
+  firstInput: { extend: 'input', marginBottom: 10 },
+  action: { textAlign: 'center', marginTop: 20 },
+  signupButton: { [breakpoints.down('xs')]: { width: '100%' } },
+  error: { margin: '20px 0', color: palette.error.main },
+}))(SignupFormJSX)
+
+const SignupForm = withRedux(({ data }) => ({
+  previousFields: data.previousFields,
+  errorMessage: data.errorMessage,
+}))(SignupFormCmp)
 
 export default SignupForm

@@ -3,7 +3,7 @@
 import React, { Fragment } from 'react'
 import Helmet from 'react-helmet'
 import { hot } from 'react-hot-loader'
-import { connect } from 'react-redux'
+import { connect as withRedux } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import compose from 'recompose/compose'
 import withLifecycle from 'recompose/lifecycle'
@@ -16,44 +16,23 @@ import allRoutesAndCmps from 'app/all-routes'
 import Nav from 'app/cmp/Nav'
 import Favicons from 'app/cmp/Favicons'
 
-const lifecycle = {
-  componentDidUpdate(prevProps) {
-    if (prevProps.location.pathname !== this.props.location.pathname) {
-      this.props.handleNavigation()
-    }
-  },
-}
-
-const mstp = ({ data, user, env, async, ui }) => ({
-  mainState: { data, user, env },
-  isLoggedIn: !!user,
-  isPageLoading: async.page,
-  notifications: ui.notifications,
-})
-
-const mdtp = dispatch => ({
-  handleDismissNotification: () => dispatch(dismissFirstNotification()),
-  handleNavigation: () => dispatch(navigation()),
-})
-
 type Props = {
-  isLoggedIn: boolean,
   location: Object,
   history: Object,
   mainState: Object,
+  isLoggedIn: boolean,
   isPageLoading?: boolean,
   notifications?: Object[],
   handleDismissNotification: Function,
-  errors?: string,
 }
 
 const AppJSX = ({
+  location,
+  history: routerHistory,
+  mainState,
   isLoggedIn,
   isPageLoading,
-  location,
-  mainState,
-  history: routerHistory,
-  notifications = [],
+  notifications,
   handleDismissNotification,
 }: Props) => {
   const { match, route, Component } = findMatch(allRoutesAndCmps, location.pathname, isLoggedIn)
@@ -80,11 +59,25 @@ const AppJSX = ({
 const App = compose(
   hot(module),
   withRouter,
-  connect(
-    mstp,
-    mdtp,
+  withRedux(
+    ({ data, user, env, async, ui }) => ({
+      mainState: { data, user, env },
+      isLoggedIn: !!user,
+      isPageLoading: async.page,
+      notifications: ui.notifications,
+    }),
+    dispatch => ({
+      handleDismissNotification: () => dispatch(dismissFirstNotification()),
+      handleNavigation: () => dispatch(navigation()),
+    }),
   ),
-  withLifecycle(lifecycle),
+  withLifecycle({
+    componentDidUpdate(prevProps) {
+      if (prevProps.location.pathname !== this.props.location.pathname) {
+        this.props.handleNavigation()
+      }
+    },
+  }),
   withStyles(globalStyles),
 )(AppJSX)
 

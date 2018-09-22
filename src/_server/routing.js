@@ -14,7 +14,8 @@ import { graphqlCall, findMatch } from 'sharyn/shared'
 
 jss.setup(jssPreset())
 const env = { IS_DEV_ENV, SENTRY_DSN_PUBLIC, NO_SSR }
-const preloadedStateBase = { env, ui: {}, async: {} }
+let data = {}
+const preloadedStateBase = { data, env, ui: {}, async: {} }
 const renderPageOptions = { App, theme, jss, preloadedState: preloadedStateBase }
 
 const routing = (router: Object) => {
@@ -26,7 +27,6 @@ const routing = (router: Object) => {
 
   router.all('*', async ctx => {
     const { user } = ctx.session
-    let data = {}
 
     if (!NO_SSR) {
       const { match, route } = findMatch(allRoutesAndCmps, ctx.req.url, !!user)

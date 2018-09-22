@@ -14,14 +14,6 @@ import EditIcon from '@material-ui/icons/Edit'
 import { deleteNoteCall } from 'note/note-calls'
 import { graphqlThunk } from 'sharyn/client/thunks'
 
-const styles = ({ spacing }) => ({
-  note: { ...clearfix, padding: spacing.unit * 3, marginBottom: spacing.unit * 3 },
-  title: { margin: 0 },
-  description: { marginTop: spacing.unit * 2 },
-  buttonGroup: { float: 'right' },
-  deleteForm: { display: 'inline-block' },
-})
-
 type Props = {
   classes: Object,
   id: string,
@@ -29,7 +21,7 @@ type Props = {
   description?: string,
   useTitleLink?: boolean,
   showActions?: boolean,
-  onSubmit: Function,
+  onSubmit?: Function,
 }
 
 const NoteJSX = ({
@@ -66,6 +58,14 @@ const NoteJSX = ({
   </Paper>
 )
 
+export const NoteCmp = withStyles(({ spacing }) => ({
+  note: { ...clearfix, padding: spacing.unit * 3 },
+  title: { margin: 0 },
+  description: { marginTop: spacing.unit * 2 },
+  buttonGroup: { float: 'right' },
+  deleteForm: { display: 'inline-block' },
+}))(NoteJSX)
+
 const Note = compose(
   withHandlers({
     onSubmit: ({ id, dispatch, routerHistory }) => async e => {
@@ -79,7 +79,6 @@ const Note = compose(
       }
     },
   }),
-  withStyles(styles),
-)(NoteJSX)
+)(NoteCmp)
 
 export default Note
