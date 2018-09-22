@@ -142,6 +142,8 @@ storiesOf('All Components', module)
         title={text('title', 'A Title')}
         description={text('description', 'A description')}
         useTitleLink={boolean('useTitleLink', true)}
+        showActions={boolean('showActions', false)}
+        isDeleting={boolean('isDeleting', false)}
       />
     </Host>
   ))

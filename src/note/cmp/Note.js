@@ -1,6 +1,7 @@
 // @flow
 
 import React from 'react'
+import { connect as withRedux } from 'react-redux'
 import { noteRoute, editNoteRoute, deleteNoteRoute } from 'note/note-routes'
 import { clearfix } from 'sharyn/css/util'
 import { withStyles } from '@material-ui/core/styles'
@@ -19,6 +20,7 @@ import DialogContentText from '@material-ui/core/DialogContentText'
 import Button from '@material-ui/core/Button'
 import { deleteNoteCall } from 'note/note-calls'
 import { graphqlThunk } from 'sharyn/client/thunks'
+import Progress from '@material-ui/core/CircularProgress'
 
 type Props = {
   classes: Object,
@@ -27,6 +29,7 @@ type Props = {
   description?: string,
   useTitleLink?: boolean,
   showActions?: boolean,
+  isDeleting?: boolean,
   handleDeleteConfirm?: Function,
   isConfirmDeleteOpen: boolean,
   setIsConfirmDeleteOpen: Function,
@@ -39,6 +42,7 @@ const NoteJSX = ({
   description,
   useTitleLink,
   showActions,
+  isDeleting,
   handleDeleteConfirm,
   isConfirmDeleteOpen,
   setIsConfirmDeleteOpen,
@@ -53,33 +57,38 @@ const NoteJSX = ({
         <IconButton component={Link} to={editNoteRoute.path(id)}>
           <EditIcon />
         </IconButton>
-        <form
-          method="post"
-          action={deleteNoteRoute.path(id)}
-          className={css.deleteForm}
-          onSubmit={e => e.preventDefault() || setIsConfirmDeleteOpen(true)}
-        >
-          <IconButton type="submit">
-            <DeleteIcon />
-          </IconButton>
-          <Dialog open={isConfirmDeleteOpen} onClose={() => setIsConfirmDeleteOpen(false)}>
-            <DialogContent>
-              <DialogContentText>Delete this note?</DialogContentText>
-            </DialogContent>
-            <DialogActions>
-              <Button onClick={() => setIsConfirmDeleteOpen(false)}>Cancel</Button>
-              <Button
-                onClick={() =>
-                  setIsConfirmDeleteOpen(false) || (handleDeleteConfirm && handleDeleteConfirm())
-                }
-                className={css.confirmDelete}
-                autoFocus
-              >
-                Delete
-              </Button>
-            </DialogActions>
-          </Dialog>
-        </form>
+        {isDeleting ? (
+          <Progress className={css.deleteProgress} size={24} />
+        ) : (
+          <form
+            method="post"
+            action={deleteNoteRoute.path(id)}
+            className={css.deleteForm}
+            onSubmit={e => e.preventDefault() || setIsConfirmDeleteOpen(true)}
+          >
+            <IconButton type="submit">
+              <DeleteIcon />
+            </IconButton>
+
+            <Dialog open={isConfirmDeleteOpen} onClose={() => setIsConfirmDeleteOpen(false)}>
+              <DialogContent>
+                <DialogContentText>Delete this note?</DialogContentText>
+              </DialogContent>
+              <DialogActions>
+                <Button onClick={() => setIsConfirmDeleteOpen(false)}>Cancel</Button>
+                <Button
+                  onClick={() =>
+                    setIsConfirmDeleteOpen(false) || (handleDeleteConfirm && handleDeleteConfirm())
+                  }
+                  className={css.confirmDelete}
+                  autoFocus
+                >
+                  Delete
+                </Button>
+              </DialogActions>
+            </Dialog>
+          </form>
+        )}
       </div>
     )}
   </Paper>
@@ -94,16 +103,18 @@ export const NoteCmp = compose(
     buttonGroup: { float: 'right' },
     deleteForm: { display: 'inline-block' },
     confirmDelete: { color: palette.error.main },
+    deleteProgress: { verticalAlign: 'middle', color: palette.error.main, margin: '0 12px' },
   })),
 )(NoteJSX)
 
-const Note = withHandlers({
-  handleDeleteConfirm: ({ id, dispatch, routerHistory }) => () => {
-    const fields = { id }
-    dispatch(
-      graphqlThunk({ ...deleteNoteCall, routerHistory, asyncKey: `deleteNote:${id}`, fields }),
-    )
-  },
-})(NoteCmp)
+const Note = compose(
+  withRedux(({ async }) => ({ isDeleting: async.deleteNote })),
+  withHandlers({
+    handleDeleteConfirm: ({ id, dispatch, routerHistory }) => () => {
+      const fields = { id }
+      dispatch(graphqlThunk({ ...deleteNoteCall, routerHistory, asyncKey: 'deleteNote', fields }))
+    },
+  }),
+)(NoteCmp)
 
 export default Note
