@@ -95,5 +95,6 @@ reactDomFn(
 
 store.dispatch(startClientNavigation())
 
+store.dispatch(navigator.onLine ? online() : offline())
 window.addEventListener('online', () => store.dispatch(online()))
 window.addEventListener('offline', () => store.dispatch(offline()))
