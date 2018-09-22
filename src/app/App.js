@@ -12,7 +12,7 @@ import { withStyles } from '@material-ui/core/styles'
 import { navigation, dismissFirstNotification } from 'sharyn/client/actions'
 import Notifications from 'sharyn/components/Notifications'
 import globalStyles from 'sharyn/css/global'
-import allRoutesAndCmps from 'app/all-routes'
+import allRoutes from 'app/all-routes'
 import Nav from 'app/cmp/Nav'
 import Favicons from 'app/cmp/Favicons'
 
@@ -35,9 +35,10 @@ const AppJSX = ({
   notifications,
   handleDismissNotification,
 }: Props) => {
-  const { match, route, Component } = findMatch(allRoutesAndCmps, location.pathname, isLoggedIn)
-  const { title, backNav } = getPageInfo(route, mainState)
-  const titleRequiresData = route.title instanceof Function
+  const { match, route: activeRoute } = findMatch(allRoutes, location.pathname, isLoggedIn)
+  const { title, backNav } = getPageInfo(activeRoute, mainState)
+  const titleRequiresData = activeRoute.title instanceof Function
+  const { pageComponent: PageComponent, ...route } = activeRoute
   return (
     <Fragment>
       <Helmet titleTemplate="%s | Notesapp" defaultTitle="Notesapp – Great Notes for Great People">
@@ -50,7 +51,7 @@ const AppJSX = ({
       {isLoggedIn && (
         <Nav {...{ backNav }} title={isPageLoading && titleRequiresData ? '' : title} />
       )}
-      <Component {...{ route, match, routerHistory }} />
+      <PageComponent {...{ route, match, routerHistory }} />
       <Notifications {...{ notifications, handleDismissNotification }} />
     </Fragment>
   )

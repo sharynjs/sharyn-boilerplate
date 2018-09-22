@@ -1012,9 +1012,9 @@
     dotenv "^6.0.0"
     read-env "^1.3.0"
 
-"@sharyn/shared@^2.5.1":
-  version "2.5.1"
-  resolved "https://registry.yarnpkg.com/@sharyn/shared/-/shared-2.5.1.tgz#ffca33e2e2b5b3725b7019b8626461c4f03d9e54"
+"@sharyn/shared@^2.6.0":
+  version "2.6.0"
+  resolved "https://registry.yarnpkg.com/@sharyn/shared/-/shared-2.6.0.tgz#9176e34c62979793a68e542b8b47b152e1919cfc"
   dependencies:
     "@babel/runtime-corejs2" "^7.0.0"
     "@sharyn/util" "^2.0.4"
@@ -9151,15 +9151,15 @@ shallowequal@^1.0.1, shallowequal@^1.0.2, shallowequal@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/shallowequal/-/shallowequal-1.1.0.tgz#188d521de95b9087404fd4dcb68b13df0ae4e7f8"
 
-sharyn@^4.21.1:
-  version "4.21.1"
-  resolved "https://registry.yarnpkg.com/sharyn/-/sharyn-4.21.1.tgz#12e56b355f97532e9ca42cdd2337f5e0c8b234ac"
+sharyn@^4.23.0:
+  version "4.23.0"
+  resolved "https://registry.yarnpkg.com/sharyn/-/sharyn-4.23.0.tgz#70fda5592a30582ee1a3c6b8ad41300f55e6d9ea"
   dependencies:
     "@babel/runtime-corejs2" "^7.0.0"
     "@sharyn/check-setup" "^2.0.3"
     "@sharyn/css" "^1.1.2"
     "@sharyn/env" "^2.0.3"
-    "@sharyn/shared" "^2.5.1"
+    "@sharyn/shared" "^2.6.0"
     "@sharyn/util" "^2.0.4"
     "@sharyn/webpack-config" "^2.1.0"
     async-exit-hook "^2.0.1"

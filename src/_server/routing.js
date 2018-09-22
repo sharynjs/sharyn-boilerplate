@@ -9,7 +9,7 @@ import jssPreset from 'jss-preset-default'
 import authRouting from 'auth/auth-routing'
 import App from 'app/App'
 import theme from 'app/theme'
-import allRoutesAndCmps from 'app/all-routes'
+import allRoutes from 'app/all-routes'
 import { graphqlCall, findMatch } from 'sharyn/shared'
 
 jss.setup(jssPreset())
@@ -29,7 +29,7 @@ const routing = (router: Object) => {
     const { user } = ctx.session
 
     if (!NO_SSR) {
-      const { match, route } = findMatch(allRoutesAndCmps, ctx.req.url, !!user)
+      const { match, route } = findMatch(allRoutes, ctx.req.url, !!user)
       if (match) {
         const { cookie } = ctx.req.headers
         const urlBase = `http${IS_LOCAL_ENV_TYPE ? '' : 's'}://${ctx.request.host}`
