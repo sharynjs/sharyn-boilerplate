@@ -10,14 +10,14 @@ const FakeClientErrorPageJSX = () => (
   </Page>
 )
 
-export const FakeClientErrorPageCmp = FakeClientErrorPageJSX
-
-const FakeClientErrorPage = withLifecycle({
+export const FakeClientErrorPageCmp = withLifecycle({
   componentDidMount() {
     setTimeout(() => {
       throw Error('Fake error, everything is fine')
     }, 100)
   },
-})(FakeClientErrorPageCmp)
+})(FakeClientErrorPageJSX)
+
+const FakeClientErrorPage = FakeClientErrorPageCmp
 
 export default FakeClientErrorPage

@@ -13,6 +13,7 @@ import Toolbar from '@material-ui/core/Toolbar'
 import IconButton from '@material-ui/core/IconButton'
 import Typography from '@material-ui/core/Typography'
 import MenuIcon from '@material-ui/icons/Menu'
+import StyleIcon from '@material-ui/icons/Style'
 import hideOnScroll from 'sharyn/hocs/hide-on-scroll'
 import NavList from 'sharyn/components/NavList'
 import { notesRoute, newNoteRoute } from 'note/note-routes'
@@ -32,6 +33,7 @@ const navItems = [
   fakeNotFoundErrorRoute,
   [fakeServerErrorRoute, { hardLink: true }],
   fakeClientErrorRoute,
+  { title: 'Storybook', path: '/static/storybook/', icon: StyleIcon, hardLink: true },
   [logoutRoute, { hardLink: true }],
 ]
 
