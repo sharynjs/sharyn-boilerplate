@@ -20,7 +20,7 @@ export const createNoteCall = {
   mapFields: (fields: Object) => ({ input: parseObject(fields) }),
   mapResp: ({ createNote: result }: { createNote: Object }) => ({
     createdNoteId: result?.note?.id,
-    invalidFields: result?.invalidFields,
+    invalidFields: result?.invalidFields ?? undefined,
   }),
   successRedirect: ({ createdNoteId }: { createdNoteId: string }) => notePath(createdNoteId),
 }
@@ -32,7 +32,7 @@ export const updateNoteCall = {
   mapResp: ({ updateNote: result }: { updateNote: Object }) => ({
     note: result?.note,
     updatedNoteId: result?.updatedNote?.id,
-    invalidFields: result?.invalidFields,
+    invalidFields: result?.invalidFields ?? undefined,
   }),
   successRedirect: ({ updatedNoteId }: { updatedNoteId: string }) => notePath(updatedNoteId),
 }

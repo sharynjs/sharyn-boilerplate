@@ -7,8 +7,9 @@ import Page from 'sharyn/components/Page'
 import withClientMainQuery from 'sharyn/hocs/with-client-main-query'
 import renderIf from 'sharyn/hocs/render-if'
 import LoadingPage from 'sharyn/components/LoadingPage'
+import omitBy from 'lodash/omitBy'
+import isNull from 'lodash/isNull'
 import NotFoundPage from 'error/cmp-page/NotFoundPage'
-
 import NoteForm from 'note/cmp/NoteForm'
 
 const EditNotePageJSX = (props: Object) => (
@@ -23,7 +24,10 @@ export const EditNotePageCmp = compose(
 )(EditNotePageJSX)
 
 const EditNotePage = compose(
-  withRedux(({ data, async }) => ({ noteToEdit: data.note, isPageLoading: async.page })),
+  withRedux(({ data, async }) => ({
+    noteToEdit: omitBy(data.note, isNull),
+    isPageLoading: async.page,
+  })),
   withClientMainQuery(),
 )(EditNotePageCmp)
 
