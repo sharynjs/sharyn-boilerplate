@@ -17,11 +17,23 @@ import hideOnScroll from 'sharyn/hocs/hide-on-scroll'
 import NavList from 'sharyn/components/NavList'
 import { notesRoute, newNoteRoute } from 'note/note-routes'
 import { logoutRoute } from 'auth/auth-routes'
+import {
+  fakeClientErrorRoute,
+  fakeServerErrorRoute,
+  fakeNotFoundErrorRoute,
+} from 'error/error-routes'
 import BackIcon from '@material-ui/icons/ArrowBack'
 
 const AppWithAutoScroll = hideOnScroll(AppBar)
 
-const navItems = [notesRoute, newNoteRoute, [logoutRoute, { hardLink: true }]]
+const navItems = [
+  notesRoute,
+  newNoteRoute,
+  fakeNotFoundErrorRoute,
+  [fakeServerErrorRoute, { hardLink: true }],
+  fakeClientErrorRoute,
+  [logoutRoute, { hardLink: true }],
+]
 
 const NavJSX = ({
   classes: css,

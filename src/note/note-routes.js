@@ -15,7 +15,7 @@ import NotePage from 'note/cmp-page/NotePage'
 import EditNotePage from 'note/cmp-page/EditNotePage'
 import NewNotePage from 'note/cmp-page/NewNotePage'
 
-export const notesRoute: Object = {
+export const notesRoute = {
   path: NOTES_PATH,
   exact: true,
   loggedInOnly: true,
@@ -25,17 +25,17 @@ export const notesRoute: Object = {
   mainQuery: getNotesCall,
 }
 
-export const noteRoute: Object = {
+export const noteRoute = {
   path: notePath,
   exact: true,
   loggedInOnly: true,
   pageComponent: NotePage,
-  title: ({ data }) => data?.note?.title ?? 'Note not found',
+  title: ({ data }: Object) => data?.note?.title ?? 'Note not found',
   backNav: notesRoute.path,
   mainQuery: getNoteCall,
 }
 
-export const newNoteRoute: Object = {
+export const newNoteRoute = {
   path: NEW_NOTE_PATH,
   exact: true,
   loggedInOnly: true,
@@ -46,19 +46,19 @@ export const newNoteRoute: Object = {
   mainMutation: createNoteCall,
 }
 
-export const editNoteRoute: Object = {
+export const editNoteRoute = {
   path: editNotePath,
   exact: true,
   loggedInOnly: true,
   pageComponent: EditNotePage,
-  title: ({ data }) => (data?.note?.title ? `Edit ${data?.note?.title}` : 'Note not found'),
-  backNav: ({ data }) => noteRoute.path(data?.note?.id),
+  title: ({ data }: Object) => (data?.note?.title ? `Edit ${data?.note?.title}` : 'Note not found'),
+  backNav: ({ data }: Object) => noteRoute.path(data?.note?.id),
   icon: NewIcon,
   mainQuery: getNoteCall,
   mainMutation: updateNoteCall,
 }
 
-export const deleteNoteRoute: Object = {
+export const deleteNoteRoute = {
   path: deleteNotePath,
   exact: true,
   loggedInOnly: true,

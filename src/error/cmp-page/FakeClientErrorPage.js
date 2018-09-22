@@ -2,14 +2,11 @@
 
 import React from 'react'
 import withLifecycle from 'recompose/lifecycle'
-import Typography from '@material-ui/core/Typography'
 import Page from 'sharyn/components/Page'
 
 const FakeClientErrorPageJSX = () => (
   <Page middle>
-    <Typography variant="title" gutterBottom>
-      A fake error has been executed in your console.
-    </Typography>
+    A fake error has been executed in your console to test client-side error-reporting.
   </Page>
 )
 
@@ -21,6 +18,6 @@ const FakeClientErrorPage = withLifecycle({
       throw Error('Fake error, everything is fine')
     }, 100)
   },
-})
+})(FakeClientErrorPageCmp)
 
 export default FakeClientErrorPage

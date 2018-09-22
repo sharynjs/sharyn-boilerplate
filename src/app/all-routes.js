@@ -1,7 +1,7 @@
 // @flow
 
 import { loginRoute } from 'auth/auth-routes'
-import { fakeClientErrorRoute, notFoundRoute } from 'error/error-routes'
+import { fakeClientErrorRoute, notFoundRoute, serverErrorRoute } from 'error/error-routes'
 import {
   notesRoute,
   noteRoute,
@@ -21,6 +21,7 @@ const allRoutes = [
   editNoteRoute,
   deleteNoteRoute,
   fakeClientErrorRoute,
+  serverErrorRoute,
   notFoundRoute,
 ]
 

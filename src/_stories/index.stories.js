@@ -37,6 +37,7 @@ import { EditNotePageCmp } from 'note/cmp-page/EditNotePage'
 import { NewNotePageCmp } from 'note/cmp-page/NewNotePage'
 import { NotePageCmp } from 'note/cmp-page/NotePage'
 import { NotesPageCmp } from 'note/cmp-page/NotesPage'
+import { ServerErrorPageCmp } from 'error/cmp-page/ServerErrorPage'
 import theme from 'app/theme'
 
 jss.setup(jssPreset())
@@ -186,4 +187,5 @@ storiesOf('All Components', module)
     </Host>
   ))
   .add('NotFoundPageCmp', () => <NotFoundPageCmp />)
+  .add('ServerErrorPageCmp', () => <ServerErrorPageCmp />)
   .add('FakeClientErrorPageCmp', () => <FakeClientErrorPageCmp />)

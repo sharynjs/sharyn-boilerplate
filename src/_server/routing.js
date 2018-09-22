@@ -7,6 +7,7 @@ import jss from 'jss'
 import jssPreset from 'jss-preset-default'
 
 import authRouting from 'auth/auth-routing'
+import { FAKE_SERVER_ERROR_PATH } from 'error/error-paths'
 import App from 'app/App'
 import theme from 'app/theme'
 import allRoutes from 'app/all-routes'
@@ -21,13 +22,12 @@ const renderPageOptions = { App, theme, jss, preloadedState: preloadedStateBase 
 const routing = (router: Object) => {
   authRouting(router, renderPageOptions)
 
-  router.get('/fake-error', () => {
+  router.get(FAKE_SERVER_ERROR_PATH, () => {
     throw Error('Fake Server Error')
   })
 
   router.all('*', async ctx => {
     const { user } = ctx.session
-
     if (!NO_SSR) {
       const { match, route } = findMatch(allRoutes, ctx.req.url, !!user)
       if (match) {
@@ -67,9 +67,11 @@ const routing = (router: Object) => {
             return
           }
         }
+      } else {
+        ctx.status = 404
       }
     }
-    await renderPage({
+    renderPage({
       ...renderPageOptions,
       ctx,
       preloadedState: { ...preloadedStateBase, user, data },
