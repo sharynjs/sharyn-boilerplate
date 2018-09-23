@@ -1,6 +1,6 @@
 // @flow
 
-import { IS_DEV_ENV, NO_SSR, SENTRY_DSN_PUBLIC, IS_LOCAL_ENV_TYPE } from 'sharyn/env'
+import { IS_DEV_ENV, NO_SSR, SENTRY_DSN_PUBLIC, IS_LOCAL_ENV_TYPE, TURN_OFF_SW } from 'sharyn/env'
 import { renderPage } from 'sharyn/server'
 // flow-disable-next-line
 import jss from 'jss'
@@ -75,7 +75,7 @@ const routing = (router: Object) => {
       ...renderPageOptions,
       ctx,
       preloadedState: { ...preloadedStateBase, user, data },
-      swPath: '/sw.js',
+      swPath: TURN_OFF_SW ? undefined : '/sw.js',
     })
   })
 }
