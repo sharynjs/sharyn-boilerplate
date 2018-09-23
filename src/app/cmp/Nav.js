@@ -91,7 +91,7 @@ const NavJSX = ({
           </IconButton>
         )}
         {title && (
-          <Typography variant="title" color="inherit" className={css.grow}>
+          <Typography variant="title" color="inherit" className={css.title}>
             {title}
           </Typography>
         )}
@@ -141,7 +141,7 @@ export const NavCmp = compose(
   withStyles(({ spacing, mixins, breakpoints }) => ({
     appBarPusher: mixins.toolbar,
     backButton: { margin: '0 6px 0 -6px' },
-    grow: { flexGrow: 1 },
+    title: { flexGrow: 1, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' },
     userMenuUserItem: {
       textAlign: 'center',
       fontWeight: 'bold',
