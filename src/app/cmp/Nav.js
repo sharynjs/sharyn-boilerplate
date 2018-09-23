@@ -31,7 +31,6 @@ import BackIcon from '@material-ui/icons/ArrowBack'
 import OfflineIcon from '@material-ui/icons/CloudOff'
 import UserIcon from '@material-ui/icons/AccountCircle'
 import RefreshIcon from '@material-ui/icons/Refresh'
-import MoreIcon from '@material-ui/icons/MoreVert'
 
 const AppWithAutoScroll = hideOnScroll(AppBar)
 
@@ -90,23 +89,20 @@ const NavJSX = ({
             <BackIcon />
           </IconButton>
         )}
-        {title && (
-          <Typography variant="title" color="inherit" className={css.title}>
-            {title}
-          </Typography>
-        )}
+        <Typography variant="title" color="inherit" className={css.title}>
+          {title}
+        </Typography>
         {isOffline && <OfflineIcon color="inherit" />}
-        <IconButton color="inherit" onClick={openUserMenu}>
-          <MoreIcon className={css.hideOnDesktop} />
-          <UserIcon className={css.hideOnMobile} />
+        <IconButton color="inherit" onClick={hardRefresh} className={css.onlyInStandalone}>
+          <RefreshIcon />
+        </IconButton>
+        <IconButton color="inherit" onClick={openUserMenu} className={css.hideOnMobile}>
+          <UserIcon />
         </IconButton>
         <Menu open={isUserMenuOpen} onClose={closeUserMenu} anchorEl={userMenuAnchorEl}>
           <li className={css.userMenuUserItem} data-test="username-display">
             {username}
           </li>
-          <MenuItem className={css.onlyInStandalone} onClick={hardRefresh}>
-            <RefreshIcon className={css.userMenuItemIcon} /> Refresh
-          </MenuItem>
           <MenuItem component="a" href={LOGOUT_PATH} onClick={closeUserMenu}>
             <LogoutIcon className={css.userMenuItemIcon} /> Log Out
           </MenuItem>
@@ -143,6 +139,7 @@ export const NavCmp = compose(
     backButton: { margin: '0 6px 0 -6px' },
     title: { flexGrow: 1, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' },
     userMenuUserItem: {
+      extend: 'hideOnMobile',
       textAlign: 'center',
       fontWeight: 'bold',
       paddingTop: spacing.unit,
@@ -150,6 +147,9 @@ export const NavCmp = compose(
       '&:focus': { outline: 0 },
     },
     userMenuItemIcon: { marginRight: spacing.unit },
+    notInStandalone: {
+      '@media all and (display-mode: standalone)': { display: 'none' },
+    },
     onlyInStandalone: {
       display: 'none',
       '@media all and (display-mode: standalone)': { display: 'block' },
