@@ -9,7 +9,7 @@ import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider'
 import createGenerateClassName from '@material-ui/core/styles/createGenerateClassName'
 import Raven from 'raven-js'
 import React from 'react'
-import { render } from 'react-dom'
+import { hydrate, render } from 'react-dom'
 import JssProvider from 'react-jss/lib/JssProvider'
 import { Provider } from 'react-redux'
 import BrowserRouter from 'react-router-dom/BrowserRouter'
@@ -42,57 +42,75 @@ import {
 import { configureWithClientMainQuery } from 'sharyn/hocs/with-client-main-query'
 
 const preloadedState = window.__PRELOADED_STATE__
-const { IS_DEV_ENV, SENTRY_DSN_PUBLIC, NO_SSR } = preloadedState.env
+const { IS_DEV_ENV, SENTRY_DSN_PUBLIC, NO_SSR, SERVER_VERSION } = preloadedState.env
 preloadedState.env.isFirstRender = !NO_SSR
 
-SENTRY_DSN_PUBLIC && Raven.config(SENTRY_DSN_PUBLIC).install()
+const purgeCache = async () => {
+  console.log('======== PURGING ========')
+  if (caches && caches.keys && caches.delete) {
+    const cacheKeys = await caches.keys()
+    await Promise.all(cacheKeys.map(key => caches.delete(key)))
+    window.location.reload(true)
+  }
+}
 
-const composeEnhancers = (IS_DEV_ENV && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) || compose
+/* eslint-disable no-undef */
+// flow-disable-next-line
+if (SERVER_VERSION !== CLIENT_VERSION) {
+  /* eslint-enable no-undef */
+  purgeCache()
+} else {
+  SENTRY_DSN_PUBLIC && Raven.config(SENTRY_DSN_PUBLIC).install()
 
-const store = createStore(
-  combineReducers({
-    data: dataReducer,
-    user: (s = null) => s,
-    ui: (s = {}) => s,
-    async: asyncReducer,
-    env: envReducer,
-  }),
-  preloadedState,
-  composeEnhancers(applyMiddleware(thunk)),
-)
+  const composeEnhancers = (IS_DEV_ENV && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) || compose
 
-configureFetchPageThunk({
-  request: fetchPageRequest,
-  success: fetchPageSuccess,
-  failure: fetchPageFailure,
-})
+  const store = createStore(
+    combineReducers({
+      data: dataReducer,
+      user: (s = null) => s,
+      ui: (s = {}) => s,
+      async: asyncReducer,
+      env: envReducer,
+    }),
+    preloadedState,
+    composeEnhancers(applyMiddleware(thunk)),
+  )
 
-configureGraphqlThunk({
-  request: asyncRequest,
-  success: asyncSuccess,
-  failure: asyncFailure,
-})
+  configureFetchPageThunk({
+    request: fetchPageRequest,
+    success: fetchPageSuccess,
+    failure: fetchPageFailure,
+  })
 
-configureWithClientMainQuery(fetchPageThunk)
+  configureGraphqlThunk({
+    request: asyncRequest,
+    success: asyncSuccess,
+    failure: asyncFailure,
+  })
 
-jss.setup(jssPreset())
+  configureWithClientMainQuery(fetchPageThunk)
 
-render(
-  <Provider {...{ store }}>
-    <BrowserRouter>
-      <JssProvider {...{ jss }} generateClassName={createGenerateClassName()}>
-        <MuiThemeProvider {...{ theme }}>
-          <App />
-        </MuiThemeProvider>
-      </JssProvider>
-    </BrowserRouter>
-  </Provider>,
-  // flow-disable-next-line
-  document.getElementById('app'),
-)
+  jss.setup(jssPreset())
 
-store.dispatch(startClientNavigation())
+  const reactDomFn = NO_SSR ? render : hydrate
 
-store.dispatch(navigator.onLine ? online() : offline())
-window.addEventListener('online', () => store.dispatch(online()))
-window.addEventListener('offline', () => store.dispatch(offline()))
+  reactDomFn(
+    <Provider {...{ store }}>
+      <BrowserRouter>
+        <JssProvider {...{ jss }} generateClassName={createGenerateClassName()}>
+          <MuiThemeProvider {...{ theme }}>
+            <App />
+          </MuiThemeProvider>
+        </JssProvider>
+      </BrowserRouter>
+    </Provider>,
+    // flow-disable-next-line
+    document.getElementById('app'),
+  )
+
+  store.dispatch(startClientNavigation())
+
+  store.dispatch(navigator.onLine ? online() : offline())
+  window.addEventListener('online', () => store.dispatch(online()))
+  window.addEventListener('offline', () => store.dispatch(offline()))
+}

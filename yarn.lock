@@ -999,9 +999,9 @@
     "@babel/runtime-corejs2" "^7.0.0"
     app-root-path "^2.1.0"
 
-"@sharyn/css@^1.2.1":
-  version "1.2.1"
-  resolved "https://registry.yarnpkg.com/@sharyn/css/-/css-1.2.1.tgz#7591a75b98095f2de1b98d80c7dea61f7879800c"
+"@sharyn/css@^1.2.2":
+  version "1.2.2"
+  resolved "https://registry.yarnpkg.com/@sharyn/css/-/css-1.2.2.tgz#bcb3554178bd395973d3ef0ece0da0d1af488795"
 
 "@sharyn/env@^2.0.3":
   version "2.0.3"
@@ -1028,13 +1028,15 @@
     lodash.forown "^4.4.0"
     validator "^10.7.1"
 
-"@sharyn/webpack-config@^2.1.0":
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/@sharyn/webpack-config/-/webpack-config-2.1.0.tgz#847a95aea505bbfe2414c97de55a79137f394822"
+"@sharyn/webpack-config@^2.2.0":
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/@sharyn/webpack-config/-/webpack-config-2.2.0.tgz#543097c2e4ef3f01532dde4295a2ea150060eb04"
   dependencies:
     "@babel/runtime-corejs2" "^7.0.0"
     "@sharyn/check-setup" "^2.0.3"
     "@sharyn/env" "^2.0.3"
+    app-root-path "^2.1.0"
+    webpack "^4.19.1"
 
 "@storybook/addon-backgrounds@^4.0.0-alpha.22":
   version "4.0.0-alpha.22"
@@ -9151,17 +9153,17 @@ shallowequal@^1.0.1, shallowequal@^1.0.2, shallowequal@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/shallowequal/-/shallowequal-1.1.0.tgz#188d521de95b9087404fd4dcb68b13df0ae4e7f8"
 
-sharyn@^4.28.1:
-  version "4.28.1"
-  resolved "https://registry.yarnpkg.com/sharyn/-/sharyn-4.28.1.tgz#ab22f79eac9c56178b68af7e87e9feacdc89e9d9"
+sharyn@^4.29.0:
+  version "4.29.0"
+  resolved "https://registry.yarnpkg.com/sharyn/-/sharyn-4.29.0.tgz#ea9e684ed85dfa0d6f91905ab57d1363d749b42e"
   dependencies:
     "@babel/runtime-corejs2" "^7.0.0"
     "@sharyn/check-setup" "^2.0.3"
-    "@sharyn/css" "^1.2.1"
+    "@sharyn/css" "^1.2.2"
     "@sharyn/env" "^2.0.3"
     "@sharyn/shared" "^2.6.1"
     "@sharyn/util" "^2.0.4"
-    "@sharyn/webpack-config" "^2.1.0"
+    "@sharyn/webpack-config" "^2.2.0"
     async-exit-hook "^2.0.1"
     axios "^0.18.0"
     babel-preset-sharyn "^3.0.5"
@@ -9180,6 +9182,7 @@ sharyn@^4.28.1:
     recompose "^0.30.0"
     serialize-javascript "^1.5.0"
     validator "^10.7.0"
+    webpack "^4.19.1"
 
 shebang-command@^1.2.0:
   version "1.2.0"
