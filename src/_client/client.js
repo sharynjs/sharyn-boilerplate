@@ -15,6 +15,7 @@ import { Provider } from 'react-redux'
 import BrowserRouter from 'react-router-dom/BrowserRouter'
 import { applyMiddleware, combineReducers, compose, createStore } from 'redux'
 import thunk from 'redux-thunk'
+import purgeCache from 'sharyn/client/purge-cache'
 
 import dataReducer from '_client/reducers/data-reducer'
 import asyncReducer from '_client/reducers/async-reducer'
@@ -42,21 +43,15 @@ import {
 import { configureWithClientMainQuery } from 'sharyn/hocs/with-client-main-query'
 
 const preloadedState = window.__PRELOADED_STATE__
-const { IS_DEV_ENV, SENTRY_DSN_PUBLIC, NO_SSR, SERVER_VERSION } = preloadedState.env
+const { IS_DEV_ENV, SENTRY_DSN_PUBLIC, NO_SSR, SERVER_GIT_HASH } = preloadedState.env
 preloadedState.env.isFirstRender = !NO_SSR
 
-const purgeCache = async () => {
-  console.log('======== PURGING ========')
-  if (caches && caches.keys && caches.delete) {
-    const cacheKeys = await caches.keys()
-    await Promise.all(cacheKeys.map(key => caches.delete(key)))
-    window.location.reload(true)
-  }
-}
+console.log(SERVER_GIT_HASH)
+console.log(CLIENT_GIT_HASH)
 
 /* eslint-disable no-undef */
 // flow-disable-next-line
-if (SERVER_VERSION !== CLIENT_VERSION) {
+if (CLIENT_GIT_HASH !== SERVER_GIT_HASH) {
   /* eslint-enable no-undef */
   purgeCache()
 } else {
