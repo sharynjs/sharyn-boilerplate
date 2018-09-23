@@ -27,7 +27,7 @@ const env = {
   SENTRY_DSN_PUBLIC,
   NO_SSR,
   isOnline: true,
-  SERVER_VERSION: NO_VERSION_VALIDATION ? null : dirChecksum('.'),
+  SERVER_VERSION: NO_VERSION_VALIDATION ? null : dirChecksum('src', ['package.json', 'yarn.lock']),
 }
 let data = {}
 const preloadedStateBase = { data, env, ui: {}, async: {} }

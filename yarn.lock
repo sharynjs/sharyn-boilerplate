@@ -986,9 +986,9 @@
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/@protobufjs/utf8/-/utf8-1.1.0.tgz#a777360b5b39a1a2e5106f8e858f2fd2d060c570"
 
-"@sharyn/check-setup@^2.0.6":
-  version "2.0.6"
-  resolved "https://registry.yarnpkg.com/@sharyn/check-setup/-/check-setup-2.0.6.tgz#ed9c6b78e6e43dce2976871ff331425cfa17cf45"
+"@sharyn/check-setup@^2.0.7":
+  version "2.0.7"
+  resolved "https://registry.yarnpkg.com/@sharyn/check-setup/-/check-setup-2.0.7.tgz#b6b8b3041bcc59d66572406b93ad27a1d41356bf"
   dependencies:
     "@babel/runtime-corejs2" "^7.0.0"
     app-root-path "^2.1.0"
@@ -999,22 +999,22 @@
   version "1.2.2"
   resolved "https://registry.yarnpkg.com/@sharyn/css/-/css-1.2.2.tgz#bcb3554178bd395973d3ef0ece0da0d1af488795"
 
-"@sharyn/env@^2.0.6":
-  version "2.0.6"
-  resolved "https://registry.yarnpkg.com/@sharyn/env/-/env-2.0.6.tgz#487799c64df6b503a6dff5a37651c82fd5752b93"
+"@sharyn/env@^2.0.7":
+  version "2.0.7"
+  resolved "https://registry.yarnpkg.com/@sharyn/env/-/env-2.0.7.tgz#8e67ea32a9c69f86b813d381036a5366cd7e1afb"
   dependencies:
     "@babel/runtime-corejs2" "^7.0.0"
-    "@sharyn/check-setup" "^2.0.6"
+    "@sharyn/check-setup" "^2.0.7"
     dotenv "^6.0.0"
     read-env "^1.3.0"
 
-"@sharyn/server@^3.3.4":
-  version "3.3.4"
-  resolved "https://registry.yarnpkg.com/@sharyn/server/-/server-3.3.4.tgz#76af4aefb0c24893b56d5377fff1f89247eea45a"
+"@sharyn/server@^3.3.5":
+  version "3.3.5"
+  resolved "https://registry.yarnpkg.com/@sharyn/server/-/server-3.3.5.tgz#1540205947756fda5817f58c45def3c2caa02cb5"
   dependencies:
     "@babel/runtime-corejs2" "^7.0.0"
-    "@sharyn/check-setup" "^2.0.6"
-    "@sharyn/webpack-config" "^2.4.4"
+    "@sharyn/check-setup" "^2.0.7"
+    "@sharyn/webpack-config" "^2.4.5"
     clean-css "^4.2.1"
     serialize-javascript "^1.5.0"
 
@@ -1034,13 +1034,13 @@
     lodash.forown "^4.4.0"
     validator "^10.7.1"
 
-"@sharyn/webpack-config@^2.4.4":
-  version "2.4.4"
-  resolved "https://registry.yarnpkg.com/@sharyn/webpack-config/-/webpack-config-2.4.4.tgz#ca702bab5fae7d5af4883e3dc7e43ee4f09073fc"
+"@sharyn/webpack-config@^2.4.5":
+  version "2.4.5"
+  resolved "https://registry.yarnpkg.com/@sharyn/webpack-config/-/webpack-config-2.4.5.tgz#d06759f1b5b8bac99bf1ae29f0e6d73059821f40"
   dependencies:
     "@babel/runtime-corejs2" "^7.0.0"
-    "@sharyn/check-setup" "^2.0.6"
-    "@sharyn/env" "^2.0.6"
+    "@sharyn/check-setup" "^2.0.7"
+    "@sharyn/env" "^2.0.7"
     webpack "^4.19.1"
 
 "@storybook/addon-backgrounds@^4.0.0-alpha.22":
@@ -2426,12 +2426,12 @@ babel-preset-minify@canary:
     babel-plugin-transform-undefined-to-void "^6.10.0-alpha.9+7002b8c"
     lodash.isplainobject "^4.0.6"
 
-babel-preset-sharyn@^3.0.8:
-  version "3.0.8"
-  resolved "https://registry.yarnpkg.com/babel-preset-sharyn/-/babel-preset-sharyn-3.0.8.tgz#0a4860857a3f0130a6e8efa325f0801fade739c3"
+babel-preset-sharyn@^3.0.9:
+  version "3.0.9"
+  resolved "https://registry.yarnpkg.com/babel-preset-sharyn/-/babel-preset-sharyn-3.0.9.tgz#e36ff123e58450e1c12109a53d3e89f8ea09606f"
   dependencies:
     "@babel/runtime-corejs2" "^7.0.0"
-    "@sharyn/check-setup" "^2.0.6"
+    "@sharyn/check-setup" "^2.0.7"
 
 babel-register@^6.26.0:
   version "6.26.0"
@@ -3924,12 +3924,12 @@ eslint-config-prettier@^3.0.1:
   dependencies:
     get-stdin "^6.0.0"
 
-eslint-config-sharyn@^3.0.7:
-  version "3.0.7"
-  resolved "https://registry.yarnpkg.com/eslint-config-sharyn/-/eslint-config-sharyn-3.0.7.tgz#2e22f90b16edca71f6cdef78fb596abd6f9a6ea2"
+eslint-config-sharyn@^3.0.8:
+  version "3.0.8"
+  resolved "https://registry.yarnpkg.com/eslint-config-sharyn/-/eslint-config-sharyn-3.0.8.tgz#6c857d0acb74fe76860cb94554c00e46b6683c27"
   dependencies:
     "@babel/runtime-corejs2" "^7.0.0"
-    "@sharyn/check-setup" "^2.0.6"
+    "@sharyn/check-setup" "^2.0.7"
 
 eslint-import-resolver-babel-module@^5.0.0-beta.1:
   version "5.0.0-beta.1"
@@ -9180,25 +9180,25 @@ shallowequal@^1.0.1, shallowequal@^1.0.2, shallowequal@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/shallowequal/-/shallowequal-1.1.0.tgz#188d521de95b9087404fd4dcb68b13df0ae4e7f8"
 
-sharyn@^4.32.4:
-  version "4.32.4"
-  resolved "https://registry.yarnpkg.com/sharyn/-/sharyn-4.32.4.tgz#df81f6f895b7b8e857fe315bdd03e87ea44b10ca"
+sharyn@^4.32.5:
+  version "4.32.5"
+  resolved "https://registry.yarnpkg.com/sharyn/-/sharyn-4.32.5.tgz#6518f439a2116d5993866aea4d84a5680d5000fe"
   dependencies:
     "@babel/runtime-corejs2" "^7.0.0"
-    "@sharyn/check-setup" "^2.0.6"
+    "@sharyn/check-setup" "^2.0.7"
     "@sharyn/css" "^1.2.2"
-    "@sharyn/env" "^2.0.6"
-    "@sharyn/server" "^3.3.4"
+    "@sharyn/env" "^2.0.7"
+    "@sharyn/server" "^3.3.5"
     "@sharyn/shared" "^2.6.1"
     "@sharyn/util" "^2.0.4"
-    "@sharyn/webpack-config" "^2.4.4"
+    "@sharyn/webpack-config" "^2.4.5"
     async-exit-hook "^2.0.1"
     axios "^0.18.0"
-    babel-preset-sharyn "^3.0.8"
+    babel-preset-sharyn "^3.0.9"
     clean-css "^4.2.1"
     colors "^1.3.2"
     dotenv "^6.0.0"
-    eslint-config-sharyn "^3.0.7"
+    eslint-config-sharyn "^3.0.8"
     exit-hook "^2.0.0"
     klaw-sync "^5.0.0"
     knex "^0.15.2"
