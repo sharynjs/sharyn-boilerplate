@@ -1,6 +1,5 @@
 // @flow
 
-import fs from 'fs'
 import { IS_DEV_ENV, NO_SSR, SENTRY_DSN_PUBLIC, IS_LOCAL_ENV_TYPE, TURN_OFF_SW } from 'sharyn/env'
 import { renderPage } from 'sharyn/server'
 // flow-disable-next-line
@@ -14,13 +13,16 @@ import theme from 'app/theme'
 import allRoutes from 'app/all-routes'
 import { graphqlCall, findMatch } from 'sharyn/shared'
 
+console.log('====================== RUNTIME')
+console.log(process.env.SOURCE_VERSION)
+
 jss.setup(jssPreset())
 const env = {
   IS_DEV_ENV,
   SENTRY_DSN_PUBLIC,
   NO_SSR,
   isOnline: true,
-  SERVER_GIT_HASH: fs.readFileSync('.git/refs/heads/master').toString(),
+  SERVER_GIT_HASH: process.env.SOURCE_VERSION,
 }
 let data = {}
 const preloadedStateBase = { data, env, ui: {}, async: {} }
