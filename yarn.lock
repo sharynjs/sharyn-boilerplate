@@ -1028,9 +1028,9 @@
     lodash.forown "^4.4.0"
     validator "^10.7.1"
 
-"@sharyn/webpack-config@^2.3.0":
-  version "2.3.0"
-  resolved "https://registry.yarnpkg.com/@sharyn/webpack-config/-/webpack-config-2.3.0.tgz#b07ebc50eb7ec610a7a20a2551a3833bcf7c48c5"
+"@sharyn/webpack-config@^2.3.1":
+  version "2.3.1"
+  resolved "https://registry.yarnpkg.com/@sharyn/webpack-config/-/webpack-config-2.3.1.tgz#b023250cbdbfebb96816aeab60ddc570ec52292b"
   dependencies:
     "@babel/runtime-corejs2" "^7.0.0"
     "@sharyn/check-setup" "^2.0.3"
@@ -9152,9 +9152,9 @@ shallowequal@^1.0.1, shallowequal@^1.0.2, shallowequal@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/shallowequal/-/shallowequal-1.1.0.tgz#188d521de95b9087404fd4dcb68b13df0ae4e7f8"
 
-sharyn@^4.30.0:
-  version "4.31.0"
-  resolved "https://registry.yarnpkg.com/sharyn/-/sharyn-4.31.0.tgz#b99aab9ee9c7ef06d10d7cb9b25858807180049b"
+sharyn@^4.31.1:
+  version "4.31.1"
+  resolved "https://registry.yarnpkg.com/sharyn/-/sharyn-4.31.1.tgz#0148ecd473c57b54c25aa0922e962a36821a927b"
   dependencies:
     "@babel/runtime-corejs2" "^7.0.0"
     "@sharyn/check-setup" "^2.0.3"
@@ -9162,7 +9162,7 @@ sharyn@^4.30.0:
     "@sharyn/env" "^2.0.3"
     "@sharyn/shared" "^2.6.1"
     "@sharyn/util" "^2.0.4"
-    "@sharyn/webpack-config" "^2.3.0"
+    "@sharyn/webpack-config" "^2.3.1"
     async-exit-hook "^2.0.1"
     axios "^0.18.0"
     babel-preset-sharyn "^3.0.5"

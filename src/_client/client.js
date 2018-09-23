@@ -47,6 +47,7 @@ const { IS_DEV_ENV, SENTRY_DSN_PUBLIC, NO_SSR, SERVER_GIT_HASH } = preloadedStat
 preloadedState.env.isFirstRender = !NO_SSR
 
 console.log(SERVER_GIT_HASH)
+// eslint-disable-next-line
 console.log(CLIENT_GIT_HASH)
 
 /* eslint-disable no-undef */
