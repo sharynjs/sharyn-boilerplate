@@ -999,9 +999,9 @@
     "@babel/runtime-corejs2" "^7.0.0"
     app-root-path "^2.1.0"
 
-"@sharyn/css@^1.2.0":
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/@sharyn/css/-/css-1.2.0.tgz#f5bdf2729494b327c209c624f0dd8af9426b6bd0"
+"@sharyn/css@^1.2.1":
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/@sharyn/css/-/css-1.2.1.tgz#7591a75b98095f2de1b98d80c7dea61f7879800c"
 
 "@sharyn/env@^2.0.3":
   version "2.0.3"
@@ -9151,13 +9151,13 @@ shallowequal@^1.0.1, shallowequal@^1.0.2, shallowequal@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/shallowequal/-/shallowequal-1.1.0.tgz#188d521de95b9087404fd4dcb68b13df0ae4e7f8"
 
-sharyn@^4.28.0:
-  version "4.28.0"
-  resolved "https://registry.yarnpkg.com/sharyn/-/sharyn-4.28.0.tgz#6acc67be375011d830275f679d1966e67f9f597a"
+sharyn@^4.28.1:
+  version "4.28.1"
+  resolved "https://registry.yarnpkg.com/sharyn/-/sharyn-4.28.1.tgz#ab22f79eac9c56178b68af7e87e9feacdc89e9d9"
   dependencies:
     "@babel/runtime-corejs2" "^7.0.0"
     "@sharyn/check-setup" "^2.0.3"
-    "@sharyn/css" "^1.2.0"
+    "@sharyn/css" "^1.2.1"
     "@sharyn/env" "^2.0.3"
     "@sharyn/shared" "^2.6.1"
     "@sharyn/util" "^2.0.4"
