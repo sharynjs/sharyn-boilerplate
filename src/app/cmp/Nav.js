@@ -3,7 +3,6 @@
 import React, { Fragment } from 'react'
 import compose from 'recompose/compose'
 import withStateHandlers from 'recompose/withStateHandlers'
-import withHandlers from 'recompose/withHandlers'
 import { connect as withRedux } from 'react-redux'
 
 import { Link } from 'react-router-dom'
@@ -31,6 +30,7 @@ import BackIcon from '@material-ui/icons/ArrowBack'
 import OfflineIcon from '@material-ui/icons/CloudOff'
 import UserIcon from '@material-ui/icons/AccountCircle'
 import RefreshIcon from '@material-ui/icons/Refresh'
+import Progress from '@material-ui/core/CircularProgress'
 
 const AppWithAutoScroll = hideOnScroll(AppBar)
 
@@ -56,7 +56,8 @@ const NavJSX = ({
   openUserMenu,
   closeUserMenu,
   userMenuAnchorEl,
-  hardRefresh,
+  isRefreshing,
+  refresh,
 }: {
   classes: Object,
   title?: string,
@@ -70,7 +71,8 @@ const NavJSX = ({
   openUserMenu: Function,
   closeUserMenu: Function,
   userMenuAnchorEl?: Object,
-  hardRefresh: Function,
+  isRefreshing?: boolean,
+  refresh: Function,
 }) => (
   <Fragment>
     <AppWithAutoScroll className="hide-on-scroll">
@@ -93,9 +95,13 @@ const NavJSX = ({
           {title}
         </Typography>
         {isOffline && <OfflineIcon color="inherit" />}
-        <IconButton color="inherit" onClick={hardRefresh} className={css.onlyInStandalone}>
-          <RefreshIcon />
-        </IconButton>
+        {isRefreshing ? (
+          <Progress className={css.refreshProgress} color="inherit" size={20} thickness={6} />
+        ) : (
+          <IconButton color="inherit" onClick={refresh} className={css.onlyInStandalone}>
+            <RefreshIcon className={css.refreshIcon} />
+          </IconButton>
+        )}
         <IconButton color="inherit" onClick={openUserMenu} className={css.hideOnMobile}>
           <UserIcon />
         </IconButton>
@@ -125,15 +131,15 @@ const NavJSX = ({
 
 export const NavCmp = compose(
   withStateHandlers(
-    { isDrawerOpen: false, isUserMenuOpen: false, userMenuAnchorEl: null },
+    { isDrawerOpen: false, isUserMenuOpen: false, userMenuAnchorEl: null, isRefreshing: false },
     {
       openDrawer: () => () => ({ isDrawerOpen: true }),
       closeDrawer: () => () => ({ isDrawerOpen: false }),
       openUserMenu: () => e => ({ isUserMenuOpen: true, userMenuAnchorEl: e.target }),
       closeUserMenu: () => () => ({ isUserMenuOpen: false }),
+      refresh: () => () => window.location.reload(true) || { isRefreshing: true },
     },
   ),
-  withHandlers({ hardRefresh: () => () => window.location.reload(true) }),
   withStyles(({ spacing, mixins, breakpoints }) => ({
     appBarPusher: mixins.toolbar,
     backButton: { margin: '0 6px 0 -6px' },
@@ -156,6 +162,8 @@ export const NavCmp = compose(
     },
     hideOnMobile: { [breakpoints.down('xs')]: { display: 'none' } },
     hideOnDesktop: { [breakpoints.up('sm')]: { display: 'none' } },
+    refreshIcon: { fontSize: 30 },
+    refreshProgress: { margin: '0 17px' },
   })),
 )(NavJSX)
 
