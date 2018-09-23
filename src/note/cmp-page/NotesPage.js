@@ -14,15 +14,7 @@ import Note from 'note/cmp/Note'
 import renderIf from 'sharyn/hocs/render-if'
 import LoadingPage from 'sharyn/components/LoadingPage'
 
-const NotesPageJSX = ({
-  classes: css,
-  notes,
-  isOnline = true,
-}: {
-  classes: Object,
-  notes: Object[],
-  isOnline?: boolean,
-}) => (
+const NotesPageJSX = ({ classes: css, notes }: { classes: Object, notes: Object[] }) => (
   <>
     <Page noPaper noPadding maxWidth={600}>
       {notes.map(n => (
@@ -31,43 +23,33 @@ const NotesPageJSX = ({
         </div>
       ))}
     </Page>
-    {isOnline && (
-      <Button
-        variant="fab"
-        color="primary"
-        className={css.fab}
-        component={Link}
-        to={newNoteRoute.path}
-      >
-        <AddIcon />
-      </Button>
-    )}
+    <Button
+      variant="fab"
+      color="primary"
+      className={css.fab}
+      component={Link}
+      to={newNoteRoute.path}
+    >
+      <AddIcon />
+    </Button>
   </>
 )
 
-const NoNotesPageJSX = ({
-  classes: css,
-  isOnline = true,
-}: {
-  classes: Object,
-  isOnline?: boolean,
-}) => (
+const NoNotesPageJSX = ({ classes: css }: { classes: Object }) => (
   <>
     <Page noPaper noPadding middle>
       {"You don't have any note yet!"}
     </Page>
-    {isOnline && (
-      <Button
-        variant="extendedFab"
-        color="primary"
-        className={css.extendedFab}
-        component={Link}
-        to={newNoteRoute.path}
-      >
-        <AddIcon className={css.extendedFabIcon} />
-        Add note
-      </Button>
-    )}
+    <Button
+      variant="extendedFab"
+      color="primary"
+      className={css.extendedFab}
+      component={Link}
+      to={newNoteRoute.path}
+    >
+      <AddIcon className={css.extendedFabIcon} />
+      Add note
+    </Button>
   </>
 )
 
@@ -83,11 +65,7 @@ export const NotesPageCmp = compose(
 )(NotesPageJSX)
 
 const NotesPage = compose(
-  withRedux(({ data, async, env }) => ({
-    notes: data.notes,
-    isPageLoading: async.page,
-    isOnline: env.isOnline,
-  })),
+  withRedux(({ data, async }) => ({ notes: data.notes, isPageLoading: async.page })),
   withClientMainQuery(),
 )(NotesPageCmp)
 

@@ -122,7 +122,6 @@ storiesOf('All Components', module)
             ]
       }
       isPageLoading={boolean('isPageLoading', false)}
-      isOnline={boolean('isOnline', true)}
     />
   ))
   .add('NotePageCmp', () => (

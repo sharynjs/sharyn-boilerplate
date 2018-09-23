@@ -35,7 +35,7 @@ const Favicons = [
     color={primaryColor}
   />,
   <meta key="ms-tile" name="msapplication-TileColor" content={primaryColor} />,
-  <meta key="theme" name="theme-color" content="#ffffff" />,
+  <meta key="theme" name="theme-color" content="#3f51b5" />,
 ]
 
 export default Favicons
