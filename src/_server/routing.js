@@ -1,7 +1,15 @@
 // @flow
 
-import { IS_DEV_ENV, NO_SSR, SENTRY_DSN_PUBLIC, IS_LOCAL_ENV_TYPE, TURN_OFF_SW } from 'sharyn/env'
+import {
+  IS_DEV_ENV,
+  NO_SSR,
+  SENTRY_DSN_PUBLIC,
+  IS_LOCAL_ENV_TYPE,
+  TURN_OFF_SW,
+  NO_VERSION_VALIDATION,
+} from 'sharyn/env'
 import { renderPage } from 'sharyn/server'
+import { dirChecksum } from 'sharyn/check-setup'
 // flow-disable-next-line
 import jss from 'jss'
 import jssPreset from 'jss-preset-default'
@@ -13,16 +21,13 @@ import theme from 'app/theme'
 import allRoutes from 'app/all-routes'
 import { graphqlCall, findMatch } from 'sharyn/shared'
 
-console.log('====================== RUNTIME')
-console.log(process.env.SOURCE_VERSION)
-
 jss.setup(jssPreset())
 const env = {
   IS_DEV_ENV,
   SENTRY_DSN_PUBLIC,
   NO_SSR,
   isOnline: true,
-  SERVER_GIT_HASH: process.env.SOURCE_VERSION,
+  SERVER_VERSION: NO_VERSION_VALIDATION ? null : dirChecksum('.'),
 }
 let data = {}
 const preloadedStateBase = { data, env, ui: {}, async: {} }

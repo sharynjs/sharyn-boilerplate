@@ -727,12 +727,6 @@
   dependencies:
     regenerator-runtime "^0.12.0"
 
-"@babel/runtime@7.0.0-rc.1":
-  version "7.0.0-rc.1"
-  resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.0.0-rc.1.tgz#42f36fc5817911c89ea75da2b874054922967616"
-  dependencies:
-    regenerator-runtime "^0.12.0"
-
 "@babel/template@^7.1.0":
   version "7.1.0"
   resolved "https://registry.yarnpkg.com/@babel/template/-/template-7.1.0.tgz#58cc9572e1bfe24fe1537fdf99d839d53e517e22"
@@ -992,25 +986,37 @@
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/@protobufjs/utf8/-/utf8-1.1.0.tgz#a777360b5b39a1a2e5106f8e858f2fd2d060c570"
 
-"@sharyn/check-setup@^2.0.3":
-  version "2.0.3"
-  resolved "https://registry.yarnpkg.com/@sharyn/check-setup/-/check-setup-2.0.3.tgz#01fc8eb8fafe99f5ecdc1f355f141b69252ae39f"
+"@sharyn/check-setup@^2.0.6":
+  version "2.0.6"
+  resolved "https://registry.yarnpkg.com/@sharyn/check-setup/-/check-setup-2.0.6.tgz#ed9c6b78e6e43dce2976871ff331425cfa17cf45"
   dependencies:
     "@babel/runtime-corejs2" "^7.0.0"
     app-root-path "^2.1.0"
+    klaw-sync "^5.0.0"
+    md5 "^2.2.1"
 
 "@sharyn/css@^1.2.2":
   version "1.2.2"
   resolved "https://registry.yarnpkg.com/@sharyn/css/-/css-1.2.2.tgz#bcb3554178bd395973d3ef0ece0da0d1af488795"
 
-"@sharyn/env@^2.0.3":
-  version "2.0.3"
-  resolved "https://registry.yarnpkg.com/@sharyn/env/-/env-2.0.3.tgz#978cf7719e0bd8a970fe338d73273290e9c3477f"
+"@sharyn/env@^2.0.6":
+  version "2.0.6"
+  resolved "https://registry.yarnpkg.com/@sharyn/env/-/env-2.0.6.tgz#487799c64df6b503a6dff5a37651c82fd5752b93"
   dependencies:
     "@babel/runtime-corejs2" "^7.0.0"
-    "@sharyn/check-setup" "^2.0.3"
+    "@sharyn/check-setup" "^2.0.6"
     dotenv "^6.0.0"
     read-env "^1.3.0"
+
+"@sharyn/server@^3.3.4":
+  version "3.3.4"
+  resolved "https://registry.yarnpkg.com/@sharyn/server/-/server-3.3.4.tgz#76af4aefb0c24893b56d5377fff1f89247eea45a"
+  dependencies:
+    "@babel/runtime-corejs2" "^7.0.0"
+    "@sharyn/check-setup" "^2.0.6"
+    "@sharyn/webpack-config" "^2.4.4"
+    clean-css "^4.2.1"
+    serialize-javascript "^1.5.0"
 
 "@sharyn/shared@^2.6.1":
   version "2.6.1"
@@ -1028,13 +1034,13 @@
     lodash.forown "^4.4.0"
     validator "^10.7.1"
 
-"@sharyn/webpack-config@^2.3.1":
-  version "2.3.1"
-  resolved "https://registry.yarnpkg.com/@sharyn/webpack-config/-/webpack-config-2.3.1.tgz#b023250cbdbfebb96816aeab60ddc570ec52292b"
+"@sharyn/webpack-config@^2.4.4":
+  version "2.4.4"
+  resolved "https://registry.yarnpkg.com/@sharyn/webpack-config/-/webpack-config-2.4.4.tgz#ca702bab5fae7d5af4883e3dc7e43ee4f09073fc"
   dependencies:
     "@babel/runtime-corejs2" "^7.0.0"
-    "@sharyn/check-setup" "^2.0.3"
-    "@sharyn/env" "^2.0.3"
+    "@sharyn/check-setup" "^2.0.6"
+    "@sharyn/env" "^2.0.6"
     webpack "^4.19.1"
 
 "@storybook/addon-backgrounds@^4.0.0-alpha.22":
@@ -1392,8 +1398,8 @@
   resolved "https://registry.yarnpkg.com/@types/mime/-/mime-2.0.0.tgz#5a7306e367c539b9f6543499de8dd519fac37a8b"
 
 "@types/node@*", "@types/node@^10.1.0":
-  version "10.10.2"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-10.10.2.tgz#2a55b8d66f6945efc5da38489774e551248aa169"
+  version "10.10.3"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-10.10.3.tgz#09c75a4ad84d6a3d286790bdd9489a4f8ee9906c"
 
 "@types/prop-types@*":
   version "15.5.5"
@@ -1667,8 +1673,8 @@ ajv@^5.3.0:
     json-schema-traverse "^0.3.0"
 
 ajv@^6.0.1, ajv@^6.1.0, ajv@^6.5.3:
-  version "6.5.3"
-  resolved "https://registry.yarnpkg.com/ajv/-/ajv-6.5.3.tgz#71a569d189ecf4f4f321224fecb166f071dd90f9"
+  version "6.5.4"
+  resolved "https://registry.yarnpkg.com/ajv/-/ajv-6.5.4.tgz#247d5274110db653706b550fcc2b797ca28cfc59"
   dependencies:
     fast-deep-equal "^2.0.1"
     fast-json-stable-stringify "^2.0.0"
@@ -2247,19 +2253,19 @@ babel-plugin-macros@^2.0.0, babel-plugin-macros@^2.2.2:
     cosmiconfig "^5.0.5"
     resolve "^1.8.1"
 
-babel-plugin-minify-builtins@^0.5.0-alpha.3cc09dcf:
+babel-plugin-minify-builtins@^0.5.0-alpha.9+7002b8c:
   version "0.5.0-alpha.e9f96ffe"
   resolved "https://registry.yarnpkg.com/babel-plugin-minify-builtins/-/babel-plugin-minify-builtins-0.5.0-alpha.e9f96ffe.tgz#22a40d257f12f43fbe12731a82b54866b9f753bb"
   dependencies:
     babel-helper-evaluate-path "^0.5.0-alpha.e9f96ffe"
 
-babel-plugin-minify-constant-folding@^0.5.0-alpha.3cc09dcf:
+babel-plugin-minify-constant-folding@^0.5.0-alpha.9+7002b8c:
   version "0.5.0-alpha.e9f96ffe"
   resolved "https://registry.yarnpkg.com/babel-plugin-minify-constant-folding/-/babel-plugin-minify-constant-folding-0.5.0-alpha.e9f96ffe.tgz#d4b4c444ca9716d3fd34093fc7298b2585e64a73"
   dependencies:
     babel-helper-evaluate-path "^0.5.0-alpha.e9f96ffe"
 
-babel-plugin-minify-dead-code-elimination@^0.5.0-alpha.3cc09dcf:
+babel-plugin-minify-dead-code-elimination@^0.5.0-alpha.9+7002b8c:
   version "0.5.0-alpha.e9f96ffe"
   resolved "https://registry.yarnpkg.com/babel-plugin-minify-dead-code-elimination/-/babel-plugin-minify-dead-code-elimination-0.5.0-alpha.e9f96ffe.tgz#1f450f52831ede977e0cbcc23d4909aba31e8255"
   dependencies:
@@ -2268,37 +2274,37 @@ babel-plugin-minify-dead-code-elimination@^0.5.0-alpha.3cc09dcf:
     babel-helper-remove-or-void "^0.5.0-alpha.e9f96ffe"
     lodash.some "^4.6.0"
 
-babel-plugin-minify-flip-comparisons@^0.5.0-alpha.3cc09dcf:
+babel-plugin-minify-flip-comparisons@^0.5.0-alpha.9+7002b8c:
   version "0.5.0-alpha.e9f96ffe"
   resolved "https://registry.yarnpkg.com/babel-plugin-minify-flip-comparisons/-/babel-plugin-minify-flip-comparisons-0.5.0-alpha.e9f96ffe.tgz#a0443772d1e0b8c6c06499cf9ac27979519a3bd4"
   dependencies:
     babel-helper-is-void-0 "^0.5.0-alpha.e9f96ffe"
 
-babel-plugin-minify-guarded-expressions@^0.5.0-alpha.3cc09dcf:
+babel-plugin-minify-guarded-expressions@^0.5.0-alpha.9+7002b8c:
   version "0.5.0-alpha.e9f96ffe"
   resolved "https://registry.yarnpkg.com/babel-plugin-minify-guarded-expressions/-/babel-plugin-minify-guarded-expressions-0.5.0-alpha.e9f96ffe.tgz#48a9040c4863ce079840f1f7c7b80b9056bc20a7"
   dependencies:
     babel-helper-flip-expressions "^0.5.0-alpha.e9f96ffe"
 
-babel-plugin-minify-infinity@^0.5.0-alpha.3cc09dcf:
+babel-plugin-minify-infinity@^0.5.0-alpha.9+7002b8c:
   version "0.5.0-alpha.e9f96ffe"
   resolved "https://registry.yarnpkg.com/babel-plugin-minify-infinity/-/babel-plugin-minify-infinity-0.5.0-alpha.e9f96ffe.tgz#1eff5cf31e4400202a53ebb90f28083c4d0d06bc"
 
-babel-plugin-minify-mangle-names@^0.5.0-alpha.3cc09dcf:
+babel-plugin-minify-mangle-names@^0.5.0-alpha.9+7002b8c:
   version "0.5.0-alpha.e9f96ffe"
   resolved "https://registry.yarnpkg.com/babel-plugin-minify-mangle-names/-/babel-plugin-minify-mangle-names-0.5.0-alpha.e9f96ffe.tgz#9867fa057f90ed81bfc7668730f3fb323918bccc"
   dependencies:
     babel-helper-mark-eval-scopes "^0.5.0-alpha.e9f96ffe"
 
-babel-plugin-minify-numeric-literals@^0.5.0-alpha.3cc09dcf:
+babel-plugin-minify-numeric-literals@^0.5.0-alpha.9+7002b8c:
   version "0.5.0-alpha.e9f96ffe"
   resolved "https://registry.yarnpkg.com/babel-plugin-minify-numeric-literals/-/babel-plugin-minify-numeric-literals-0.5.0-alpha.e9f96ffe.tgz#07be5d3fed33f2d740a706a14b24439161c840ee"
 
-babel-plugin-minify-replace@^0.5.0-alpha.3cc09dcf:
+babel-plugin-minify-replace@^0.5.0-alpha.9+7002b8c:
   version "0.5.0-alpha.e9f96ffe"
   resolved "https://registry.yarnpkg.com/babel-plugin-minify-replace/-/babel-plugin-minify-replace-0.5.0-alpha.e9f96ffe.tgz#8ecdeb5e6860279e6406381a82c612b389435957"
 
-babel-plugin-minify-simplify@^0.5.0-alpha.3cc09dcf:
+babel-plugin-minify-simplify@^0.5.0-alpha.9+7002b8c:
   version "0.5.0-alpha.e9f96ffe"
   resolved "https://registry.yarnpkg.com/babel-plugin-minify-simplify/-/babel-plugin-minify-simplify-0.5.0-alpha.e9f96ffe.tgz#5d027f8cf4d82330c2021ffa4fac44c0ec806d24"
   dependencies:
@@ -2306,7 +2312,7 @@ babel-plugin-minify-simplify@^0.5.0-alpha.3cc09dcf:
     babel-helper-is-nodes-equiv "^0.0.1"
     babel-helper-to-multiple-sequence-expressions "^0.5.0-alpha.e9f96ffe"
 
-babel-plugin-minify-type-constructors@^0.5.0-alpha.3cc09dcf:
+babel-plugin-minify-type-constructors@^0.5.0-alpha.9+7002b8c:
   version "0.5.0-alpha.e9f96ffe"
   resolved "https://registry.yarnpkg.com/babel-plugin-minify-type-constructors/-/babel-plugin-minify-type-constructors-0.5.0-alpha.e9f96ffe.tgz#116b76e4b4953c89f2c836769eec9464643e6b46"
   dependencies:
@@ -2337,53 +2343,53 @@ babel-plugin-syntax-object-rest-spread@^6.13.0:
   version "6.13.0"
   resolved "http://registry.npmjs.org/babel-plugin-syntax-object-rest-spread/-/babel-plugin-syntax-object-rest-spread-6.13.0.tgz#fd6536f2bce13836ffa3a5458c4903a597bb3bf5"
 
-babel-plugin-transform-inline-consecutive-adds@^0.5.0-alpha.3cc09dcf:
+babel-plugin-transform-inline-consecutive-adds@^0.5.0-alpha.9+7002b8c:
   version "0.5.0-alpha.e9f96ffe"
   resolved "https://registry.yarnpkg.com/babel-plugin-transform-inline-consecutive-adds/-/babel-plugin-transform-inline-consecutive-adds-0.5.0-alpha.e9f96ffe.tgz#d485c6ca183e15e865fec5731aadc831e2083022"
 
-babel-plugin-transform-member-expression-literals@^6.10.0-alpha.3cc09dcf:
+babel-plugin-transform-member-expression-literals@^6.10.0-alpha.9+7002b8c:
   version "6.10.0-alpha.f95869d4"
-  resolved "https://registry.yarnpkg.com/babel-plugin-transform-member-expression-literals/-/babel-plugin-transform-member-expression-literals-6.10.0-alpha.f95869d4.tgz#272ebd2a2d4341b86c24dcd84374ae5aa3702874"
+  resolved "http://registry.npmjs.org/babel-plugin-transform-member-expression-literals/-/babel-plugin-transform-member-expression-literals-6.10.0-alpha.f95869d4.tgz#272ebd2a2d4341b86c24dcd84374ae5aa3702874"
 
-babel-plugin-transform-merge-sibling-variables@^6.10.0-alpha.3cc09dcf:
+babel-plugin-transform-merge-sibling-variables@^6.10.0-alpha.9+7002b8c:
   version "6.10.0-alpha.f95869d4"
-  resolved "https://registry.yarnpkg.com/babel-plugin-transform-merge-sibling-variables/-/babel-plugin-transform-merge-sibling-variables-6.10.0-alpha.f95869d4.tgz#48a330d28293e318d07175c260c74859e7398b43"
+  resolved "http://registry.npmjs.org/babel-plugin-transform-merge-sibling-variables/-/babel-plugin-transform-merge-sibling-variables-6.10.0-alpha.f95869d4.tgz#48a330d28293e318d07175c260c74859e7398b43"
 
-babel-plugin-transform-minify-booleans@^6.10.0-alpha.3cc09dcf:
+babel-plugin-transform-minify-booleans@^6.10.0-alpha.9+7002b8c:
   version "6.10.0-alpha.f95869d4"
-  resolved "https://registry.yarnpkg.com/babel-plugin-transform-minify-booleans/-/babel-plugin-transform-minify-booleans-6.10.0-alpha.f95869d4.tgz#1deef69c22135038a91de1f5d13d759e3464c43c"
+  resolved "http://registry.npmjs.org/babel-plugin-transform-minify-booleans/-/babel-plugin-transform-minify-booleans-6.10.0-alpha.f95869d4.tgz#1deef69c22135038a91de1f5d13d759e3464c43c"
 
-babel-plugin-transform-property-literals@^6.10.0-alpha.3cc09dcf:
+babel-plugin-transform-property-literals@^6.10.0-alpha.9+7002b8c:
   version "6.10.0-alpha.f95869d4"
-  resolved "https://registry.yarnpkg.com/babel-plugin-transform-property-literals/-/babel-plugin-transform-property-literals-6.10.0-alpha.f95869d4.tgz#37127aaa04125c3d08bf95cdb5a8f1d2e44ca453"
+  resolved "http://registry.npmjs.org/babel-plugin-transform-property-literals/-/babel-plugin-transform-property-literals-6.10.0-alpha.f95869d4.tgz#37127aaa04125c3d08bf95cdb5a8f1d2e44ca453"
   dependencies:
     esutils "^2.0.2"
 
-babel-plugin-transform-regexp-constructors@^0.5.0-alpha.3cc09dcf:
+babel-plugin-transform-regexp-constructors@^0.5.0-alpha.9+7002b8c:
   version "0.5.0-alpha.e9f96ffe"
   resolved "https://registry.yarnpkg.com/babel-plugin-transform-regexp-constructors/-/babel-plugin-transform-regexp-constructors-0.5.0-alpha.e9f96ffe.tgz#8d7a283d3bd1645018dbce73e7e3846a68267e66"
 
-babel-plugin-transform-remove-console@^6.10.0-alpha.3cc09dcf:
+babel-plugin-transform-remove-console@^6.10.0-alpha.9+7002b8c:
   version "6.10.0-alpha.f95869d4"
-  resolved "https://registry.yarnpkg.com/babel-plugin-transform-remove-console/-/babel-plugin-transform-remove-console-6.10.0-alpha.f95869d4.tgz#c5717af9f76918b2821cfaef44d8245d4ea9422c"
+  resolved "http://registry.npmjs.org/babel-plugin-transform-remove-console/-/babel-plugin-transform-remove-console-6.10.0-alpha.f95869d4.tgz#c5717af9f76918b2821cfaef44d8245d4ea9422c"
 
-babel-plugin-transform-remove-debugger@^6.10.0-alpha.3cc09dcf:
+babel-plugin-transform-remove-debugger@^6.10.0-alpha.9+7002b8c:
   version "6.10.0-alpha.f95869d4"
-  resolved "https://registry.yarnpkg.com/babel-plugin-transform-remove-debugger/-/babel-plugin-transform-remove-debugger-6.10.0-alpha.f95869d4.tgz#1fc35c29c7c0878cf30e558a733651906e888e44"
+  resolved "http://registry.npmjs.org/babel-plugin-transform-remove-debugger/-/babel-plugin-transform-remove-debugger-6.10.0-alpha.f95869d4.tgz#1fc35c29c7c0878cf30e558a733651906e888e44"
 
-babel-plugin-transform-remove-undefined@^0.5.0-alpha.3cc09dcf:
+babel-plugin-transform-remove-undefined@^0.5.0-alpha.9+7002b8c:
   version "0.5.0-alpha.e9f96ffe"
   resolved "https://registry.yarnpkg.com/babel-plugin-transform-remove-undefined/-/babel-plugin-transform-remove-undefined-0.5.0-alpha.e9f96ffe.tgz#39f694ee66e3edeb99e2ed4155cf5fb7ac991384"
   dependencies:
     babel-helper-evaluate-path "^0.5.0-alpha.e9f96ffe"
 
-babel-plugin-transform-simplify-comparison-operators@^6.10.0-alpha.3cc09dcf:
+babel-plugin-transform-simplify-comparison-operators@^6.10.0-alpha.9+7002b8c:
   version "6.10.0-alpha.f95869d4"
-  resolved "https://registry.yarnpkg.com/babel-plugin-transform-simplify-comparison-operators/-/babel-plugin-transform-simplify-comparison-operators-6.10.0-alpha.f95869d4.tgz#f5499a6dc3ed686bda53363866b67dda774c5bed"
+  resolved "http://registry.npmjs.org/babel-plugin-transform-simplify-comparison-operators/-/babel-plugin-transform-simplify-comparison-operators-6.10.0-alpha.f95869d4.tgz#f5499a6dc3ed686bda53363866b67dda774c5bed"
 
-babel-plugin-transform-undefined-to-void@^6.10.0-alpha.3cc09dcf:
+babel-plugin-transform-undefined-to-void@^6.10.0-alpha.9+7002b8c:
   version "6.10.0-alpha.f95869d4"
-  resolved "https://registry.yarnpkg.com/babel-plugin-transform-undefined-to-void/-/babel-plugin-transform-undefined-to-void-6.10.0-alpha.f95869d4.tgz#175a1a3090e616403f8c819cdcea1aecb66523b2"
+  resolved "http://registry.npmjs.org/babel-plugin-transform-undefined-to-void/-/babel-plugin-transform-undefined-to-void-6.10.0-alpha.f95869d4.tgz#175a1a3090e616403f8c819cdcea1aecb66523b2"
 
 babel-preset-jest@^23.2.0:
   version "23.2.0"
@@ -2393,39 +2399,39 @@ babel-preset-jest@^23.2.0:
     babel-plugin-syntax-object-rest-spread "^6.13.0"
 
 babel-preset-minify@canary:
-  version "0.5.0-alpha.3cc09dcf"
-  resolved "https://registry.yarnpkg.com/babel-preset-minify/-/babel-preset-minify-0.5.0-alpha.3cc09dcf.tgz#d2f58065ea977d9453f3538e22ea83adff73292b"
+  version "0.5.0-alpha.9"
+  resolved "https://registry.yarnpkg.com/babel-preset-minify/-/babel-preset-minify-0.5.0-alpha.9.tgz#7e3bddf24c044eaaa8b93b8223e7bf693cd84128"
   dependencies:
-    babel-plugin-minify-builtins "^0.5.0-alpha.3cc09dcf"
-    babel-plugin-minify-constant-folding "^0.5.0-alpha.3cc09dcf"
-    babel-plugin-minify-dead-code-elimination "^0.5.0-alpha.3cc09dcf"
-    babel-plugin-minify-flip-comparisons "^0.5.0-alpha.3cc09dcf"
-    babel-plugin-minify-guarded-expressions "^0.5.0-alpha.3cc09dcf"
-    babel-plugin-minify-infinity "^0.5.0-alpha.3cc09dcf"
-    babel-plugin-minify-mangle-names "^0.5.0-alpha.3cc09dcf"
-    babel-plugin-minify-numeric-literals "^0.5.0-alpha.3cc09dcf"
-    babel-plugin-minify-replace "^0.5.0-alpha.3cc09dcf"
-    babel-plugin-minify-simplify "^0.5.0-alpha.3cc09dcf"
-    babel-plugin-minify-type-constructors "^0.5.0-alpha.3cc09dcf"
-    babel-plugin-transform-inline-consecutive-adds "^0.5.0-alpha.3cc09dcf"
-    babel-plugin-transform-member-expression-literals "^6.10.0-alpha.3cc09dcf"
-    babel-plugin-transform-merge-sibling-variables "^6.10.0-alpha.3cc09dcf"
-    babel-plugin-transform-minify-booleans "^6.10.0-alpha.3cc09dcf"
-    babel-plugin-transform-property-literals "^6.10.0-alpha.3cc09dcf"
-    babel-plugin-transform-regexp-constructors "^0.5.0-alpha.3cc09dcf"
-    babel-plugin-transform-remove-console "^6.10.0-alpha.3cc09dcf"
-    babel-plugin-transform-remove-debugger "^6.10.0-alpha.3cc09dcf"
-    babel-plugin-transform-remove-undefined "^0.5.0-alpha.3cc09dcf"
-    babel-plugin-transform-simplify-comparison-operators "^6.10.0-alpha.3cc09dcf"
-    babel-plugin-transform-undefined-to-void "^6.10.0-alpha.3cc09dcf"
+    babel-plugin-minify-builtins "^0.5.0-alpha.9+7002b8c"
+    babel-plugin-minify-constant-folding "^0.5.0-alpha.9+7002b8c"
+    babel-plugin-minify-dead-code-elimination "^0.5.0-alpha.9+7002b8c"
+    babel-plugin-minify-flip-comparisons "^0.5.0-alpha.9+7002b8c"
+    babel-plugin-minify-guarded-expressions "^0.5.0-alpha.9+7002b8c"
+    babel-plugin-minify-infinity "^0.5.0-alpha.9+7002b8c"
+    babel-plugin-minify-mangle-names "^0.5.0-alpha.9+7002b8c"
+    babel-plugin-minify-numeric-literals "^0.5.0-alpha.9+7002b8c"
+    babel-plugin-minify-replace "^0.5.0-alpha.9+7002b8c"
+    babel-plugin-minify-simplify "^0.5.0-alpha.9+7002b8c"
+    babel-plugin-minify-type-constructors "^0.5.0-alpha.9+7002b8c"
+    babel-plugin-transform-inline-consecutive-adds "^0.5.0-alpha.9+7002b8c"
+    babel-plugin-transform-member-expression-literals "^6.10.0-alpha.9+7002b8c"
+    babel-plugin-transform-merge-sibling-variables "^6.10.0-alpha.9+7002b8c"
+    babel-plugin-transform-minify-booleans "^6.10.0-alpha.9+7002b8c"
+    babel-plugin-transform-property-literals "^6.10.0-alpha.9+7002b8c"
+    babel-plugin-transform-regexp-constructors "^0.5.0-alpha.9+7002b8c"
+    babel-plugin-transform-remove-console "^6.10.0-alpha.9+7002b8c"
+    babel-plugin-transform-remove-debugger "^6.10.0-alpha.9+7002b8c"
+    babel-plugin-transform-remove-undefined "^0.5.0-alpha.9+7002b8c"
+    babel-plugin-transform-simplify-comparison-operators "^6.10.0-alpha.9+7002b8c"
+    babel-plugin-transform-undefined-to-void "^6.10.0-alpha.9+7002b8c"
     lodash.isplainobject "^4.0.6"
 
-babel-preset-sharyn@^3.0.5:
-  version "3.0.5"
-  resolved "https://registry.yarnpkg.com/babel-preset-sharyn/-/babel-preset-sharyn-3.0.5.tgz#724b0cf0dc01f494fded8792c68dad317b6aba34"
+babel-preset-sharyn@^3.0.8:
+  version "3.0.8"
+  resolved "https://registry.yarnpkg.com/babel-preset-sharyn/-/babel-preset-sharyn-3.0.8.tgz#0a4860857a3f0130a6e8efa325f0801fade739c3"
   dependencies:
     "@babel/runtime-corejs2" "^7.0.0"
-    "@sharyn/check-setup" "^2.0.3"
+    "@sharyn/check-setup" "^2.0.6"
 
 babel-register@^6.26.0:
   version "6.26.0"
@@ -2621,8 +2627,8 @@ brorand@^1.0.1:
   resolved "https://registry.yarnpkg.com/brorand/-/brorand-1.1.0.tgz#12c25efe40a45e3c323eb8675a0a0ce57b22371f"
 
 browser-process-hrtime@^0.1.2:
-  version "0.1.2"
-  resolved "https://registry.yarnpkg.com/browser-process-hrtime/-/browser-process-hrtime-0.1.2.tgz#425d68a58d3447f02a04aa894187fce8af8b7b8e"
+  version "0.1.3"
+  resolved "https://registry.yarnpkg.com/browser-process-hrtime/-/browser-process-hrtime-0.1.3.tgz#616f00faef1df7ec1b5bf9cfe2bdc3170f26c7b4"
 
 browser-resolve@^1.11.3:
   version "1.11.3"
@@ -2843,8 +2849,8 @@ camelcase@^4.0.0, camelcase@^4.1.0:
   resolved "https://registry.yarnpkg.com/camelcase/-/camelcase-4.1.0.tgz#d545635be1e33c542649c69173e5de6acfae34dd"
 
 caniuse-lite@^1.0.30000830, caniuse-lite@^1.0.30000884:
-  version "1.0.30000886"
-  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30000886.tgz#2127186c4f57da10d3ba26fc3e87dce4a5ddd3ae"
+  version "1.0.30000887"
+  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30000887.tgz#1769458c27bbdcf61b0cb6b5072bb6cd11fd9c23"
 
 capture-exit@^1.2.0:
   version "1.2.0"
@@ -2901,6 +2907,10 @@ chardet@^0.4.0:
 chardet@^0.7.0:
   version "0.7.0"
   resolved "https://registry.yarnpkg.com/chardet/-/chardet-0.7.0.tgz#90094849f0937f2eedc2425d0d28a9e5f0cbad9e"
+
+charenc@~0.0.1:
+  version "0.0.2"
+  resolved "https://registry.yarnpkg.com/charenc/-/charenc-0.0.2.tgz#c0a1d2f3a7092e03774bfa83f14c0fc5790a8667"
 
 chokidar@^2.0.0, chokidar@^2.0.2, chokidar@^2.0.3:
   version "2.0.4"
@@ -3321,6 +3331,10 @@ cross-spawn@^5.0.1:
     lru-cache "^4.0.1"
     shebang-command "^1.2.0"
     which "^1.2.9"
+
+crypt@~0.0.1:
+  version "0.0.2"
+  resolved "https://registry.yarnpkg.com/crypt/-/crypt-0.0.2.tgz#88d7ff7ec0dfb86f713dc87bbb42d044d3e6c41b"
 
 crypto-browserify@^3.11.0:
   version "3.12.0"
@@ -3809,7 +3823,7 @@ end-of-stream@^1.0.0, end-of-stream@^1.1.0:
   dependencies:
     once "^1.4.0"
 
-enhanced-resolve@^4.0.0, enhanced-resolve@^4.1.0:
+enhanced-resolve@^4.1.0:
   version "4.1.0"
   resolved "https://registry.yarnpkg.com/enhanced-resolve/-/enhanced-resolve-4.1.0.tgz#41c7e0bfdfe74ac1ffe1e57ad6a5c6c9f3742a7f"
   dependencies:
@@ -3905,17 +3919,17 @@ eslint-config-airbnb@^17.1.0:
     object.entries "^1.0.4"
 
 eslint-config-prettier@^3.0.1:
-  version "3.0.1"
-  resolved "https://registry.yarnpkg.com/eslint-config-prettier/-/eslint-config-prettier-3.0.1.tgz#479214f64c1a4b344040924bfb97543db334b7b1"
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/eslint-config-prettier/-/eslint-config-prettier-3.1.0.tgz#2c26d2cdcfa3a05f0642cd7e6e4ef3316cdabfa2"
   dependencies:
     get-stdin "^6.0.0"
 
-eslint-config-sharyn@^3.0.4:
-  version "3.0.4"
-  resolved "https://registry.yarnpkg.com/eslint-config-sharyn/-/eslint-config-sharyn-3.0.4.tgz#2c9447aa0e442149e38e62debd7e7cd5dd927bfb"
+eslint-config-sharyn@^3.0.7:
+  version "3.0.7"
+  resolved "https://registry.yarnpkg.com/eslint-config-sharyn/-/eslint-config-sharyn-3.0.7.tgz#2e22f90b16edca71f6cdef78fb596abd6f9a6ea2"
   dependencies:
     "@babel/runtime-corejs2" "^7.0.0"
-    "@sharyn/check-setup" "^2.0.3"
+    "@sharyn/check-setup" "^2.0.6"
 
 eslint-import-resolver-babel-module@^5.0.0-beta.1:
   version "5.0.0-beta.1"
@@ -4753,8 +4767,8 @@ gauge@~2.7.3:
     wide-align "^1.1.0"
 
 generate-page-webpack-plugin@^1.1.0:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/generate-page-webpack-plugin/-/generate-page-webpack-plugin-1.1.0.tgz#5940c9c6bdbfa03b1a4ef8f909875d5ebafbd3af"
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/generate-page-webpack-plugin/-/generate-page-webpack-plugin-1.1.1.tgz#82208fb599f45d70940cbd6327a7a46e77c5ee2c"
 
 get-caller-file@^1.0.1:
   version "1.0.3"
@@ -4819,7 +4833,7 @@ global-dirs@^0.1.0:
   dependencies:
     ini "^1.3.4"
 
-global-modules-path@^2.1.0:
+global-modules-path@^2.3.0:
   version "2.3.0"
   resolved "https://registry.yarnpkg.com/global-modules-path/-/global-modules-path-2.3.0.tgz#b0e2bac6beac39745f7db5c59d26a36a0b94f7dc"
 
@@ -5212,8 +5226,8 @@ https-proxy-agent@^2.2.1:
     debug "^3.1.0"
 
 husky@^1.0.0-rc.14:
-  version "1.0.0-rc.14"
-  resolved "https://registry.yarnpkg.com/husky/-/husky-1.0.0-rc.14.tgz#e1380575fe4cf17e1ca98791395c1baafa8064c7"
+  version "1.0.0-rc.15"
+  resolved "https://registry.yarnpkg.com/husky/-/husky-1.0.0-rc.15.tgz#f1545d15c7f34d5db19e40b70df07ac9a362673d"
   dependencies:
     cosmiconfig "^5.0.6"
     execa "^0.9.0"
@@ -5382,7 +5396,7 @@ inquirer@5.1.0:
     strip-ansi "^4.0.0"
     through "^2.3.6"
 
-inquirer@^6.0.0, inquirer@^6.1.0, inquirer@^6.2.0:
+inquirer@^6.1.0, inquirer@^6.2.0:
   version "6.2.0"
   resolved "https://registry.yarnpkg.com/inquirer/-/inquirer-6.2.0.tgz#51adcd776f661369dc1e894859c2560a224abdd8"
   dependencies:
@@ -5470,7 +5484,7 @@ is-binary-path@^1.0.0:
   dependencies:
     binary-extensions "^1.0.0"
 
-is-buffer@^1.1.5:
+is-buffer@^1.1.5, is-buffer@~1.1.1:
   version "1.1.6"
   resolved "https://registry.yarnpkg.com/is-buffer/-/is-buffer-1.1.6.tgz#efaa2ea9daa0d7ab2ea13a97b2b8ad51fefbe8be"
 
@@ -6434,6 +6448,12 @@ kind-of@^6.0.0, kind-of@^6.0.2:
   version "6.0.2"
   resolved "https://registry.yarnpkg.com/kind-of/-/kind-of-6.0.2.tgz#01146b36a6218e64e58f3a8d66de5d7fc6f6d051"
 
+klaw-sync@^5.0.0:
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/klaw-sync/-/klaw-sync-5.0.0.tgz#b8db1249f96a82751c311ee8a626a319db119904"
+  dependencies:
+    graceful-fs "^4.1.11"
+
 kleur@^2.0.1:
   version "2.0.2"
   resolved "https://registry.yarnpkg.com/kleur/-/kleur-2.0.2.tgz#b704f4944d95e255d038f0cb05fb8a602c55a300"
@@ -6842,6 +6862,14 @@ md5.js@^1.3.4:
     hash-base "^3.0.0"
     inherits "^2.0.1"
 
+md5@^2.2.1:
+  version "2.2.1"
+  resolved "https://registry.yarnpkg.com/md5/-/md5-2.2.1.tgz#53ab38d5fe3c8891ba465329ea23fac0540126f9"
+  dependencies:
+    charenc "~0.0.1"
+    crypt "~0.0.1"
+    is-buffer "~1.1.1"
+
 media-typer@0.3.0:
   version "0.3.0"
   resolved "https://registry.yarnpkg.com/media-typer/-/media-typer-0.3.0.tgz#8710d7af0aa626f8fffa1ce00168545263255748"
@@ -7113,8 +7141,8 @@ natural-compare@^1.4.0:
   resolved "https://registry.yarnpkg.com/natural-compare/-/natural-compare-1.4.0.tgz#4abebfeed7541f2c27acfb29bdbbd15c8d5ba4f7"
 
 needle@^2.2.1:
-  version "2.2.3"
-  resolved "https://registry.yarnpkg.com/needle/-/needle-2.2.3.tgz#c1b04da378cd634d8befe2de965dc2cfb0fd65ca"
+  version "2.2.4"
+  resolved "https://registry.yarnpkg.com/needle/-/needle-2.2.4.tgz#51931bff82533b1928b7d1d69e01f1b00ffd2a4e"
   dependencies:
     debug "^2.1.2"
     iconv-lite "^0.4.4"
@@ -8337,10 +8365,10 @@ react-error-overlay@5.0.0-next.3e165448:
   resolved "https://registry.yarnpkg.com/react-error-overlay/-/react-error-overlay-5.0.0-next.3e165448.tgz#2cbd10780c1fa9c7e35d6e443773e18948b7ee49"
 
 react-event-listener@^0.6.2:
-  version "0.6.3"
-  resolved "https://registry.yarnpkg.com/react-event-listener/-/react-event-listener-0.6.3.tgz#8eab88129a76e095ed8aa684c29679eded1e843d"
+  version "0.6.4"
+  resolved "https://registry.yarnpkg.com/react-event-listener/-/react-event-listener-0.6.4.tgz#d0ea5ed897da1a796616c44b5a8758898140f203"
   dependencies:
-    "@babel/runtime" "7.0.0-rc.1"
+    "@babel/runtime" "7.0.0"
     prop-types "^15.6.0"
     warning "^4.0.1"
 
@@ -9152,30 +9180,33 @@ shallowequal@^1.0.1, shallowequal@^1.0.2, shallowequal@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/shallowequal/-/shallowequal-1.1.0.tgz#188d521de95b9087404fd4dcb68b13df0ae4e7f8"
 
-sharyn@^4.31.1:
-  version "4.31.1"
-  resolved "https://registry.yarnpkg.com/sharyn/-/sharyn-4.31.1.tgz#0148ecd473c57b54c25aa0922e962a36821a927b"
+sharyn@^4.32.4:
+  version "4.32.4"
+  resolved "https://registry.yarnpkg.com/sharyn/-/sharyn-4.32.4.tgz#df81f6f895b7b8e857fe315bdd03e87ea44b10ca"
   dependencies:
     "@babel/runtime-corejs2" "^7.0.0"
-    "@sharyn/check-setup" "^2.0.3"
+    "@sharyn/check-setup" "^2.0.6"
     "@sharyn/css" "^1.2.2"
-    "@sharyn/env" "^2.0.3"
+    "@sharyn/env" "^2.0.6"
+    "@sharyn/server" "^3.3.4"
     "@sharyn/shared" "^2.6.1"
     "@sharyn/util" "^2.0.4"
-    "@sharyn/webpack-config" "^2.3.1"
+    "@sharyn/webpack-config" "^2.4.4"
     async-exit-hook "^2.0.1"
     axios "^0.18.0"
-    babel-preset-sharyn "^3.0.5"
+    babel-preset-sharyn "^3.0.8"
     clean-css "^4.2.1"
     colors "^1.3.2"
     dotenv "^6.0.0"
-    eslint-config-sharyn "^3.0.4"
+    eslint-config-sharyn "^3.0.7"
     exit-hook "^2.0.0"
+    klaw-sync "^5.0.0"
     knex "^0.15.2"
     lodash.curryright "^4.1.1"
     lodash.forown "^4.4.0"
     lodash.isempty "^4.4.0"
     lodash.throttle "^4.1.1"
+    md5 "^2.2.1"
     pg "^7.4.3"
     read-env "^1.3.0"
     recompose "^0.30.0"
@@ -9632,7 +9663,7 @@ supports-color@^3.1.2:
   dependencies:
     has-flag "^1.0.0"
 
-supports-color@^5.1.0, supports-color@^5.2.0, supports-color@^5.3.0, supports-color@^5.4.0:
+supports-color@^5.1.0, supports-color@^5.2.0, supports-color@^5.3.0, supports-color@^5.4.0, supports-color@^5.5.0:
   version "5.5.0"
   resolved "https://registry.yarnpkg.com/supports-color/-/supports-color-5.5.0.tgz#e2e69a44ac8772f78a1ec0b35b689df6530efc8f"
   dependencies:
@@ -10124,7 +10155,7 @@ uuid@^3.0.1, uuid@^3.1.0, uuid@^3.3.2:
   version "3.3.2"
   resolved "https://registry.yarnpkg.com/uuid/-/uuid-3.3.2.tgz#1b4af4955eb3077c501c23872fc6513811587131"
 
-v8-compile-cache@^2.0.0:
+v8-compile-cache@^2.0.2:
   version "2.0.2"
   resolved "https://registry.yarnpkg.com/v8-compile-cache/-/v8-compile-cache-2.0.2.tgz#a428b28bb26790734c4fc8bc9fa106fccebf6a6c"
 
@@ -10238,20 +10269,19 @@ webidl-conversions@^4.0.2:
   resolved "https://registry.yarnpkg.com/webidl-conversions/-/webidl-conversions-4.0.2.tgz#a855980b1f0b6b359ba1d5d9fb39ae941faa63ad"
 
 webpack-cli@^3.1.0:
-  version "3.1.0"
-  resolved "https://registry.yarnpkg.com/webpack-cli/-/webpack-cli-3.1.0.tgz#d71a83687dcfeb758fdceeb0fe042f96bcf62994"
+  version "3.1.1"
+  resolved "https://registry.yarnpkg.com/webpack-cli/-/webpack-cli-3.1.1.tgz#92be3e324c1788208a301172139febb476566262"
   dependencies:
     chalk "^2.4.1"
     cross-spawn "^6.0.5"
-    enhanced-resolve "^4.0.0"
-    global-modules-path "^2.1.0"
-    import-local "^1.0.0"
-    inquirer "^6.0.0"
+    enhanced-resolve "^4.1.0"
+    global-modules-path "^2.3.0"
+    import-local "^2.0.0"
     interpret "^1.1.0"
     loader-utils "^1.1.0"
-    supports-color "^5.4.0"
-    v8-compile-cache "^2.0.0"
-    yargs "^12.0.1"
+    supports-color "^5.5.0"
+    v8-compile-cache "^2.0.2"
+    yargs "^12.0.2"
 
 webpack-dev-middleware@3.2.0:
   version "3.2.0"
@@ -10513,7 +10543,7 @@ yargs-parser@^9.0.2:
   dependencies:
     camelcase "^4.1.0"
 
-yargs@12.0.2, yargs@^12.0.1:
+yargs@12.0.2, yargs@^12.0.2:
   version "12.0.2"
   resolved "https://registry.yarnpkg.com/yargs/-/yargs-12.0.2.tgz#fe58234369392af33ecbef53819171eff0f5aadc"
   dependencies:

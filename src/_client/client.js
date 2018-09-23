@@ -43,16 +43,16 @@ import {
 import { configureWithClientMainQuery } from 'sharyn/hocs/with-client-main-query'
 
 const preloadedState = window.__PRELOADED_STATE__
-const { IS_DEV_ENV, SENTRY_DSN_PUBLIC, NO_SSR, SERVER_GIT_HASH } = preloadedState.env
+const { IS_DEV_ENV, SENTRY_DSN_PUBLIC, NO_SSR, SERVER_VERSION } = preloadedState.env
 preloadedState.env.isFirstRender = !NO_SSR
 
-console.log(SERVER_GIT_HASH)
+console.log(SERVER_VERSION)
 // eslint-disable-next-line
-console.log(CLIENT_GIT_HASH)
+console.log(CLIENT_VERSION)
 
 /* eslint-disable no-undef */
 // flow-disable-next-line
-if (CLIENT_GIT_HASH !== SERVER_GIT_HASH) {
+if (CLIENT_VERSION !== SERVER_VERSION) {
   /* eslint-enable no-undef */
   purgeCache()
 } else {
