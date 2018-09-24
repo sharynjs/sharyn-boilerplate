@@ -3,7 +3,6 @@
 import React from 'react'
 
 import AppBar from '@material-ui/core/AppBar'
-import Progress from '@material-ui/core/CircularProgress'
 import IconButton from '@material-ui/core/IconButton'
 import Menu from '@material-ui/core/Menu'
 import MenuItem from '@material-ui/core/MenuItem'
@@ -16,13 +15,13 @@ import BackIcon from '@material-ui/icons/ArrowBack'
 import OfflineIcon from '@material-ui/icons/CloudOff'
 import MenuIcon from '@material-ui/icons/Menu'
 import LogoutIcon from '@material-ui/icons/PowerSettingsNew'
-import RefreshIcon from '@material-ui/icons/Refresh'
 import StyleIcon from '@material-ui/icons/Style'
 import { connect as withRedux } from 'react-redux'
 import Link from 'react-router-dom/Link'
 import compose from 'recompose/compose'
 import withStateHandlers from 'recompose/withStateHandlers'
 import NavList from 'sharyn/components/NavList'
+import RefreshButton from 'sharyn/components/RefreshButton'
 import hideOnScroll from 'sharyn/hocs/hide-on-scroll'
 
 import { LOGOUT_PATH } from 'auth/auth-paths'
@@ -57,8 +56,6 @@ const NavJSX = ({
   openUserMenu,
   closeUserMenu,
   userMenuAnchorEl,
-  isRefreshing,
-  refresh,
 }: {
   classes: Object,
   title?: string,
@@ -72,8 +69,6 @@ const NavJSX = ({
   openUserMenu: Function,
   closeUserMenu: Function,
   userMenuAnchorEl?: Object,
-  isRefreshing?: boolean,
-  refresh: Function,
 }) => (
   <>
     <AppWithAutoScroll className="hide-on-scroll">
@@ -96,13 +91,7 @@ const NavJSX = ({
           {title}
         </Typography>
         {isOffline && <OfflineIcon color="inherit" />}
-        {isRefreshing ? (
-          <Progress className={css.refreshProgress} color="inherit" size={20} thickness={6} />
-        ) : (
-          <IconButton color="inherit" onClick={refresh} className={css.onlyInStandalone}>
-            <RefreshIcon className={css.refreshIcon} />
-          </IconButton>
-        )}
+        <RefreshButton />
         <IconButton
           color="inherit"
           onClick={openUserMenu}
@@ -137,13 +126,12 @@ const NavJSX = ({
 
 export const NavCmp = compose(
   withStateHandlers(
-    { isDrawerOpen: false, isUserMenuOpen: false, userMenuAnchorEl: null, isRefreshing: false },
+    { isDrawerOpen: false, isUserMenuOpen: false, userMenuAnchorEl: null },
     {
       openDrawer: () => () => ({ isDrawerOpen: true }),
       closeDrawer: () => () => ({ isDrawerOpen: false }),
       openUserMenu: () => e => ({ isUserMenuOpen: true, userMenuAnchorEl: e.target }),
       closeUserMenu: () => () => ({ isUserMenuOpen: false }),
-      refresh: () => () => window.location.reload(true) || { isRefreshing: true },
     },
   ),
   withStyles(({ spacing, mixins, breakpoints }) => ({
@@ -159,17 +147,8 @@ export const NavCmp = compose(
       '&:focus': { outline: 0 },
     },
     userMenuItemIcon: { marginRight: spacing.unit },
-    notInStandalone: {
-      '@media all and (display-mode: standalone)': { display: 'none' },
-    },
-    onlyInStandalone: {
-      display: 'none',
-      '@media all and (display-mode: standalone)': { display: 'block' },
-    },
     hideOnMobile: { [breakpoints.down('xs')]: { display: 'none' } },
     hideOnDesktop: { [breakpoints.up('sm')]: { display: 'none' } },
-    refreshIcon: { fontSize: 30 },
-    refreshProgress: { margin: '0 17px' },
   })),
 )(NavJSX)
 
