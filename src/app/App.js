@@ -18,7 +18,7 @@ import getPageInfo from 'sharyn/shared/get-page-info'
 
 import Nav from 'app/cmp/Nav'
 import allRoutes from 'app/all-routes'
-import { primaryColor as color } from 'app/theme'
+import { primaryColor } from 'app/theme'
 
 const AppJSX = ({
   location,
@@ -49,7 +49,7 @@ const AppJSX = ({
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta httpEquiv="X-UA-Compatible" content="ie=edge" />
         <link key="manifest" rel="manifest" href="/static/site.webmanifest" />
-        {favicons({ color })}
+        {favicons(primaryColor)}
       </Helmet>
       {isLoggedIn && (
         <Nav {...{ backNav }} title={isPageLoading && titleRequiresData ? '' : title} />
