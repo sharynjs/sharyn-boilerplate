@@ -10,7 +10,7 @@ This is a preconfigured project that uses every feature of [**Sharyn**](https://
 
 - [**Download**](https://github.com/sharynjs/sharyn-boilerplate/archive/master.zip) the project
 - Duplicate `.env-sample` into `.env`
-- If needed, add fields to `package.json` (`name`, `version`, `repository`, `description`, `author`...)
+- Edit `package.json` (`name`, `version`, `repository`, `description`, `author`...)
 - Create a Heroku app and provision it with Heroku Postgres and Heroku Redis
 - Add a `SESSION_SECRET_KEY` variable to your Heroku app containing any secret string
 - Delete the content of this `README.md` file
