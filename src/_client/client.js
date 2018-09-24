@@ -17,7 +17,6 @@ import BrowserRouter from 'react-router-dom/BrowserRouter'
 import { applyMiddleware, combineReducers, compose, createStore } from 'redux'
 import thunk from 'redux-thunk'
 import {
-  startClientNavigation,
   asyncRequest,
   asyncSuccess,
   asyncFailure,
@@ -26,6 +25,7 @@ import {
   fetchPageFailure,
   online,
   offline,
+  startClientNavigation,
 } from 'sharyn/client/actions'
 import purgeCache from 'sharyn/client/purge-cache'
 import {
@@ -44,7 +44,6 @@ import theme from 'app/theme'
 
 const preloadedState = window.__PRELOADED_STATE__
 const { IS_DEV_ENV, SENTRY_DSN_PUBLIC, NO_SSR, SERVER_VERSION } = preloadedState.env
-preloadedState.env.isFirstRender = !NO_SSR
 
 /* eslint-disable no-undef */
 // flow-disable-next-line

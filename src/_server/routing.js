@@ -22,10 +22,12 @@ import authRouting from 'auth/auth-routing'
 import { FAKE_SERVER_ERROR_PATH } from 'error/error-paths'
 
 jss.setup(jssPreset())
+
 const env = {
   IS_DEV_ENV,
-  SENTRY_DSN_PUBLIC,
   NO_SSR,
+  SENTRY_DSN_PUBLIC,
+  isServerRender: !NO_SSR,
   isOnline: true,
   SERVER_VERSION: NO_VERSION_VALIDATION ? null : dirChecksum('src', ['package.json', 'yarn.lock']),
 }
