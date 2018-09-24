@@ -1,7 +1,8 @@
-import { startServerWithRouting, stopServerWithRouting } from '_server/server'
-import { DEFAULT_TESTING_PORT } from 'sharyn/koa'
 import { knex } from 'sharyn/db'
+import { DEFAULT_TESTING_PORT } from 'sharyn/koa'
 import { sel } from 'sharyn/testing'
+
+import { startServerWithRouting, stopServerWithRouting } from '_server/server'
 
 beforeAll(() => startServerWithRouting())
 afterAll(() => stopServerWithRouting())

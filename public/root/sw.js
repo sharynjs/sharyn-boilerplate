@@ -33,7 +33,11 @@ workbox.routing.registerRoute(
 
 const uuid = '[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}'
 
-const baseUrls = ['http://localhost:8020', 'https://sharyn-boilerplate.herokuapp.com']
+const baseUrls = [
+  'http://localhost:8020',
+  'https://sharyn-boilerplate-staging.herokuapp.com',
+  'https://sharyn-boilerplate.herokuapp.com',
+]
 
 const pathsToNetworkFirst = ['/$', `/note/${uuid}$`]
 

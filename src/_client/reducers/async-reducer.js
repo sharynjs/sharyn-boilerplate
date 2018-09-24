@@ -1,7 +1,5 @@
 // @flow
 
-import swit from 'sharyn/util/swit'
-
 import {
   SHARYN_FETCH_PAGE_REQUEST,
   SHARYN_FETCH_PAGE_SUCCESS,
@@ -12,6 +10,7 @@ import {
   SHARYN_NAVIGATION,
 } from 'sharyn/client/actions'
 import { setAsyncRequest, delAsyncEntry, clearAsync } from 'sharyn/client/async-reductions'
+import swit from 'sharyn/util/swit'
 
 const asyncReducer = (asyncState: Object = {}, { type, payload }: { type: string, payload: any }) =>
   swit(

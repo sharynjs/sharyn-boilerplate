@@ -2,45 +2,45 @@
 
 import '@babel/polyfill'
 
+import React from 'react'
+
+import createGenerateClassName from '@material-ui/core/styles/createGenerateClassName'
+import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider'
 // flow-disable-next-line
 import jss from 'jss'
 import jssPreset from 'jss-preset-default'
-import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider'
-import createGenerateClassName from '@material-ui/core/styles/createGenerateClassName'
 import Raven from 'raven-js'
-import React from 'react'
 import { hydrate, render } from 'react-dom'
 import JssProvider from 'react-jss/lib/JssProvider'
 import { Provider } from 'react-redux'
 import BrowserRouter from 'react-router-dom/BrowserRouter'
 import { applyMiddleware, combineReducers, compose, createStore } from 'redux'
 import thunk from 'redux-thunk'
+import {
+  startClientNavigation,
+  asyncRequest,
+  asyncSuccess,
+  asyncFailure,
+  fetchPageRequest,
+  fetchPageSuccess,
+  fetchPageFailure,
+  online,
+  offline,
+} from 'sharyn/client/actions'
 import purgeCache from 'sharyn/client/purge-cache'
+import {
+  configureFetchPageThunk,
+  configureGraphqlThunk,
+  fetchPageThunk,
+} from 'sharyn/client/thunks'
+import { configureWithClientMainQuery } from 'sharyn/hocs/with-client-main-query'
 
-import dataReducer from '_client/reducers/data-reducer'
 import asyncReducer from '_client/reducers/async-reducer'
+import dataReducer from '_client/reducers/data-reducer'
 import envReducer from '_client/reducers/env-reducer'
 
 import App from 'app/App'
 import theme from 'app/theme'
-
-import {
-  startClientNavigation,
-  fetchPageRequest,
-  fetchPageSuccess,
-  fetchPageFailure,
-  asyncRequest,
-  asyncSuccess,
-  asyncFailure,
-  online,
-  offline,
-} from 'sharyn/client/actions'
-import {
-  fetchPageThunk,
-  configureGraphqlThunk,
-  configureFetchPageThunk,
-} from 'sharyn/client/thunks'
-import { configureWithClientMainQuery } from 'sharyn/hocs/with-client-main-query'
 
 const preloadedState = window.__PRELOADED_STATE__
 const { IS_DEV_ENV, SENTRY_DSN_PUBLIC, NO_SSR, SERVER_VERSION } = preloadedState.env

@@ -1,12 +1,14 @@
 // @flow
 
 import React from 'react'
-import { Link } from 'react-router-dom'
-import { withStyles } from '@material-ui/core/styles'
+
 import Typography from '@material-ui/core/Typography'
+import withStyles from '@material-ui/core/styles/withStyles'
+import Link from 'react-router-dom/Link'
 import Page from 'sharyn/components/Page'
-import SignupForm from 'auth/cmp/SignupForm'
+
 import LogoTitle from 'app/cmp/LogoTitle'
+import SignupForm from 'auth/cmp/SignupForm'
 
 import { loginRoute } from 'auth/auth-routes'
 
@@ -46,7 +48,7 @@ const LandingSignupPageJSX = ({ classes: css }: { classes: Object }) => (
   </Page>
 )
 
-export const LandingSignupPageCmp = withStyles(({ breakpoints }) => ({
+const LandingSignupPage = withStyles(({ breakpoints }) => ({
   layout: {
     maxWidth: 650,
     display: 'flex',
@@ -79,7 +81,5 @@ export const LandingSignupPageCmp = withStyles(({ breakpoints }) => ({
   authLink: { whiteSpace: 'nowrap' },
   signupText: { marginBottom: 20 },
 }))(LandingSignupPageJSX)
-
-const LandingSignupPage = LandingSignupPageCmp
 
 export default LandingSignupPage

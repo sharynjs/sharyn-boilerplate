@@ -1,5 +1,7 @@
 // @flow
 
+import ErrorIcon from '@material-ui/icons/ErrorOutline'
+
 import {
   FAKE_CLIENT_ERROR_PATH,
   SERVER_ERROR_PATH,
@@ -7,9 +9,8 @@ import {
   FAKE_NOT_FOUND_ERROR_PATH,
 } from 'error/error-paths'
 import FakeClientErrorPage from 'error/cmp-page/FakeClientErrorPage'
-import ServerErrorPage from 'error/cmp-page/ServerErrorPage'
 import NotFoundPage from 'error/cmp-page/NotFoundPage'
-import ErrorIcon from '@material-ui/icons/ErrorOutline'
+import ServerErrorPage from 'error/cmp-page/ServerErrorPage'
 
 export const notFoundRoute = {
   title: 'Page Not Found',

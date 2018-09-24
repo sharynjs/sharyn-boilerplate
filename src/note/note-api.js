@@ -1,7 +1,8 @@
 // @flow
 
-import uuid from 'uuid/v4'
 import { gql } from 'apollo-server-koa'
+import uuid from 'uuid/v4'
+
 import { createNote, findNote, getAllNotes, updateNote, deleteNote } from 'note/note-db'
 import { validateNoteInput } from 'note/note-validations'
 

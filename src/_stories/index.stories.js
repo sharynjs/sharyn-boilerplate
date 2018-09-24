@@ -4,41 +4,41 @@
 
 import React from 'react'
 
-import { muiTheme } from 'storybook-addon-material-ui'
+import createGenerateClassName from '@material-ui/core/styles/createGenerateClassName'
+import withStyles from '@material-ui/core/styles/withStyles'
 import { withBackgrounds } from '@storybook/addon-backgrounds'
+import { boolean, text, withKnobs } from '@storybook/addon-knobs/react'
 import { storiesOf } from '@storybook/react'
-import { withKnobs, text, boolean } from '@storybook/addon-knobs/react'
 // flow-disable-next-line
 import jss from 'jss'
 import jssPreset from 'jss-preset-default'
 import JssProvider from 'react-jss/lib/JssProvider'
-import createGenerateClassName from '@material-ui/core/styles/createGenerateClassName'
-import withStyles from '@material-ui/core/styles/withStyles'
 import BrowserRouter from 'react-router-dom/BrowserRouter'
-import globalStyles from 'sharyn/css/global'
-import { applyMiddleware, combineReducers, createStore } from 'redux'
 import { Provider } from 'react-redux'
+import { applyMiddleware, combineReducers, createStore } from 'redux'
 import thunk from 'redux-thunk'
 import Host from 'sharyn/components/StoryHost'
+import globalStyles from 'sharyn/css/global'
 import spread from 'sharyn/util/spread'
+import { muiTheme } from 'storybook-addon-material-ui'
 
 import dataReducer from '_client/reducers/data-reducer'
+import LogoTitle from 'app/cmp/LogoTitle'
+import { NavCmp } from 'app/cmp/Nav'
+import theme from 'app/theme'
+import { LoginFormCmp } from 'auth/cmp/LoginForm'
+import { SignupFormCmp } from 'auth/cmp/SignupForm'
+import LoginPage from 'auth/cmp-page/LoginPage'
+import FakeClientErrorPage from 'error/cmp-page/FakeClientErrorPage'
+import NotFoundPage from 'error/cmp-page/NotFoundPage'
+import ServerErrorPage from 'error/cmp-page/ServerErrorPage'
+import LandingSignupPage from 'landing/cmp-page/LandingSignupPage'
 import { NoteCmp } from 'note/cmp/Note'
 import { NoteFormCmp } from 'note/cmp/NoteForm'
-import { NavCmp } from 'app/cmp/Nav'
-import { SignupFormCmp } from 'auth/cmp/SignupForm'
-import { LoginFormCmp } from 'auth/cmp/LoginForm'
-import { LoginPageCmp } from 'auth/cmp-page/LoginPage'
-import { LogoTitleCmp } from 'app/cmp/LogoTitle'
-import { FakeClientErrorPageCmp } from 'error/cmp-page/FakeClientErrorPage'
-import { NotFoundPageCmp } from 'error/cmp-page/NotFoundPage'
-import { LandingSignupPageCmp } from 'landing/cmp-page/LandingSignupPage'
 import { EditNotePageCmp } from 'note/cmp-page/EditNotePage'
-import { NewNotePageCmp } from 'note/cmp-page/NewNotePage'
+import NewNotePage from 'note/cmp-page/NewNotePage'
 import { NotePageCmp } from 'note/cmp-page/NotePage'
 import { NotesPageCmp } from 'note/cmp-page/NotesPage'
-import { ServerErrorPageCmp } from 'error/cmp-page/ServerErrorPage'
-import theme from 'app/theme'
 
 jss.setup(jssPreset())
 const GlobalStylesProvider = withStyles(globalStyles)(({ children }) => <>{children}</>)
@@ -72,11 +72,11 @@ storiesOf('All Components', module)
     </Provider>
   ))
   .addDecorator(muiTheme(theme))
-  .add('LandingSignupPageCmp', () => <LandingSignupPageCmp />)
-  .add('LoginPageCmp', () => <LoginPageCmp />)
-  .add('LogoTitleCmp', () => (
+  .add('LandingSignupPage', () => <LandingSignupPage />)
+  .add('LoginPage', () => <LoginPage />)
+  .add('LogoTitle', () => (
     <Host border>
-      <LogoTitleCmp />
+      <LogoTitle />
     </Host>
   ))
   .add('SignupFormCmp', () => (
@@ -163,7 +163,7 @@ storiesOf('All Components', module)
       isPageLoading={boolean('isPageLoading', false)}
     />
   ))
-  .add('NewNotePageCmp', () => <NewNotePageCmp />)
+  .add('NewNotePage', () => <NewNotePage />)
   .add('NoteFormCmp Edit', () => (
     <Host border width={600}>
       <NoteFormCmp
@@ -190,6 +190,6 @@ storiesOf('All Components', module)
       />
     </Host>
   ))
-  .add('NotFoundPageCmp', () => <NotFoundPageCmp />)
-  .add('ServerErrorPageCmp', () => <ServerErrorPageCmp />)
-  .add('FakeClientErrorPageCmp', () => <FakeClientErrorPageCmp />)
+  .add('NotFoundPage', () => <NotFoundPage />)
+  .add('ServerErrorPage', () => <ServerErrorPage />)
+  .add('FakeClientErrorPage', () => <FakeClientErrorPage />)

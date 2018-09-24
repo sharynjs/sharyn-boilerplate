@@ -1,20 +1,23 @@
 // @flow
 
 import React from 'react'
-import { connect as withRedux } from 'react-redux'
-import { withStyles } from '@material-ui/core/styles'
-import TextField from '@material-ui/core/TextField'
+
 import Button from '@material-ui/core/Button'
+import TextField from '@material-ui/core/TextField'
+import withStyles from '@material-ui/core/styles/withStyles'
+import { connect as withRedux } from 'react-redux'
 
 import { landingSignupRoute } from 'landing/landing-routes'
 
-type Props = {
+const SignupFormJSX = ({
+  classes: css,
+  previousFields = {},
+  errorMessage,
+}: {
   classes: Object,
   previousFields?: Object,
   errorMessage?: string,
-}
-
-const SignupFormJSX = ({ classes: css, previousFields = {}, errorMessage }: Props) => (
+}) => (
   <form data-test="signup-form" action={landingSignupRoute.path} method="post">
     {errorMessage && (
       <div data-test="signup-error" className={css.error}>

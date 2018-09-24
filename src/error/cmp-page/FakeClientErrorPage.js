@@ -1,6 +1,7 @@
 // @flow
 
 import React from 'react'
+
 import withLifecycle from 'recompose/lifecycle'
 import Page from 'sharyn/components/Page'
 
@@ -10,14 +11,12 @@ const FakeClientErrorPageJSX = () => (
   </Page>
 )
 
-export const FakeClientErrorPageCmp = withLifecycle({
+const FakeClientErrorPage = withLifecycle({
   componentDidMount() {
     setTimeout(() => {
       throw Error('Fake error, everything is fine')
     }, 100)
   },
 })(FakeClientErrorPageJSX)
-
-const FakeClientErrorPage = FakeClientErrorPageCmp
 
 export default FakeClientErrorPage

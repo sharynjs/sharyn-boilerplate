@@ -1,40 +1,28 @@
 // @flow
 
 import React from 'react'
-import { connect as withRedux } from 'react-redux'
-import { noteRoute, editNoteRoute, deleteNoteRoute } from 'note/note-routes'
-import { clearfix } from 'sharyn/css/util'
-import { withStyles } from '@material-ui/core/styles'
-import withState from 'recompose/withState'
-import compose from 'recompose/compose'
-import withHandlers from 'recompose/withHandlers'
-import { Link } from 'react-router-dom'
-import IconButton from '@material-ui/core/IconButton'
-import Paper from '@material-ui/core/Paper'
-import DeleteIcon from '@material-ui/icons/Delete'
-import EditIcon from '@material-ui/icons/Edit'
+
+import Button from '@material-ui/core/Button'
+import Progress from '@material-ui/core/CircularProgress'
 import Dialog from '@material-ui/core/Dialog'
 import DialogActions from '@material-ui/core/DialogActions'
 import DialogContent from '@material-ui/core/DialogContent'
 import DialogContentText from '@material-ui/core/DialogContentText'
-import Button from '@material-ui/core/Button'
-import { deleteNoteCall } from 'note/note-calls'
+import IconButton from '@material-ui/core/IconButton'
+import Paper from '@material-ui/core/Paper'
+import withStyles from '@material-ui/core/styles/withStyles'
+import DeleteIcon from '@material-ui/icons/Delete'
+import EditIcon from '@material-ui/icons/Edit'
+import { connect as withRedux } from 'react-redux'
+import Link from 'react-router-dom/Link'
+import compose from 'recompose/compose'
+import withHandlers from 'recompose/withHandlers'
+import withState from 'recompose/withState'
 import { graphqlThunk } from 'sharyn/client/thunks'
-import Progress from '@material-ui/core/CircularProgress'
+import { clearfix } from 'sharyn/css/util'
 
-type Props = {
-  classes: Object,
-  id: string,
-  title: string,
-  description?: string,
-  useTitleLink?: boolean,
-  showActions?: boolean,
-  isDeleting?: boolean,
-  handleDeleteConfirm?: Function,
-  isConfirmDeleteOpen: boolean,
-  setIsConfirmDeleteOpen: Function,
-  isOnline?: boolean,
-}
+import { deleteNoteCall } from 'note/note-calls'
+import { noteRoute, editNoteRoute, deleteNoteRoute } from 'note/note-routes'
 
 const NoteJSX = ({
   classes: css,
@@ -48,7 +36,19 @@ const NoteJSX = ({
   isConfirmDeleteOpen,
   setIsConfirmDeleteOpen,
   isOnline = true,
-}: Props) => (
+}: {
+  classes: Object,
+  id: string,
+  title: string,
+  description?: string,
+  useTitleLink?: boolean,
+  showActions?: boolean,
+  isDeleting?: boolean,
+  handleDeleteConfirm?: Function,
+  isConfirmDeleteOpen: boolean,
+  setIsConfirmDeleteOpen: Function,
+  isOnline?: boolean,
+}) => (
   <Paper className={css.note}>
     <h3 className={css.title}>
       {useTitleLink ? <Link to={noteRoute.path(id)}>{title}</Link> : title}

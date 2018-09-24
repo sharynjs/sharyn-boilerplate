@@ -1,18 +1,20 @@
 // @flow
 
 import React from 'react'
-import { connect as withRedux } from 'react-redux'
-import compose from 'recompose/compose'
-import { newNoteRoute } from 'note/note-routes'
-import { Link } from 'react-router-dom'
-import withClientMainQuery from 'sharyn/hocs/with-client-main-query'
+
 import Button from '@material-ui/core/Button'
-import { withStyles } from '@material-ui/core/styles'
+import withStyles from '@material-ui/core/styles/withStyles'
 import AddIcon from '@material-ui/icons/Add'
-import Page from 'sharyn/components/Page'
-import Note from 'note/cmp/Note'
-import renderIf from 'sharyn/hocs/render-if'
+import { connect as withRedux } from 'react-redux'
+import { Link } from 'react-router-dom'
+import compose from 'recompose/compose'
 import LoadingPage from 'sharyn/components/LoadingPage'
+import Page from 'sharyn/components/Page'
+import renderIf from 'sharyn/hocs/render-if'
+import withClientMainQuery from 'sharyn/hocs/with-client-main-query'
+
+import Note from 'note/cmp/Note'
+import { newNoteRoute } from 'note/note-routes'
 
 const NotesPageJSX = ({ classes: css, notes }: { classes: Object, notes: Object[] }) => (
   <>

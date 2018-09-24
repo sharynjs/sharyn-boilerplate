@@ -1,10 +1,11 @@
 // @flow
 
 import React from 'react'
-import { Link } from 'react-router-dom'
-import Page from 'sharyn/components/Page'
-import { withStyles } from '@material-ui/core/styles'
+
+import Link from 'react-router-dom/Link'
 import Typography from '@material-ui/core/Typography'
+import withStyles from '@material-ui/core/styles/withStyles'
+import Page from 'sharyn/components/Page'
 
 import LogoTitle from 'app/cmp/LogoTitle'
 import LoginForm from 'auth/cmp/LoginForm'
@@ -28,12 +29,10 @@ const LoginPageJSX = ({ classes: css }: { classes: Object }) => (
   </Page>
 )
 
-export const LoginPageCmp = withStyles({
+const LoginPage = withStyles({
   brandingContainer: { textAlign: 'center', marginBottom: 30 },
   switchAuth: { marginTop: 20, textAlign: 'center' },
   authLink: { whiteSpace: 'nowrap' },
 })(LoginPageJSX)
-
-const LoginPage = LoginPageCmp
 
 export default LoginPage

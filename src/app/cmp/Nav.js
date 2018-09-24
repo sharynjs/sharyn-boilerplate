@@ -1,36 +1,37 @@
 // @flow
 
-import React, { Fragment } from 'react'
-import compose from 'recompose/compose'
-import withStateHandlers from 'recompose/withStateHandlers'
-import { connect as withRedux } from 'react-redux'
+import React from 'react'
 
-import { Link } from 'react-router-dom'
-import { withStyles } from '@material-ui/core/styles'
 import AppBar from '@material-ui/core/AppBar'
-import SwipeableDrawer from '@material-ui/core/SwipeableDrawer'
-import Toolbar from '@material-ui/core/Toolbar'
+import Progress from '@material-ui/core/CircularProgress'
 import IconButton from '@material-ui/core/IconButton'
-import Typography from '@material-ui/core/Typography'
-import MenuIcon from '@material-ui/icons/Menu'
-import StyleIcon from '@material-ui/icons/Style'
-import hideOnScroll from 'sharyn/hocs/hide-on-scroll'
-import NavList from 'sharyn/components/NavList'
 import Menu from '@material-ui/core/Menu'
 import MenuItem from '@material-ui/core/MenuItem'
-import { notesRoute, newNoteRoute } from 'note/note-routes'
+import SwipeableDrawer from '@material-ui/core/SwipeableDrawer'
+import Toolbar from '@material-ui/core/Toolbar'
+import Typography from '@material-ui/core/Typography'
+import withStyles from '@material-ui/core/styles/withStyles'
+import UserIcon from '@material-ui/icons/AccountCircle'
+import BackIcon from '@material-ui/icons/ArrowBack'
+import OfflineIcon from '@material-ui/icons/CloudOff'
+import MenuIcon from '@material-ui/icons/Menu'
 import LogoutIcon from '@material-ui/icons/PowerSettingsNew'
+import RefreshIcon from '@material-ui/icons/Refresh'
+import StyleIcon from '@material-ui/icons/Style'
+import { connect as withRedux } from 'react-redux'
+import Link from 'react-router-dom/Link'
+import compose from 'recompose/compose'
+import withStateHandlers from 'recompose/withStateHandlers'
+import NavList from 'sharyn/components/NavList'
+import hideOnScroll from 'sharyn/hocs/hide-on-scroll'
+
 import { LOGOUT_PATH } from 'auth/auth-paths'
 import {
   fakeClientErrorRoute,
-  fakeServerErrorRoute,
   fakeNotFoundErrorRoute,
+  fakeServerErrorRoute,
 } from 'error/error-routes'
-import BackIcon from '@material-ui/icons/ArrowBack'
-import OfflineIcon from '@material-ui/icons/CloudOff'
-import UserIcon from '@material-ui/icons/AccountCircle'
-import RefreshIcon from '@material-ui/icons/Refresh'
-import Progress from '@material-ui/core/CircularProgress'
+import { notesRoute, newNoteRoute } from 'note/note-routes'
 
 const AppWithAutoScroll = hideOnScroll(AppBar)
 
@@ -74,7 +75,7 @@ const NavJSX = ({
   isRefreshing?: boolean,
   refresh: Function,
 }) => (
-  <Fragment>
+  <>
     <AppWithAutoScroll className="hide-on-scroll">
       <Toolbar>
         <IconButton color="inherit" aria-label="Menu" onClick={openDrawer}>
@@ -126,7 +127,7 @@ const NavJSX = ({
     >
       <NavList navItems={navItems} />
     </SwipeableDrawer>
-  </Fragment>
+  </>
 )
 
 export const NavCmp = compose(

@@ -34,13 +34,11 @@ const ServerErrorPageJSX = ({ classes: css }: { classes: Object }) => (
   </Page>
 )
 
-export const ServerErrorPageCmp = withStyles({
+const ServerErrorPage = withStyles({
   sign: { fontSize: 120, color: '#ccc', marginBottom: 20 },
   smile: { verticalAlign: 'text-bottom', color: '#777', paddingTop: 2, marginLeft: 2 },
   backButton: { marginTop: 15 },
   buttonIcon: { width: 20, marginRight: 6, position: 'relative', top: -1 },
 })(ServerErrorPageJSX)
-
-const ServerErrorPage = ServerErrorPageCmp
 
 export default ServerErrorPage

@@ -1,25 +1,25 @@
 // @flow
 
-import {
-  IS_DEV_ENV,
-  NO_SSR,
-  SENTRY_DSN_PUBLIC,
-  IS_LOCAL_ENV_TYPE,
-  TURN_OFF_SW,
-  NO_VERSION_VALIDATION,
-} from 'sharyn/env'
-import { renderPage } from 'sharyn/server'
-import { dirChecksum } from 'sharyn/check-setup'
 // flow-disable-next-line
 import jss from 'jss'
 import jssPreset from 'jss-preset-default'
+import { dirChecksum } from 'sharyn/check-setup'
+import {
+  IS_DEV_ENV,
+  IS_LOCAL_ENV_TYPE,
+  NO_SSR,
+  NO_VERSION_VALIDATION,
+  SENTRY_DSN_PUBLIC,
+  TURN_OFF_SW,
+} from 'sharyn/env'
+import { renderPage } from 'sharyn/server'
+import { graphqlCall, findMatch } from 'sharyn/shared'
 
-import authRouting from 'auth/auth-routing'
-import { FAKE_SERVER_ERROR_PATH } from 'error/error-paths'
+import allRoutes from 'app/all-routes'
 import App from 'app/App'
 import theme from 'app/theme'
-import allRoutes from 'app/all-routes'
-import { graphqlCall, findMatch } from 'sharyn/shared'
+import authRouting from 'auth/auth-routing'
+import { FAKE_SERVER_ERROR_PATH } from 'error/error-paths'
 
 jss.setup(jssPreset())
 const env = {

@@ -1,7 +1,7 @@
 // @flow
 
 import Joi from 'joi'
-import { swit } from 'sharyn/util'
+import swit from 'sharyn/util/swit'
 
 export const noteInputSchema = Joi.object().keys({
   title: Joi.string()

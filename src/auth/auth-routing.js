@@ -1,13 +1,13 @@
 // @flow
 
-import uuid from 'uuid/v4'
 import bcrypt from 'bcrypt'
 import { renderPage } from 'sharyn/server'
+import uuid from 'uuid/v4'
 
+import { LOGIN_PATH, LOGOUT_PATH } from 'auth/auth-paths'
+import { LANDING_SIGNUP_PATH } from 'landing/landing-paths'
 import { notesRoute } from 'note/note-routes'
 import { createUser, findUserByUsername } from 'user/user-db'
-import { LANDING_SIGNUP_PATH } from 'landing/landing-paths'
-import { LOGIN_PATH, LOGOUT_PATH } from 'auth/auth-paths'
 
 const logIn = (ctx, id, username) => {
   ctx.session = { user: { id, username } }
