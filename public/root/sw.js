@@ -6,7 +6,13 @@ importScripts('https://storage.googleapis.com/workbox-cdn/releases/3.6.1/workbox
 
 workbox.routing.registerRoute(
   /.*\/static\/js\/.*/,
-  workbox.strategies.cacheFirst({ cacheName: 'static' }),
+  workbox.strategies.cacheFirst({
+    cacheName: 'js',
+    plugins: [
+      new workbox.cacheableResponse.Plugin({ statuses: [0, 200] }),
+      new workbox.expiration.Plugin({ maxAgeSeconds: 60 * 60 * 24 * 31 }),
+    ],
+  }),
 )
 
 workbox.routing.registerRoute(

@@ -31,7 +31,13 @@ const env = {
 }
 let data = {}
 const preloadedStateBase = { data, env, ui: {}, async: {} }
-const renderPageOptions = { App, theme, jss, preloadedState: preloadedStateBase }
+const renderPageOptions = {
+  App,
+  theme,
+  jss,
+  swPath: TURN_OFF_SW ? undefined : '/sw.js',
+  preloadedState: preloadedStateBase,
+}
 
 const routing = (router: Object) => {
   authRouting(router, renderPageOptions)
@@ -85,12 +91,7 @@ const routing = (router: Object) => {
         ctx.status = 404
       }
     }
-    renderPage({
-      ...renderPageOptions,
-      ctx,
-      preloadedState: { ...preloadedStateBase, user, data },
-      swPath: TURN_OFF_SW ? undefined : '/sw.js',
-    })
+    renderPage({ ...renderPageOptions, ctx, preloadedState: { ...preloadedStateBase, user, data } })
   })
 }
 
