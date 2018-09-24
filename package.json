@@ -30,7 +30,7 @@
   },
   "dependencies": {
     "@babel/polyfill": "^7.0.0",
-    "@material-ui/core": "^3.1.0",
+    "@material-ui/core": "^3.1.1",
     "@material-ui/icons": "^3.0.1",
     "apollo-server-koa": "^2.1.0",
     "bcrypt": "^3.0.1",
@@ -94,7 +94,7 @@
     "cross-env": "^5.2.0",
     "eslint": "^5.6.0",
     "eslint-config-airbnb": "^17.1.0",
-    "eslint-config-prettier": "^3.0.1",
+    "eslint-config-prettier": "^3.1.0",
     "eslint-import-resolver-babel-module": "^5.0.0-beta.1",
     "eslint-plugin-flowtype": "^2.50.1",
     "eslint-plugin-import": "^2.14.0",
@@ -102,7 +102,7 @@
     "eslint-plugin-prettier": "^2.6.2",
     "eslint-plugin-react": "^7.11.1",
     "flow-bin": "^0.81.0",
-    "husky": "^1.0.0-rc.14",
+    "husky": "^1.0.0-rc.15",
     "jest": "^23.6.0",
     "jest-puppeteer": "^3.3.1",
     "moment": "^2.22.2",
@@ -113,7 +113,7 @@
     "rimraf": "^2.6.2",
     "storybook-addon-material-ui": "^0.9.0-alpha.16",
     "webpack": "^4.19.1",
-    "webpack-cli": "^3.1.0",
+    "webpack-cli": "^3.1.1",
     "webpack-dev-server": "^3.1.8"
   }
 }
