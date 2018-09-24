@@ -6,7 +6,7 @@ importScripts('https://storage.googleapis.com/workbox-cdn/releases/3.6.1/workbox
 
 workbox.routing.registerRoute(
   /.*\/static\/js\/.*/,
-  workbox.strategies.staleWhileRevalidate({ cacheName: 'static' }),
+  workbox.strategies.cacheFirst({ cacheName: 'static' }),
 )
 
 workbox.routing.registerRoute(
