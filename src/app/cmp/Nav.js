@@ -78,7 +78,7 @@ const NavJSX = ({
   <>
     <AppWithAutoScroll className="hide-on-scroll">
       <Toolbar>
-        <IconButton color="inherit" aria-label="Menu" onClick={openDrawer}>
+        <IconButton color="inherit" onClick={openDrawer}>
           <MenuIcon />
         </IconButton>
         {backNav && (
@@ -103,7 +103,12 @@ const NavJSX = ({
             <RefreshIcon className={css.refreshIcon} />
           </IconButton>
         )}
-        <IconButton color="inherit" onClick={openUserMenu} className={css.hideOnMobile}>
+        <IconButton
+          color="inherit"
+          onClick={openUserMenu}
+          className={css.hideOnMobile}
+          data-test="user-menu"
+        >
           <UserIcon />
         </IconButton>
         <Menu open={isUserMenuOpen} onClose={closeUserMenu} anchorEl={userMenuAnchorEl}>
@@ -125,7 +130,7 @@ const NavJSX = ({
       onClose={closeDrawer}
       onClick={closeDrawer}
     >
-      <NavList navItems={navItems} />
+      <NavList {...{ navItems }} />
     </SwipeableDrawer>
   </>
 )

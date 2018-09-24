@@ -32,6 +32,8 @@ test(
     )
     await expect(page).toClick(sel('signup-form-submit'))
     await page.waitForNavigation()
+    await expect(page).toClick(sel('user-menu'))
+    await expect(page).toMatchElement(sel('username-display'), { text: 'newuser' })
   },
   10000,
 )
