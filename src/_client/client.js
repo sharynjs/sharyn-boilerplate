@@ -16,6 +16,8 @@ import { Provider } from 'react-redux'
 import BrowserRouter from 'react-router-dom/BrowserRouter'
 import { applyMiddleware, combineReducers, compose, createStore } from 'redux'
 import thunk from 'redux-thunk'
+import purgeCache from 'sharyn/client/purge-cache'
+import { configureWithClientMainQuery } from 'sharyn/hocs/with-client-main-query'
 import {
   asyncRequest,
   asyncSuccess,
@@ -26,14 +28,8 @@ import {
   online,
   offline,
   startClientNavigation,
-} from 'sharyn/client/actions'
-import purgeCache from 'sharyn/client/purge-cache'
-import {
-  configureFetchPageThunk,
-  configureGraphqlThunk,
-  fetchPageThunk,
-} from 'sharyn/client/thunks'
-import { configureWithClientMainQuery } from 'sharyn/hocs/with-client-main-query'
+} from 'sharyn/redux/actions'
+import { configureFetchPageThunk, configureGraphqlThunk, fetchPageThunk } from 'sharyn/redux/thunks'
 
 import asyncReducer from '_client/reducers/async-reducer'
 import dataReducer from '_client/reducers/data-reducer'

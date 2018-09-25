@@ -7,12 +7,12 @@ import withStyles from '@material-ui/core/styles/withStyles'
 import { connect as withRedux } from 'react-redux'
 import compose from 'recompose/compose'
 import withHandlers from 'recompose/withHandlers'
-import { invalidateFields, clearInvalidFields } from 'sharyn/client/actions'
 import formData from 'sharyn/client/form-data'
 import ProgressButton from 'sharyn/components/ProgressButton'
+import { invalidateFields, clearInvalidFields } from 'sharyn/redux/actions'
+import { graphqlThunk } from 'sharyn/redux/thunks'
 
 import { updateNoteCall, createNoteCall } from 'note/note-calls'
-import { graphqlThunk } from 'sharyn/client/thunks'
 import { validateNoteInput } from 'note/note-validations'
 
 const NoteFormJSX = ({

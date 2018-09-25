@@ -7,8 +7,8 @@ import {
   SHARYN_INVALIDATE_FIELDS,
   SHARYN_CLEAR_INVALID_FIELDS,
   SHARYN_NAVIGATION,
-} from 'sharyn/client/actions'
-import { addData, delData, clearData } from 'sharyn/client/data-reductions'
+} from 'sharyn/redux/actions'
+import { addData, delData, clearData } from 'sharyn/redux/data-reductions'
 import swit from 'sharyn/util/swit'
 
 const dataReducer = (dataState: Object = {}, { payload, type }: Object) =>

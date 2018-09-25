@@ -8,8 +8,8 @@ import {
   SHARYN_ASYNC_SUCCESS,
   SHARYN_ASYNC_FAILURE,
   SHARYN_NAVIGATION,
-} from 'sharyn/client/actions'
-import { setAsyncRequest, delAsyncEntry, clearAsync } from 'sharyn/client/async-reductions'
+} from 'sharyn/redux/actions'
+import { setAsyncRequest, delAsyncEntry, clearAsync } from 'sharyn/redux/async-reductions'
 import swit from 'sharyn/util/swit'
 
 const asyncReducer = (asyncState: Object = {}, { type, payload }: { type: string, payload: any }) =>

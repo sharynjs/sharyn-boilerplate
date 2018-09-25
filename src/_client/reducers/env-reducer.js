@@ -1,11 +1,7 @@
 // @flow
 
-import {
-  SHARYN_START_CLIENT_NAVIGATION,
-  SHARYN_ONLINE,
-  SHARYN_OFFLINE,
-} from 'sharyn/client/actions'
-import { disableIsServerRender, setIsOnline } from 'sharyn/client/env-reductions'
+import { SHARYN_START_CLIENT_NAVIGATION, SHARYN_ONLINE, SHARYN_OFFLINE } from 'sharyn/redux/actions'
+import { disableIsServerRender, setIsOnline } from 'sharyn/redux/env-reductions'
 import swit from 'sharyn/util/swit'
 
 const envReducer = (envState: Object = {}, { type }: Object) =>

@@ -18,7 +18,7 @@ import Link from 'react-router-dom/Link'
 import compose from 'recompose/compose'
 import withHandlers from 'recompose/withHandlers'
 import withState from 'recompose/withState'
-import { graphqlThunk } from 'sharyn/client/thunks'
+import { graphqlThunk } from 'sharyn/redux/thunks'
 import { clearfix } from 'sharyn/css/util'
 
 import { deleteNoteCall } from 'note/note-calls'
