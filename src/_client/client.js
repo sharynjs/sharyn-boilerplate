@@ -80,7 +80,7 @@ if (CLIENT_VERSION !== SERVER_VERSION) {
 
   store.dispatch(startClientNavigation())
 
-  store.dispatch(navigator.onLine ? online() : offline())
+  !navigator.onLine && store.dispatch(offline())
   window.addEventListener('online', () => store.dispatch(online()))
   window.addEventListener('offline', () => store.dispatch(offline()))
 }

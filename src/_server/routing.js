@@ -1,48 +1,16 @@
 // @flow
 
-// flow-disable-next-line
-import jss from 'jss'
-import jssPreset from 'jss-preset-default'
-import { dirChecksum } from 'sharyn/check-setup'
-import {
-  IS_DEV_ENV,
-  IS_LOCAL_ENV_TYPE,
-  NO_SSR,
-  NO_VERSION_VALIDATION,
-  SENTRY_DSN_PUBLIC,
-  TURN_OFF_SW,
-} from 'sharyn/env'
+import { IS_LOCAL_ENV_TYPE, NO_SSR } from 'sharyn/env'
 import { renderPage } from 'sharyn/server'
 import { graphqlCall, findMatch } from 'sharyn/shared'
 
+import getRenderPageConfig from '_server/render-config'
 import allRoutes from 'app/all-routes'
-import App from 'app/App'
-import theme from 'app/theme'
 import authRouting from 'auth/auth-routing'
 import { FAKE_SERVER_ERROR_PATH } from 'error/error-paths'
 
-jss.setup(jssPreset())
-
-const env = {
-  IS_DEV_ENV,
-  NO_SSR,
-  SENTRY_DSN_PUBLIC,
-  isServerRender: !NO_SSR,
-  isOnline: true,
-  SERVER_VERSION: NO_VERSION_VALIDATION ? null : dirChecksum('src', ['package.json', 'yarn.lock']),
-}
-let data = {}
-const preloadedStateBase = { data, env, ui: {}, async: {} }
-const renderPageOptions = {
-  App,
-  theme,
-  jss,
-  swPath: TURN_OFF_SW ? undefined : '/sw.js',
-  preloadedState: preloadedStateBase,
-}
-
 const routing = (router: Object) => {
-  authRouting(router, renderPageOptions)
+  authRouting(router)
 
   router.get(FAKE_SERVER_ERROR_PATH, () => {
     throw Error('Fake Server Error')
@@ -50,6 +18,8 @@ const routing = (router: Object) => {
 
   router.all('*', async ctx => {
     const { user } = ctx.session
+    let data
+
     if (!NO_SSR) {
       const { match, route } = findMatch(allRoutes, ctx.req.url, !!user)
       if (match) {
@@ -93,7 +63,7 @@ const routing = (router: Object) => {
         ctx.status = 404
       }
     }
-    renderPage({ ...renderPageOptions, ctx, preloadedState: { ...preloadedStateBase, user, data } })
+    renderPage({ ctx, ...getRenderPageConfig({ user, data }) })
   })
 }
 

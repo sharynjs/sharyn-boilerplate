@@ -76,10 +76,8 @@ const App = compose(
     }),
   ),
   withLifecycle({
-    componentDidUpdate(prevProps) {
-      if (prevProps.location.pathname !== this.props.location.pathname) {
-        this.props.handleNavigation()
-      }
+    componentWillMount() {
+      this.props.history.listen(() => this.props.handleNavigation())
     },
   }),
   withStyles(globalStyles),
