@@ -12,6 +12,7 @@
     "build-story": "build-storybook -o public/storybook",
     "heroku-postbuild": "sharyn build-prod",
     "deploy-staging": "sharyn deploy-staging",
+    "promote": "sharyn promote",
     "deploy-prod": "sharyn deploy-prod"
   },
   "engines": {
@@ -65,7 +66,7 @@
     "redis": "^2.8.0",
     "redux": "^4.0.0",
     "redux-thunk": "^2.3.0",
-    "sharyn": "^5.1.0",
+    "sharyn": "^5.2.0",
     "uuid": "^3.3.2"
   },
   "devDependencies": {
