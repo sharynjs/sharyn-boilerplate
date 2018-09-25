@@ -14,10 +14,9 @@ import { hydrate, render } from 'react-dom'
 import JssProvider from 'react-jss/lib/JssProvider'
 import { Provider } from 'react-redux'
 import BrowserRouter from 'react-router-dom/BrowserRouter'
-import { applyMiddleware, combineReducers, compose, createStore } from 'redux'
-import thunk from 'redux-thunk'
 import purgeCache from 'sharyn/client/purge-cache'
 import { configureWithClientMainQuery } from 'sharyn/hocs/with-client-main-query'
+import createSharynStore from 'sharyn/redux/store'
 import {
   asyncRequest,
   asyncSuccess,
@@ -30,10 +29,6 @@ import {
   startClientNavigation,
 } from 'sharyn/redux/actions'
 import { configureFetchPageThunk, configureGraphqlThunk, fetchPageThunk } from 'sharyn/redux/thunks'
-
-import asyncReducer from '_client/reducers/async-reducer'
-import dataReducer from '_client/reducers/data-reducer'
-import envReducer from '_client/reducers/env-reducer'
 
 import App from 'app/App'
 import theme from 'app/theme'
@@ -49,19 +44,7 @@ if (CLIENT_VERSION !== SERVER_VERSION) {
 } else {
   SENTRY_DSN_PUBLIC && Raven.config(SENTRY_DSN_PUBLIC).install()
 
-  const composeEnhancers = (IS_DEV_ENV && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) || compose
-
-  const store = createStore(
-    combineReducers({
-      data: dataReducer,
-      user: (s = null) => s,
-      ui: (s = {}) => s,
-      async: asyncReducer,
-      env: envReducer,
-    }),
-    preloadedState,
-    composeEnhancers(applyMiddleware(thunk)),
-  )
+  const store = createSharynStore({ isDevEnv: IS_DEV_ENV, preloadedState })
 
   configureFetchPageThunk({
     request: fetchPageRequest,

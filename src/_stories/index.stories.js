@@ -15,14 +15,12 @@ import jssPreset from 'jss-preset-default'
 import JssProvider from 'react-jss/lib/JssProvider'
 import BrowserRouter from 'react-router-dom/BrowserRouter'
 import { Provider } from 'react-redux'
-import { applyMiddleware, combineReducers, createStore } from 'redux'
-import thunk from 'redux-thunk'
 import Host from 'sharyn/components/StoryHost'
 import globalStyles from 'sharyn/css/global'
+import createSharynStore from 'sharyn/redux/store'
 import spread from 'sharyn/util/spread'
 import { muiTheme } from 'storybook-addon-material-ui'
 
-import dataReducer from '_client/reducers/data-reducer'
 import LogoTitle from 'app/cmp/LogoTitle'
 import { NavCmp } from 'app/cmp/Nav'
 import theme from 'app/theme'
@@ -43,16 +41,7 @@ import { NotesPageCmp } from 'note/cmp-page/NotesPage'
 jss.setup(jssPreset())
 const GlobalStylesProvider = withStyles(globalStyles)(({ children }) => <>{children}</>)
 
-const store = createStore(
-  combineReducers({
-    data: dataReducer,
-    user: (s = null) => s,
-    ui: (s = {}) => s,
-    async: (s = {}) => s,
-    env: (s = {}) => s,
-  }),
-  applyMiddleware(thunk),
-)
+const store = createSharynStore()
 
 storiesOf('All Components', module)
   .addDecorator(withKnobs)
