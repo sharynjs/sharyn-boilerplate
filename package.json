@@ -66,7 +66,7 @@
     "redis": "^2.8.0",
     "redux": "^4.0.0",
     "redux-thunk": "^2.3.0",
-    "sharyn": "^5.3.0",
+    "sharyn": "^5.4.0",
     "uuid": "^3.3.2"
   },
   "devDependencies": {
