@@ -8,11 +8,11 @@
     "lint": "sharyn lint",
     "test": "sharyn test",
     "stats": "sharyn stats",
-    "heroku-postbuild": "sharyn build-prod",
     "story": "start-storybook -p 8025",
     "build-story": "build-storybook -o public/storybook",
-    "deploy": "git push origin master && git push heroku master",
-    "deploy-prod": "git push origin master && git push heroku master && heroku pipelines:promote -a sharyn-boilerplate-staging"
+    "heroku-postbuild": "sharyn build-prod",
+    "deploy-staging": "sharyn deploy-staging",
+    "deploy-prod": "sharyn deploy-prod"
   },
   "engines": {
     "node": ">=10.10.0"
@@ -65,7 +65,7 @@
     "redis": "^2.8.0",
     "redux": "^4.0.0",
     "redux-thunk": "^2.3.0",
-    "sharyn": "^5.0.1",
+    "sharyn": "^5.1.0",
     "uuid": "^3.3.2"
   },
   "devDependencies": {
