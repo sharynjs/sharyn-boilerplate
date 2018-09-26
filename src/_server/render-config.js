@@ -1,8 +1,5 @@
 // @flow
 
-// flow-disable-next-line
-import jss from 'jss'
-import jssPreset from 'jss-preset-default'
 import { dirChecksum } from 'sharyn/check-setup'
 import {
   IS_DEV_ENV,
@@ -16,8 +13,6 @@ import createSharynStore from 'sharyn/redux/store'
 import App from 'app/App'
 import theme from 'app/theme'
 
-jss.setup(jssPreset())
-
 const env = {
   IS_DEV_ENV,
   NO_SSR,
@@ -27,12 +22,11 @@ const env = {
   SERVER_VERSION: NO_VERSION_VALIDATION ? null : dirChecksum('src', ['package.json', 'yarn.lock']),
 }
 
-const getRenderPageConfig = (extraPreloadedState?: Object = {}) => ({
+const renderConfig = (extraPreloadedState?: Object = {}) => ({
   App,
   theme,
-  jss,
-  swPath: TURN_OFF_SW ? undefined : '/sw.js',
   store: createSharynStore({ preloadedState: { env, ...extraPreloadedState } }),
+  swPath: TURN_OFF_SW ? undefined : '/sw.js',
 })
 
-export default getRenderPageConfig
+export default renderConfig

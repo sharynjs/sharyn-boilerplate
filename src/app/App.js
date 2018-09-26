@@ -4,7 +4,6 @@ import React from 'react'
 
 import withStyles from '@material-ui/core/styles/withStyles'
 import Helmet from 'react-helmet'
-import { hot } from 'react-hot-loader'
 import { connect as withRedux } from 'react-redux'
 import withRouter from 'react-router-dom/withRouter'
 import compose from 'recompose/compose'
@@ -61,7 +60,6 @@ const AppJSX = ({
 }
 
 const App = compose(
-  hot(module),
   withRouter,
   withRedux(
     ({ data, user, env, async, ui }) => ({

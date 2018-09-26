@@ -4,20 +4,14 @@
 
 import React from 'react'
 
-import createGenerateClassName from '@material-ui/core/styles/createGenerateClassName'
 import withStyles from '@material-ui/core/styles/withStyles'
 import { withBackgrounds } from '@storybook/addon-backgrounds'
 import { boolean, text, withKnobs } from '@storybook/addon-knobs/react'
 import { storiesOf } from '@storybook/react'
-// flow-disable-next-line
-import jss from 'jss'
-import jssPreset from 'jss-preset-default'
-import JssProvider from 'react-jss/lib/JssProvider'
-import BrowserRouter from 'react-router-dom/BrowserRouter'
-import { Provider } from 'react-redux'
 import Host from 'sharyn/components/StoryHost'
 import globalStyles from 'sharyn/css/global'
 import createSharynStore from 'sharyn/redux/store'
+import AppWithProviders from 'sharyn/shared/AppWithProviders'
 import spread from 'sharyn/util/spread'
 import { muiTheme } from 'storybook-addon-material-ui'
 
@@ -38,7 +32,6 @@ import NewNotePage from 'note/cmp-page/NewNotePage'
 import { NotePageCmp } from 'note/cmp-page/NotePage'
 import { NotesPageCmp } from 'note/cmp-page/NotesPage'
 
-jss.setup(jssPreset())
 const GlobalStylesProvider = withStyles(globalStyles)(({ children }) => <>{children}</>)
 
 const store = createSharynStore()
@@ -52,13 +45,10 @@ storiesOf('All Components', module)
     ]),
   )
   .addDecorator(getStory => (
-    <Provider {...{ store }}>
-      <BrowserRouter>
-        <JssProvider {...{ jss }} generateClassName={createGenerateClassName()}>
-          <GlobalStylesProvider>{getStory()}</GlobalStylesProvider>
-        </JssProvider>
-      </BrowserRouter>
-    </Provider>
+    <AppWithProviders
+      App={<GlobalStylesProvider>{getStory()}</GlobalStylesProvider>}
+      {...{ store, theme }}
+    />
   ))
   .addDecorator(muiTheme(theme))
   .add('LandingSignupPage', () => <LandingSignupPage />)

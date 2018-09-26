@@ -4,7 +4,7 @@ import { IS_LOCAL_ENV_TYPE, NO_SSR } from 'sharyn/env'
 import { renderPage } from 'sharyn/server'
 import { graphqlCall, findMatch } from 'sharyn/shared'
 
-import getRenderPageConfig from '_server/render-config'
+import renderConfig from '_server/render-config'
 import allRoutes from 'app/all-routes'
 import authRouting from 'auth/auth-routing'
 import { FAKE_SERVER_ERROR_PATH } from 'error/error-paths'
@@ -63,7 +63,7 @@ const routing = (router: Object) => {
         ctx.status = 404
       }
     }
-    renderPage(ctx, getRenderPageConfig({ user, data }))
+    renderPage(ctx, renderConfig({ user, data }))
   })
 }
 
