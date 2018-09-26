@@ -18,21 +18,21 @@ const logIn = (ctx, id, username) => {
 const authRouting = (router: Object) => {
   router.get(
     LANDING_SIGNUP_PATH,
-    (ctx, next) => (ctx.session?.user ? next() : renderPage({ ctx, ...getRenderPageConfig() })),
+    (ctx, next) => (ctx.session?.user ? next() : renderPage(ctx, getRenderPageConfig())),
   )
 
   router.post(LANDING_SIGNUP_PATH, async ctx => {
     const { username, password } = ctx.request.body
     if (!username || username === '' || !password || password === '') {
-      renderPage({
+      renderPage(
         ctx,
-        ...getRenderPageConfig({
+        getRenderPageConfig({
           data: {
             previousFields: ctx.request.body,
             errorMessage: 'Please enter a username and a password.',
           },
         }),
-      })
+      )
     } else {
       const passwordHash = await bcrypt.hash(password, 12)
       const id = uuid()
@@ -43,7 +43,7 @@ const authRouting = (router: Object) => {
 
   router.get(LOGIN_PATH, ctx => {
     ctx.session = null
-    renderPage({ ctx, ...getRenderPageConfig() })
+    renderPage(ctx, getRenderPageConfig())
   })
 
   router.post(LOGIN_PATH, async ctx => {
@@ -52,15 +52,15 @@ const authRouting = (router: Object) => {
     if (user && (await bcrypt.compare(password, user.passwordHash))) {
       logIn(ctx, user.id, user.username)
     } else {
-      renderPage({
+      renderPage(
         ctx,
-        ...getRenderPageConfig({
+        getRenderPageConfig({
           data: {
             previousFields: ctx.request.body,
             errorMessage: 'Incorrect username or password.',
           },
         }),
-      })
+      )
     }
   })
 

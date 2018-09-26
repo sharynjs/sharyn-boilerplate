@@ -63,7 +63,7 @@ const routing = (router: Object) => {
         ctx.status = 404
       }
     }
-    renderPage({ ctx, ...getRenderPageConfig({ user, data }) })
+    renderPage(ctx, getRenderPageConfig({ user, data }))
   })
 }
 
