@@ -9180,9 +9180,9 @@ shallowequal@^1.0.1, shallowequal@^1.0.2, shallowequal@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/shallowequal/-/shallowequal-1.1.0.tgz#188d521de95b9087404fd4dcb68b13df0ae4e7f8"
 
-sharyn@^5.13.3:
-  version "5.13.3"
-  resolved "https://registry.yarnpkg.com/sharyn/-/sharyn-5.13.3.tgz#e6f346fdc99fbfaa39df97cb1d6fd6008023b4d2"
+sharyn@^5.13.4:
+  version "5.13.4"
+  resolved "https://registry.yarnpkg.com/sharyn/-/sharyn-5.13.4.tgz#ad1bd66a9618c41a1047b90482fe0c95f6e45b65"
   dependencies:
     "@babel/runtime-corejs2" "^7.0.0"
     "@sharyn/check-setup" "^2.0.7"
