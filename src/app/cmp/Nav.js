@@ -24,6 +24,7 @@ import NavList from 'sharyn/components/NavList'
 import RefreshButton from 'sharyn/components/RefreshButton'
 import hideOnScroll from 'sharyn/hocs/hide-on-scroll'
 
+import TriggerNotificationItem from 'app/cmp/TriggerNotificationItem'
 import { LOGOUT_PATH } from 'auth/auth-paths'
 import {
   fakeClientErrorRoute,
@@ -37,6 +38,7 @@ const AppWithAutoScroll = hideOnScroll(AppBar)
 const navItems = [
   notesRoute,
   newNoteRoute,
+  { component: () => <TriggerNotificationItem /> },
   fakeNotFoundErrorRoute,
   [fakeServerErrorRoute, { hardLink: true }],
   fakeClientErrorRoute,

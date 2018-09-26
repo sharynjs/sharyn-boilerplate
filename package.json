@@ -59,7 +59,7 @@
     "react-router-dom": "^4.3.1",
     "recompose": "^0.30.0",
     "redis": "^2.8.0",
-    "sharyn": "^5.17.1",
+    "sharyn": "^5.19.1",
     "uuid": "^3.3.2"
   },
   "devDependencies": {
