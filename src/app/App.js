@@ -2,7 +2,6 @@
 
 import React from 'react'
 
-import withStyles from '@material-ui/core/styles/withStyles'
 import Helmet from 'react-helmet'
 import { connect as withRedux } from 'react-redux'
 import withRouter from 'react-router-dom/withRouter'
@@ -10,7 +9,6 @@ import compose from 'recompose/compose'
 import withLifecycle from 'recompose/lifecycle'
 import favicons from 'sharyn/components/favicons'
 import Notifications from 'sharyn/components/Notifications'
-import globalStyles from 'sharyn/css/global'
 import { navigation, dismissFirstNotification } from 'sharyn/redux/actions'
 import findMatch from 'sharyn/shared/find-match'
 import getPageInfo from 'sharyn/shared/get-page-info'
@@ -78,7 +76,6 @@ const App = compose(
       this.props.history.listen(() => this.props.handleNavigation())
     },
   }),
-  withStyles(globalStyles),
 )(AppJSX)
 
 export default App

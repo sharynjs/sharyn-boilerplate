@@ -21,7 +21,7 @@ import {
   startClientNavigation,
 } from 'sharyn/redux/actions'
 import { configureFetchPageThunk, configureGraphqlThunk, fetchPageThunk } from 'sharyn/redux/thunks'
-import AppWithProviders from 'sharyn/shared/AppWithProviders'
+import Providers from 'sharyn/shared/Providers'
 
 import theme from 'app/theme'
 import App from 'app/App'
@@ -56,7 +56,7 @@ if (CLIENT_VERSION !== SERVER_VERSION) {
   const reactDomFn = NO_SSR ? render : hydrate
 
   // flow-disable-next-line
-  reactDomFn(<AppWithProviders {...{ App, theme, store }} />, document.getElementById('app'))
+  reactDomFn(<Providers {...{ App, theme, store }} />, document.getElementById('app'))
 
   store.dispatch(startClientNavigation())
 

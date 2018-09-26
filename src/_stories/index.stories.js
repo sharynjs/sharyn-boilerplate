@@ -4,14 +4,12 @@
 
 import React from 'react'
 
-import withStyles from '@material-ui/core/styles/withStyles'
 import { withBackgrounds } from '@storybook/addon-backgrounds'
 import { boolean, text, withKnobs } from '@storybook/addon-knobs/react'
 import { storiesOf } from '@storybook/react'
 import Host from 'sharyn/components/StoryHost'
-import globalStyles from 'sharyn/css/global'
 import createSharynStore from 'sharyn/redux/store'
-import AppWithProviders from 'sharyn/shared/AppWithProviders'
+import Providers from 'sharyn/shared/Providers'
 import spread from 'sharyn/util/spread'
 import { muiTheme } from 'storybook-addon-material-ui'
 
@@ -32,8 +30,6 @@ import NewNotePage from 'note/cmp-page/NewNotePage'
 import { NotePageCmp } from 'note/cmp-page/NotePage'
 import { NotesPageCmp } from 'note/cmp-page/NotesPage'
 
-const GlobalStylesProvider = withStyles(globalStyles)(({ children }) => <>{children}</>)
-
 const store = createSharynStore()
 
 storiesOf('All Components', module)
@@ -44,12 +40,7 @@ storiesOf('All Components', module)
       { name: 'Gray', value: '#f2f2f2' },
     ]),
   )
-  .addDecorator(getStory => (
-    <AppWithProviders
-      App={<GlobalStylesProvider>{getStory()}</GlobalStylesProvider>}
-      {...{ store, theme }}
-    />
-  ))
+  .addDecorator(getStory => <Providers {...{ store, theme }}>{getStory()}</Providers>)
   .addDecorator(muiTheme(theme))
   .add('LandingSignupPage', () => <LandingSignupPage />)
   .add('LoginPage', () => <LoginPage />)

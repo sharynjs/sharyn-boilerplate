@@ -1008,22 +1008,24 @@
     dotenv "^6.0.0"
     read-env "^1.3.0"
 
-"@sharyn/server@^4.0.0-alpha.0":
-  version "4.0.0-alpha.0"
-  resolved "https://registry.yarnpkg.com/@sharyn/server/-/server-4.0.0-alpha.0.tgz#910f0014a4c64161d25143b824e6c5e9c3f79cf8"
+"@sharyn/server@^4.2.2":
+  version "4.2.2"
+  resolved "https://registry.yarnpkg.com/@sharyn/server/-/server-4.2.2.tgz#343b77066e9933c430c74db01086da672bc92c6e"
   dependencies:
     "@babel/runtime-corejs2" "^7.0.0"
     "@sharyn/check-setup" "^2.0.7"
-    "@sharyn/shared" "^3.0.0-alpha.0"
+    "@sharyn/env" "^2.0.7"
+    "@sharyn/shared" "^3.3.0"
     "@sharyn/webpack-config" "^2.4.5"
     clean-css "^4.2.1"
     serialize-javascript "^1.5.0"
 
-"@sharyn/shared@^3.0.0-alpha.0":
-  version "3.0.0-alpha.0"
-  resolved "https://registry.yarnpkg.com/@sharyn/shared/-/shared-3.0.0-alpha.0.tgz#e0f6050a208530f03be5533323c87c4d32d2c290"
+"@sharyn/shared@^3.3.0":
+  version "3.3.0"
+  resolved "https://registry.yarnpkg.com/@sharyn/shared/-/shared-3.3.0.tgz#b0ebd7fa22f77c0cc42b59ec2b83a6de0b483d06"
   dependencies:
     "@babel/runtime-corejs2" "^7.0.0"
+    "@sharyn/css" "^1.2.2"
     "@sharyn/util" "^2.0.4"
     axios "^0.18.0"
     jss "^9.8.7"
@@ -9188,16 +9190,16 @@ shallowequal@^1.0.1, shallowequal@^1.0.2, shallowequal@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/shallowequal/-/shallowequal-1.1.0.tgz#188d521de95b9087404fd4dcb68b13df0ae4e7f8"
 
-sharyn@^5.14.0-alpha.0:
-  version "5.14.0-alpha.0"
-  resolved "https://registry.yarnpkg.com/sharyn/-/sharyn-5.14.0-alpha.0.tgz#c4d4cc54a659ccc06284bbae24c8b3fce628f088"
+sharyn@^5.17.1:
+  version "5.17.1"
+  resolved "https://registry.yarnpkg.com/sharyn/-/sharyn-5.17.1.tgz#dfcc78893ae89f5c5bbb6e68cce88666c35b3274"
   dependencies:
     "@babel/runtime-corejs2" "^7.0.0"
     "@sharyn/check-setup" "^2.0.7"
     "@sharyn/css" "^1.2.2"
     "@sharyn/env" "^2.0.7"
-    "@sharyn/server" "^4.0.0-alpha.0"
-    "@sharyn/shared" "^3.0.0-alpha.0"
+    "@sharyn/server" "^4.2.2"
+    "@sharyn/shared" "^3.3.0"
     "@sharyn/util" "^2.0.4"
     "@sharyn/webpack-config" "^2.4.5"
     async-exit-hook "^2.0.1"
