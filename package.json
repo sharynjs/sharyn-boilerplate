@@ -10,7 +10,7 @@
     "stats": "sharyn stats",
     "story": "sharyn storybook",
     "heroku-postbuild": "sharyn build-prod",
-    "deploy-staging": "sharyn deploy-staging",
+    "deploy": "sharyn deploy-staging",
     "promote": "sharyn promote",
     "deploy-prod": "sharyn deploy-prod"
   },
