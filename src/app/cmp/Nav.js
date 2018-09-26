@@ -3,6 +3,7 @@
 import React from 'react'
 
 import AppBar from '@material-ui/core/AppBar'
+import Divider from '@material-ui/core/Divider'
 import IconButton from '@material-ui/core/IconButton'
 import Menu from '@material-ui/core/Menu'
 import MenuItem from '@material-ui/core/MenuItem'
@@ -26,6 +27,7 @@ import hideOnScroll from 'sharyn/hocs/hide-on-scroll'
 
 import TriggerNotificationItem from 'app/cmp/TriggerNotificationItem'
 import { LOGOUT_PATH } from 'auth/auth-paths'
+import { logoutRoute } from 'auth/auth-routes'
 import {
   fakeClientErrorRoute,
   fakeNotFoundErrorRoute,
@@ -38,6 +40,8 @@ const AppWithAutoScroll = hideOnScroll(AppBar)
 const navItems = [
   notesRoute,
   newNoteRoute,
+  logoutRoute,
+  { component: () => <Divider /> },
   { component: () => <TriggerNotificationItem /> },
   fakeNotFoundErrorRoute,
   [fakeServerErrorRoute, { hardLink: true }],
