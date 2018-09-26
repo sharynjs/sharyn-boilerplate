@@ -37,8 +37,8 @@ storiesOf('All Components', module)
       { name: 'Gray', value: '#f2f2f2' },
     ]),
   )
-  .addDecorator(getStory => <Providers {...{ theme }}>{getStory()}</Providers>)
   .addDecorator(muiTheme(theme))
+  .addDecorator(getStory => <Providers {...{ theme }}>{getStory()}</Providers>)
   .add('LandingSignupPage', () => <LandingSignupPage />)
   .add('LoginPage', () => <LoginPage />)
   .add('LogoTitle', () => (
