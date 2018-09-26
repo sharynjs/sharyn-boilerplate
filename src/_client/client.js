@@ -7,6 +7,7 @@ import React from 'react'
 import Raven from 'raven-js'
 import { hydrate, render } from 'react-dom'
 import purgeCache from 'sharyn/client/purge-cache'
+import Providers from 'sharyn/components/Providers'
 import { configureWithClientMainQuery } from 'sharyn/hocs/with-client-main-query'
 import createSharynStore from 'sharyn/redux/store'
 import {
@@ -21,7 +22,6 @@ import {
   startClientNavigation,
 } from 'sharyn/redux/actions'
 import { configureFetchPageThunk, configureGraphqlThunk, fetchPageThunk } from 'sharyn/redux/thunks'
-import Providers from 'sharyn/shared/Providers'
 
 import theme from 'app/theme'
 import App from 'app/App'

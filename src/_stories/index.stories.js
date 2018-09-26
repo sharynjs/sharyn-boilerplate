@@ -7,9 +7,8 @@ import React from 'react'
 import { withBackgrounds } from '@storybook/addon-backgrounds'
 import { boolean, text, withKnobs } from '@storybook/addon-knobs/react'
 import { storiesOf } from '@storybook/react'
+import Providers from 'sharyn/components/Providers'
 import Host from 'sharyn/components/StoryHost'
-import createSharynStore from 'sharyn/redux/store'
-import Providers from 'sharyn/shared/Providers'
 import spread from 'sharyn/util/spread'
 import { muiTheme } from 'storybook-addon-material-ui'
 
@@ -30,8 +29,6 @@ import NewNotePage from 'note/cmp-page/NewNotePage'
 import { NotePageCmp } from 'note/cmp-page/NotePage'
 import { NotesPageCmp } from 'note/cmp-page/NotesPage'
 
-const store = createSharynStore()
-
 storiesOf('All Components', module)
   .addDecorator(withKnobs)
   .addDecorator(
@@ -40,7 +37,7 @@ storiesOf('All Components', module)
       { name: 'Gray', value: '#f2f2f2' },
     ]),
   )
-  .addDecorator(getStory => <Providers {...{ store, theme }}>{getStory()}</Providers>)
+  .addDecorator(getStory => <Providers {...{ theme }}>{getStory()}</Providers>)
   .addDecorator(muiTheme(theme))
   .add('LandingSignupPage', () => <LandingSignupPage />)
   .add('LoginPage', () => <LoginPage />)
