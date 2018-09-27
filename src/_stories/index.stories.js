@@ -39,8 +39,16 @@ storiesOf('All Components', module)
   )
   .addDecorator(muiTheme(theme))
   .addDecorator(getStory => <Providers {...{ theme }}>{getStory()}</Providers>)
-  .add('LandingSignupPage', () => <LandingSignupPage />)
-  .add('LoginPage', () => <LoginPage />)
+  .add('LandingSignupPage', () => (
+    <Host border>
+      <LandingSignupPage />
+    </Host>
+  ))
+  .add('LoginPage', () => (
+    <Host border>
+      <LoginPage />
+    </Host>
+  ))
   .add('LogoTitle', () => (
     <Host border>
       <LogoTitle />
@@ -71,38 +79,42 @@ storiesOf('All Components', module)
     />
   ))
   .add('NotesPageCmp', () => (
-    <NotesPageCmp
-      notes={
-        boolean('No notes', false)
-          ? undefined
-          : [
-              {
-                id: '1',
-                title: text('title1', 'A title'),
-                description: text('description1', 'A description'),
-              },
-              {
-                id: '2',
-                title: text('title2', 'A title'),
-                description: text('description2', 'A description'),
-              },
-            ]
-      }
-      isPageLoading={boolean('isPageLoading', false)}
-    />
+    <Host border>
+      <NotesPageCmp
+        notes={
+          boolean('No notes', false)
+            ? undefined
+            : [
+                {
+                  id: '1',
+                  title: text('title1', 'A title'),
+                  description: text('description1', 'A description'),
+                },
+                {
+                  id: '2',
+                  title: text('title2', 'A title'),
+                  description: text('description2', 'A description'),
+                },
+              ]
+        }
+        isPageLoading={boolean('isPageLoading', false)}
+      />
+    </Host>
   ))
   .add('NotePageCmp', () => (
-    <NotePageCmp
-      note={
-        boolean('Not found', false)
-          ? undefined
-          : {
-              title: text('title', 'A title'),
-              description: text('description', 'A description'),
-            }
-      }
-      isPageLoading={boolean('isPageLoading', false)}
-    />
+    <Host border>
+      <NotePageCmp
+        note={
+          boolean('Not found', false)
+            ? undefined
+            : {
+                title: text('title', 'A title'),
+                description: text('description', 'A description'),
+              }
+        }
+        isPageLoading={boolean('isPageLoading', false)}
+      />
+    </Host>
   ))
   .add('NoteCmp', () => (
     <Host border>
@@ -118,19 +130,25 @@ storiesOf('All Components', module)
     </Host>
   ))
   .add('EditNotePageCmp', () => (
-    <EditNotePageCmp
-      noteToEdit={
-        boolean('Not found', false)
-          ? undefined
-          : {
-              title: 'edit-title',
-              description: 'edit-description',
-            }
-      }
-      isPageLoading={boolean('isPageLoading', false)}
-    />
+    <Host border>
+      <EditNotePageCmp
+        noteToEdit={
+          boolean('Not found', false)
+            ? undefined
+            : {
+                title: 'edit-title',
+                description: 'edit-description',
+              }
+        }
+        isPageLoading={boolean('isPageLoading', false)}
+      />
+    </Host>
   ))
-  .add('NewNotePage', () => <NewNotePage />)
+  .add('NewNotePage', () => (
+    <Host border>
+      <NewNotePage />
+    </Host>
+  ))
   .add('NoteFormCmp Edit', () => (
     <Host border width={600}>
       <NoteFormCmp
@@ -157,6 +175,18 @@ storiesOf('All Components', module)
       />
     </Host>
   ))
-  .add('NotFoundPage', () => <NotFoundPage />)
-  .add('ServerErrorPage', () => <ServerErrorPage />)
-  .add('FakeClientErrorPage', () => <FakeClientErrorPage />)
+  .add('NotFoundPage', () => (
+    <Host border>
+      <NotFoundPage />
+    </Host>
+  ))
+  .add('ServerErrorPage', () => (
+    <Host border>
+      <ServerErrorPage />
+    </Host>
+  ))
+  .add('FakeClientErrorPage', () => (
+    <Host border>
+      <FakeClientErrorPage />
+    </Host>
+  ))
