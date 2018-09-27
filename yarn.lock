@@ -995,17 +995,16 @@
     klaw-sync "^5.0.0"
     md5 "^2.2.1"
 
-"@sharyn/components@^3.0.1":
-  version "3.0.1"
-  resolved "https://registry.yarnpkg.com/@sharyn/components/-/components-3.0.1.tgz#442914b75796b41cbd2af6e648b49b0eb9727a58"
+"@sharyn/components@^3.1.2":
+  version "3.1.2"
+  resolved "https://registry.yarnpkg.com/@sharyn/components/-/components-3.1.2.tgz#8731a24a3ce95bd83b07c95ba3f85f0900fc7208"
   dependencies:
     "@babel/runtime-corejs2" "^7.0.0"
     "@sharyn/css" "^1.2.2"
-    "@sharyn/redux" "^1.10.2"
+    "@sharyn/redux" "^1.12.0"
     "@sharyn/util" "^2.0.4"
     jss "^9.8.7"
     jss-preset-default "^4.5.0"
-    react-hot-loader "^4.3.11"
     react-jss "^8.6.1"
     react-redux "^5.0.7"
     react-router "^4.3.1"
@@ -1024,9 +1023,9 @@
     dotenv "^6.0.0"
     read-env "^1.3.0"
 
-"@sharyn/redux@^1.10.2":
-  version "1.10.2"
-  resolved "https://registry.yarnpkg.com/@sharyn/redux/-/redux-1.10.2.tgz#90ee242655c03286205b9d49111c6ddc93e90896"
+"@sharyn/redux@^1.12.0":
+  version "1.12.0"
+  resolved "https://registry.yarnpkg.com/@sharyn/redux/-/redux-1.12.0.tgz#17ee94ffd873e399c398263e1ad1fb24465436e6"
   dependencies:
     "@sharyn/shared" "^3.4.0"
     "@sharyn/util" "^2.0.4"
@@ -1037,13 +1036,13 @@
     redux-localstorage "^0.4.1"
     redux-thunk "^2.3.0"
 
-"@sharyn/server@^4.2.6":
-  version "4.2.6"
-  resolved "https://registry.yarnpkg.com/@sharyn/server/-/server-4.2.6.tgz#e494ba458ff2c664f9a26bed2fca2345b19589b4"
+"@sharyn/server@^4.2.9":
+  version "4.2.9"
+  resolved "https://registry.yarnpkg.com/@sharyn/server/-/server-4.2.9.tgz#d209dec140921ca64077342d72a41cf09fb6b66b"
   dependencies:
     "@babel/runtime-corejs2" "^7.0.0"
     "@sharyn/check-setup" "^2.0.7"
-    "@sharyn/components" "^3.0.1"
+    "@sharyn/components" "^3.1.2"
     "@sharyn/env" "^2.0.7"
     "@sharyn/shared" "^3.4.0"
     "@sharyn/webpack-config" "^2.4.5"
@@ -2460,9 +2459,9 @@ babel-preset-minify@canary:
     babel-plugin-transform-undefined-to-void "^6.10.0-alpha.9+7002b8c"
     lodash.isplainobject "^4.0.6"
 
-babel-preset-sharyn@^3.0.9:
-  version "3.0.9"
-  resolved "https://registry.yarnpkg.com/babel-preset-sharyn/-/babel-preset-sharyn-3.0.9.tgz#e36ff123e58450e1c12109a53d3e89f8ea09606f"
+babel-preset-sharyn@^3.1.1:
+  version "3.1.1"
+  resolved "https://registry.yarnpkg.com/babel-preset-sharyn/-/babel-preset-sharyn-3.1.1.tgz#2425ffee76e273323e24a0c8dcebafcdccd37f31"
   dependencies:
     "@babel/runtime-corejs2" "^7.0.0"
     "@sharyn/check-setup" "^2.0.7"
@@ -9214,23 +9213,23 @@ shallowequal@^1.0.1, shallowequal@^1.0.2, shallowequal@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/shallowequal/-/shallowequal-1.1.0.tgz#188d521de95b9087404fd4dcb68b13df0ae4e7f8"
 
-sharyn@^5.20.3:
-  version "5.20.3"
-  resolved "https://registry.yarnpkg.com/sharyn/-/sharyn-5.20.3.tgz#bb65e2bfed9d1ebd0b6e1a3c969a7b38f5d64bb6"
+sharyn@^5.21.2:
+  version "5.21.2"
+  resolved "https://registry.yarnpkg.com/sharyn/-/sharyn-5.21.2.tgz#69d3e91076a9d6972f3a3415d99a69a035ffa873"
   dependencies:
     "@babel/runtime-corejs2" "^7.0.0"
     "@sharyn/check-setup" "^2.0.7"
-    "@sharyn/components" "^3.0.1"
+    "@sharyn/components" "^3.1.2"
     "@sharyn/css" "^1.2.2"
     "@sharyn/env" "^2.0.7"
-    "@sharyn/redux" "^1.10.2"
-    "@sharyn/server" "^4.2.6"
+    "@sharyn/redux" "^1.12.0"
+    "@sharyn/server" "^4.2.9"
     "@sharyn/shared" "^3.4.0"
     "@sharyn/util" "^2.0.4"
     "@sharyn/webpack-config" "^2.4.5"
     async-exit-hook "^2.0.1"
     axios "^0.18.0"
-    babel-preset-sharyn "^3.0.9"
+    babel-preset-sharyn "^3.1.1"
     clean-css "^4.2.1"
     colors "^1.3.2"
     dotenv "^6.0.0"
@@ -9245,7 +9244,6 @@ sharyn@^5.20.3:
     lodash.throttle "^4.1.1"
     md5 "^2.2.1"
     pg "^7.4.3"
-    react-hot-loader "^4.3.11"
     react-jss "^8.6.1"
     react-redux "^5.0.7"
     react-router "^4.3.1"
