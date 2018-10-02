@@ -40,7 +40,7 @@ const AppWithAutoScroll = hideOnScroll(AppBar)
 const navItems = [
   notesRoute,
   newNoteRoute,
-  logoutRoute,
+  [logoutRoute, { hardLink: true }],
   { component: () => <Divider /> },
   { component: () => <TriggerNotificationItem /> },
   fakeNotFoundErrorRoute,

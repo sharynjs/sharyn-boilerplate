@@ -5,11 +5,10 @@ import React from 'react'
 import Helmet from 'react-helmet'
 import { hot } from 'react-hot-loader'
 import { connect as withRedux } from 'react-redux'
-import withRouter from 'react-router-dom/withRouter'
 import compose from 'recompose/compose'
-import withLifecycle from 'recompose/lifecycle'
 import favicons from 'sharyn/components/favicons'
 import Notifications from 'sharyn/components/Notifications'
+import withNavigation from 'sharyn/hocs/with-navigation'
 import { navigation, dismissFirstNotification } from 'sharyn/redux/actions'
 import findMatch from 'sharyn/shared/find-match'
 import getPageInfo from 'sharyn/shared/get-page-info'
@@ -60,7 +59,6 @@ const AppJSX = ({
 
 const App = compose(
   hot(module),
-  withRouter,
   withRedux(
     ({ data, user, env, async, ui }) => ({
       mainState: { data, user, env },
@@ -68,16 +66,9 @@ const App = compose(
       isPageLoading: async.page,
       notifications: ui.notifications,
     }),
-    dispatch => ({
-      handleDismissNotification: () => dispatch(dismissFirstNotification()),
-      handleNavigation: () => dispatch(navigation()),
-    }),
+    dispatch => ({ handleDismissNotification: () => dispatch(dismissFirstNotification()) }),
   ),
-  withLifecycle({
-    componentWillMount() {
-      this.props.history.listen(() => this.props.handleNavigation())
-    },
-  }),
+  withNavigation(navigation),
 )(AppJSX)
 
 export default App

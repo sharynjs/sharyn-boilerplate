@@ -60,7 +60,7 @@
     "react-router-dom": "^4.3.1",
     "recompose": "^0.30.0",
     "redis": "^2.8.0",
-    "sharyn": "^5.21.2",
+    "sharyn": "^6.1.0",
     "uuid": "^3.3.2"
   },
   "devDependencies": {
