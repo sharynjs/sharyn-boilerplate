@@ -60,7 +60,7 @@
     "react-router-dom": "^4.3.1",
     "recompose": "^0.30.0",
     "redis": "^2.8.0",
-    "sharyn": "^6.1.0",
+    "sharyn": "^6.3.0",
     "uuid": "^3.3.2"
   },
   "devDependencies": {
@@ -87,7 +87,6 @@
     "babel-plugin-flow-react-proptypes": "^24.1.2",
     "babel-plugin-module-resolver": "^3.1.1",
     "compression-webpack-plugin": "^2.0.0",
-    "cross-env": "^5.2.0",
     "eslint": "^5.6.0",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-config-prettier": "^3.1.0",

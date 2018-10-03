@@ -19,9 +19,13 @@
 </style>
 
 <script>
-  if (window.parent !== window) {
-    window.__REACT_DEVTOOLS_GLOBAL_HOOK__ = window.parent.__REACT_DEVTOOLS_GLOBAL_HOOK__;
-    window.__VUE_DEVTOOLS_GLOBAL_HOOK__ = window.parent.__VUE_DEVTOOLS_GLOBAL_HOOK__;
+  try {
+    if (window.parent !== window) {
+      window.__REACT_DEVTOOLS_GLOBAL_HOOK__ = window.parent.__REACT_DEVTOOLS_GLOBAL_HOOK__;
+      window.__VUE_DEVTOOLS_GLOBAL_HOOK__ = window.parent.__VUE_DEVTOOLS_GLOBAL_HOOK__;
+    }
+  } catch (e) {
+    console.warn('unable to connect to parent frame for connecting dev tools');
   }
 </script>
 
@@ -54,7 +58,7 @@
       
     
       
-        <script src="static/manager.21a6e7935c241399d1d0.bundle.js" defer></script>
+        <script src="static/manager.592cbc0a7846b4c5e82f.bundle.js" defer></script>
       
     
   

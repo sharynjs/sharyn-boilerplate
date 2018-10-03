@@ -65,9 +65,13 @@
 </style>
 
 <script>
-  if (window.parent !== window) {
-    window.__REACT_DEVTOOLS_GLOBAL_HOOK__ = window.parent.__REACT_DEVTOOLS_GLOBAL_HOOK__;
-    window.__VUE_DEVTOOLS_GLOBAL_HOOK__ = window.parent.__VUE_DEVTOOLS_GLOBAL_HOOK__;
+  try {
+    if (window.parent !== window) {
+      window.__REACT_DEVTOOLS_GLOBAL_HOOK__ = window.parent.__REACT_DEVTOOLS_GLOBAL_HOOK__;
+      window.__VUE_DEVTOOLS_GLOBAL_HOOK__ = window.parent.__VUE_DEVTOOLS_GLOBAL_HOOK__;
+    }
+  } catch (e) {
+    console.warn('unable to connect to parent frame for connecting dev tools');
   }
 </script>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" />
@@ -123,11 +127,11 @@
       
     
       
-        <script src="static/vendors~iframe.edd629a7fa21bb0aea9c.bundle.js" defer></script>
+        <script src="static/vendors~iframe.fce39a9e1713c2791a18.bundle.js" defer></script>
       
     
       
-        <script src="static/iframe.ad3b7e87e21757341982.bundle.js" defer></script>
+        <script src="static/iframe.ccfe978dc4cc674c82a7.bundle.js" defer></script>
       
     
   
