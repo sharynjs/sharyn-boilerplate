@@ -27,7 +27,7 @@ const authRouting = (router: Object) => {
       renderPage(
         ctx,
         getRenderPageConfig({
-          data: {
+          pageData: {
             previousFields: ctx.request.body,
             errorMessage: 'Please enter a username and a password.',
           },
@@ -55,7 +55,7 @@ const authRouting = (router: Object) => {
       renderPage(
         ctx,
         getRenderPageConfig({
-          data: {
+          pageData: {
             previousFields: ctx.request.body,
             errorMessage: 'Incorrect username or password.',
           },

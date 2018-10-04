@@ -24,7 +24,7 @@ export const NotePageCmp = compose(
 )(NotePageJSX)
 
 const NotePage = compose(
-  withRedux(({ data, async }) => ({ note: data.note, isPageLoading: async.page })),
+  withRedux(({ pageData, asyncMap }) => ({ note: pageData.note, isPageLoading: asyncMap.page })),
   withClientMainQuery(),
 )(NotePageCmp)
 

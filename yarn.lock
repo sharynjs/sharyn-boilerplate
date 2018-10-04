@@ -1070,14 +1070,14 @@
     klaw-sync "^5.0.0"
     md5 "^2.2.1"
 
-"@sharyn/components@^3.1.6":
-  version "3.1.6"
-  resolved "https://registry.yarnpkg.com/@sharyn/components/-/components-3.1.6.tgz#2fc584d08363b5b3bb3f7b912573b82cb52ca9f0"
-  integrity sha512-zBcrJpxdTC0ot0imnWsznur3zfgH5LSDXVOXSRjl+iL5+SXOeXKsBTcE1sVN66BfNCZ4UkqyTmkDfrGQ0yZV5Q==
+"@sharyn/components@^3.1.7":
+  version "3.1.7"
+  resolved "https://registry.yarnpkg.com/@sharyn/components/-/components-3.1.7.tgz#dee3933eb2cdb1f09cde353d054249a61229fc9f"
+  integrity sha512-hBO3WZPdO00yTl7YsM4TI5FMwQWfsLyGxAvfFcy3CFtNs6HhRn5K3BexUpjreljPXuw8pfsmj8g6tNHoafpkeQ==
   dependencies:
     "@babel/runtime-corejs2" "^7.0.0"
     "@sharyn/css" "^1.2.2"
-    "@sharyn/redux" "^2.1.0"
+    "@sharyn/redux" "^3.0.0"
     "@sharyn/util" "^2.1.0"
     jss "^9.8.7"
     jss-preset-default "^4.5.0"
@@ -1101,10 +1101,10 @@
     dotenv "^6.0.0"
     read-env "^1.3.0"
 
-"@sharyn/redux@^2.1.0":
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/@sharyn/redux/-/redux-2.1.0.tgz#af898a674481df38721b1773fddaf2fb28261b4c"
-  integrity sha512-vxy0c09cIG+nSkdBuHQB3mTEv0TRvBc3sYaJggmQ85A+9hCwJMVy8RkpPJ8XVGdHRjcFYizZ8gKIl3HUnTDSLA==
+"@sharyn/redux@^3.0.0":
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/@sharyn/redux/-/redux-3.0.0.tgz#96484e8347cdb9fd48feb7f2f5186e4dba458ad5"
+  integrity sha512-ydho6GG3MtONhktPr9RVGErU24QOqa+TMv2dGMCcvE+wKymoKEi4VL8QPXfGnqBi+3fP5FJKuGc54MI0plqPeQ==
   dependencies:
     "@sharyn/shared" "^3.4.1"
     "@sharyn/util" "^2.1.0"
@@ -1114,14 +1114,14 @@
     redux-localstorage "^0.4.1"
     redux-thunk "^2.3.0"
 
-"@sharyn/server@^4.2.13":
-  version "4.2.13"
-  resolved "https://registry.yarnpkg.com/@sharyn/server/-/server-4.2.13.tgz#76de9d4cff5c5422456432be854e7133868160ea"
-  integrity sha512-Hmh8nVJwZRlFChctd95oq3MhKgUow4sIIF05XNSTqpDqHZQfc0u7F7hgw/cO6iToJ78Wrorwk4Z3ymrlxvmN0w==
+"@sharyn/server@^4.2.14":
+  version "4.2.14"
+  resolved "https://registry.yarnpkg.com/@sharyn/server/-/server-4.2.14.tgz#e59a30830fca116beb231b5d7e9f1a6c29a8bd4b"
+  integrity sha512-2nWFPd8E4NR6B7oxa5hxz/v/I0S61PPNGw2NkhLBFJKhFPopGA2gA8rM5UATUMLYifQoc/HJDZGLD97I3rxmpQ==
   dependencies:
     "@babel/runtime-corejs2" "^7.0.0"
     "@sharyn/check-setup" "^2.0.7"
-    "@sharyn/components" "^3.1.6"
+    "@sharyn/components" "^3.1.7"
     "@sharyn/env" "^2.0.7"
     "@sharyn/shared" "^3.4.1"
     "@sharyn/webpack-config" "^2.4.5"
@@ -10467,18 +10467,18 @@ shallowequal@^1.0.1, shallowequal@^1.0.2, shallowequal@^1.1.0:
   resolved "https://registry.yarnpkg.com/shallowequal/-/shallowequal-1.1.0.tgz#188d521de95b9087404fd4dcb68b13df0ae4e7f8"
   integrity sha512-y0m1JoUZSlPAjXVtPPW70aZWfIL/dSP7AFkRnniLCrK/8MDKog3TySTBmckD+RObVxH0v4Tox67+F14PdED2oQ==
 
-sharyn@^6.3.0:
-  version "6.3.0"
-  resolved "https://registry.yarnpkg.com/sharyn/-/sharyn-6.3.0.tgz#1f2642c07f227cb2c17dc00bbc14e655d3b7b770"
-  integrity sha512-BISTHkZafw4iPUAPmmbw+oZOTgWwZIk0YXV2v98aQVSM/XrPk7bPMRNEChxmcu+4VUE726NtRIzsjtutZY59Fg==
+sharyn@^7.0.0:
+  version "7.0.0"
+  resolved "https://registry.yarnpkg.com/sharyn/-/sharyn-7.0.0.tgz#b5338c13fe4758e39a30fed01f8acb3c7e355eb9"
+  integrity sha512-Qf/1uGA5LwsKM21XWIHQW2xqqV9DshaqNEnNJAOFBR74rKnZ8E/aDrrUStArfgbCdPfo3ll91lV0tLv13AzHZw==
   dependencies:
     "@babel/runtime-corejs2" "^7.0.0"
     "@sharyn/check-setup" "^2.0.7"
-    "@sharyn/components" "^3.1.6"
+    "@sharyn/components" "^3.1.7"
     "@sharyn/css" "^1.2.2"
     "@sharyn/env" "^2.0.7"
-    "@sharyn/redux" "^2.1.0"
-    "@sharyn/server" "^4.2.13"
+    "@sharyn/redux" "^3.0.0"
+    "@sharyn/server" "^4.2.14"
     "@sharyn/shared" "^3.4.1"
     "@sharyn/util" "^2.1.0"
     "@sharyn/webpack-config" "^2.4.5"

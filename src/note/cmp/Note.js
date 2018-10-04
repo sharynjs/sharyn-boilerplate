@@ -112,7 +112,7 @@ export const NoteCmp = compose(
 )(NoteJSX)
 
 const Note = compose(
-  withRedux(({ async, env }) => ({ isDeleting: async.deleteNote, isOnline: env.isOnline })),
+  withRedux(({ asyncMap, env }) => ({ isDeleting: asyncMap.deleteNote, isOnline: env.isOnline })),
   withHandlers({
     handleDeleteConfirm: ({ id, dispatch, routerHistory }) => () => {
       const fields = { id }

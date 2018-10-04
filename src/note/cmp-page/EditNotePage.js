@@ -26,9 +26,9 @@ export const EditNotePageCmp = compose(
 )(EditNotePageJSX)
 
 const EditNotePage = compose(
-  withRedux(({ data, async }) => ({
-    noteToEdit: omitBy(data.note, isNull),
-    isPageLoading: async.page,
+  withRedux(({ pageData, asyncMap }) => ({
+    noteToEdit: omitBy(pageData.note, isNull),
+    isPageLoading: asyncMap.page,
   })),
   withClientMainQuery(),
 )(EditNotePageCmp)

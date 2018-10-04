@@ -20,7 +20,7 @@ import { primaryColor } from 'app/theme'
 const AppJSX = ({
   location,
   history: routerHistory,
-  mainState,
+  pageState,
   isLoggedIn,
   isPageLoading,
   notifications,
@@ -28,14 +28,14 @@ const AppJSX = ({
 }: {
   location: Object,
   history: Object,
-  mainState: Object,
+  pageState: Object,
   isLoggedIn: boolean,
   isPageLoading?: boolean,
   notifications?: Object[],
   handleDismissNotification: Function,
 }) => {
   const { match, route: activeRoute } = findMatch(allRoutes, location.pathname, isLoggedIn)
-  const { title, backNav } = getPageInfo(activeRoute, mainState)
+  const { title, backNav } = getPageInfo(activeRoute, pageState)
   const titleRequiresData = activeRoute.title instanceof Function
   const { pageComponent: PageComponent, ...route } = activeRoute
   return (
@@ -60,13 +60,13 @@ const AppJSX = ({
 const App = compose(
   hot(module),
   withRedux(
-    ({ data, user, env, async, ui }) => ({
-      mainState: { data, user, env },
+    ({ pageData, user, env, asyncMap, ui }) => ({
+      pageState: { pageData, user, env },
       isLoggedIn: !!user,
-      isPageLoading: async.page,
+      isPageLoading: asyncMap.page,
       notifications: ui.notifications,
     }),
-    dispatch => ({ handleDismissNotification: () => dispatch(dismissFirstNotification()) }),
+    { handleDismissNotification: dismissFirstNotification },
   ),
   withNavigation(navigation),
 )(AppJSX)

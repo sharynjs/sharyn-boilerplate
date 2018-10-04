@@ -68,10 +68,10 @@ export const NoteFormCmp = withStyles(({ palette }) => ({
 }))(NoteFormJSX)
 
 const NoteForm = compose(
-  withRedux(({ data, async, env }) => ({
-    invalidFields: data.invalidFields,
-    previousFields: data.previousFields,
-    isLoading: async.noteForm,
+  withRedux(({ pageData, asyncMap, env }) => ({
+    invalidFields: pageData.invalidFields,
+    previousFields: pageData.previousFields,
+    isLoading: asyncMap.noteForm,
     isOnline: env.isOnline,
   })),
   withHandlers({

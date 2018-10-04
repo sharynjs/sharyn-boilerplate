@@ -55,9 +55,9 @@ export const LoginFormCmp = withStyles(({ breakpoints, palette }) => ({
   error: { margin: '20px 0', color: palette.error.main },
 }))(LoginFormJSX)
 
-const LoginForm = withRedux(({ data }) => ({
-  previousFields: data.previousFields,
-  errorMessage: data.errorMessage,
+const LoginForm = withRedux(({ pageData }) => ({
+  previousFields: pageData.previousFields,
+  errorMessage: pageData.errorMessage,
 }))(LoginFormCmp)
 
 export default LoginForm

@@ -55,9 +55,9 @@ export const SignupFormCmp = withStyles(({ breakpoints, palette }) => ({
   error: { margin: '20px 0', color: palette.error.main },
 }))(SignupFormJSX)
 
-const SignupForm = withRedux(({ data }) => ({
-  previousFields: data.previousFields,
-  errorMessage: data.errorMessage,
+const SignupForm = withRedux(({ pageData }) => ({
+  previousFields: pageData.previousFields,
+  errorMessage: pageData.errorMessage,
 }))(SignupFormCmp)
 
 export default SignupForm

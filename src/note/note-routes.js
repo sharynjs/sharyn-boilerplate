@@ -31,7 +31,7 @@ export const noteRoute = {
   exact: true,
   loggedInOnly: true,
   pageComponent: NotePage,
-  title: ({ data }: Object) => data?.note?.title ?? 'Note not found',
+  title: ({ pageData }: Object) => pageData.note?.title ?? 'Note not found',
   backNav: notesRoute.path,
   mainQuery: getNoteCall,
 }
@@ -52,8 +52,9 @@ export const editNoteRoute = {
   exact: true,
   loggedInOnly: true,
   pageComponent: EditNotePage,
-  title: ({ data }: Object) => (data?.note?.title ? `Edit ${data?.note?.title}` : 'Note not found'),
-  backNav: ({ data }: Object) => noteRoute.path(data?.note?.id),
+  title: ({ pageData }: Object) =>
+    pageData.note?.title ? `Edit ${pageData.note?.title}` : 'Note not found',
+  backNav: ({ pageData }: Object) => noteRoute.path(pageData.note?.id),
   icon: NewIcon,
   mainQuery: getNoteCall,
   mainMutation: updateNoteCall,

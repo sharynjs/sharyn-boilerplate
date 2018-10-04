@@ -17,7 +17,7 @@ const routing = (router: Object) => {
   router.all('*', async ctx =>
     renderPage(
       ctx,
-      renderConfig({ data: await getSsrData(ctx, allRoutes), user: ctx.session.user }),
+      renderConfig({ pageData: await getSsrData(ctx, allRoutes), user: ctx.session.user }),
     ),
   )
 }
