@@ -60,7 +60,7 @@
     "react-router-dom": "^4.3.1",
     "recompose": "^0.30.0",
     "redis": "^2.8.0",
-    "sharyn": "^7.0.0",
+    "sharyn": "^7.1.0",
     "uuid": "^3.3.2"
   },
   "devDependencies": {
@@ -75,7 +75,6 @@
     "@babel/preset-env": "^7.1.0",
     "@babel/preset-flow": "^7.0.0",
     "@babel/preset-react": "^7.0.0",
-    "@storybook/addon-backgrounds": "^4.0.0-alpha.22",
     "@storybook/addon-knobs": "^4.0.0-alpha.22",
     "@storybook/addon-viewport": "^4.0.0-alpha.22",
     "@storybook/addons": "^4.0.0-alpha.22",

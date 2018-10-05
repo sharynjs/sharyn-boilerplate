@@ -4,7 +4,6 @@
 
 import React from 'react'
 
-import { withBackgrounds } from '@storybook/addon-backgrounds'
 import { boolean, text, withKnobs } from '@storybook/addon-knobs/react'
 import { storiesOf } from '@storybook/react'
 import Providers from 'sharyn/components/Providers'
@@ -31,12 +30,6 @@ import { NotesPageCmp } from 'note/cmp-page/NotesPage'
 
 storiesOf('All Components', module)
   .addDecorator(withKnobs)
-  .addDecorator(
-    withBackgrounds([
-      { name: 'White', value: '#fff', default: true },
-      { name: 'Gray', value: '#f2f2f2' },
-    ]),
-  )
   .addDecorator(muiTheme(theme))
   .addDecorator(getStory => <Providers {...{ theme }}>{getStory()}</Providers>)
   .add('LandingSignupPage', () => (
