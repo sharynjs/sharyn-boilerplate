@@ -1,8 +1,9 @@
 // @flow
 
-import { getSsrData, renderPage } from 'sharyn/server'
+import { getSsrData } from 'sharyn/server'
+import processRequest from 'sharyn/server/process-request'
 
-import renderConfig from '_server/render-config'
+import getRenderConfig from '_server/render-config'
 import allRoutes from 'app/all-routes'
 import authRouting from 'auth/auth-routing'
 import { FAKE_SERVER_ERROR_PATH } from 'error/error-paths'
@@ -15,9 +16,18 @@ const routing = (router: Object) => {
   })
 
   router.all('*', async ctx =>
-    renderPage(
+    processRequest(
       ctx,
-      renderConfig({ pageData: await getSsrData(ctx, allRoutes), user: ctx.session.user }),
+      getRenderConfig,
+      await getSsrData({
+        user: ctx.session.user,
+        allRoutes,
+        url: ctx.req.url,
+        cookie: ctx.req.headers.cookie,
+        host: ctx.request.host,
+        method: ctx.request.method,
+        body: ctx.request.body,
+      }),
     ),
   )
 }

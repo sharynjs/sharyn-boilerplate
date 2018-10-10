@@ -7,11 +7,11 @@ import baseEnv from 'sharyn/server/base-env'
 import App from 'app/App'
 import theme from 'app/theme'
 
-const renderConfig = (extraPreloadedState?: Object = {}) => ({
+const getRenderConfig = (extraPreloadedState?: Object = {}) => ({
   App,
   theme,
   store: createSharynStore({ preloadedState: { env: baseEnv, ...extraPreloadedState } }),
   swPath: TURN_OFF_SW ? undefined : '/sw.js',
 })
 
-export default renderConfig
+export default getRenderConfig

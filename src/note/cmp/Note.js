@@ -114,10 +114,15 @@ export const NoteCmp = compose(
 const Note = compose(
   withRedux(({ asyncMap, env }) => ({ isDeleting: asyncMap.deleteNote, isOnline: env.isOnline })),
   withHandlers({
-    handleDeleteConfirm: ({ id, dispatch, routerHistory }) => () => {
-      const fields = { id }
-      dispatch(graphqlThunk({ ...deleteNoteCall, routerHistory, asyncKey: 'deleteNote', fields }))
-    },
+    handleDeleteConfirm: ({ id, dispatch, routerHistory }) => () =>
+      dispatch(
+        graphqlThunk({
+          ...deleteNoteCall,
+          routerHistory,
+          asyncKey: 'deleteNote',
+          urlParams: { id },
+        }),
+      ),
   }),
 )(NoteCmp)
 

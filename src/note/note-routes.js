@@ -8,11 +8,11 @@ import NewNotePage from 'note/cmp-page/NewNotePage'
 import NotePage from 'note/cmp-page/NotePage'
 import NotesPage from 'note/cmp-page/NotesPage'
 import {
-  createNoteCall,
-  deleteNoteCall,
-  getNoteCall,
   getNotesCall,
+  getNoteCall,
+  createNoteCall,
   updateNoteCall,
+  deleteNoteCall,
 } from 'note/note-calls'
 import { NOTES_PATH, NEW_NOTE_PATH, notePath, editNotePath, deleteNotePath } from 'note/note-paths'
 
